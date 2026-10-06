@@ -5,6 +5,7 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     public string roomID;
+    public string name_;
     public Object rightObject;
     public Object leftObject;
     public Object upObject;

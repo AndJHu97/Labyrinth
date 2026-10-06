@@ -59,6 +59,7 @@ public struct Condition
     
     public List<RelationshipCondition> relationshipConditions;
     public List<LivingCondition> livingConditions;
+    public List<PlayerIntentSO> requiredPlayerActions;
     public int groupNumber;
 }
 
@@ -72,7 +73,7 @@ public struct Consequence
     public List<string> texts;
 }
 
-
+[CreateAssetMenu(fileName = "ConditionConsequencesPairings", menuName = "Interactions/Condition Consequences Pairings")]
 public class ConditionConsequencesPairingsSO : ScriptableObject
 {
     public List<Condition> conditions;
