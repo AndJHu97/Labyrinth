@@ -36,6 +36,7 @@ public class PlayerIntentSO : ScriptableObject
     public string name_;
     public string actionText;
     public int netHealthImpact;
+    public int netSelfHealthImpact;
 
     public EmotionKey emotionKey;
     public MotorSensorKey motorSensorKey;

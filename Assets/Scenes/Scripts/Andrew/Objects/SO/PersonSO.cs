@@ -10,8 +10,9 @@ public class PersonSO : ScriptableObject
     public stats personStats;
     public float threatRelationshipValue;
     public float allegianceRelationshipValue;
-    public bool isAlive;
+    public bool isActive;
     public float learningRate = 0.1f;
+    public int experiencePointsGainedIfKilled = 5;
 
     public List<ActionOnNPCSO> friendlyActionOnNPC = new List<ActionOnNPCSO>();
     public List<ActionOnNPCSO> fearfulActionOnNPC = new List<ActionOnNPCSO>();

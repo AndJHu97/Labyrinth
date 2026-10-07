@@ -5,14 +5,20 @@ using UnityEngine;
 public class Object : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public string id;
+    public string name_;
+    public stats stats;
+
+    public float threatRelationshipValue;
+    public float allegianceRelationshipValue;
+    public bool isActive = true;
+    protected virtual void Awake()
     {
-        
+        ObjectRegistry.Register(id, this);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void OnDestroy()
     {
-        
+        ObjectRegistry.Unregister(id, this);
     }
 }

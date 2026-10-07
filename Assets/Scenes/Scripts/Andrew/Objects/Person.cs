@@ -11,19 +11,22 @@ public struct stats
     public int agility;
 }
 
+[System.Serializable]
+public enum StatType
+{
+    Health,
+    Fortitude,
+    Strength,
+    Agility
+}
+
 
 public class Person : Object
 {
     [SerializeField]
     public PersonSO personSO;
-    public string personID;
-    public string name_;
-    public stats personStats;
-    public float threatRelationshipValue;
-    public float allegianceRelationshipValue;
-    public bool isAlive;
     public float learningRate = 0.1f;
-
+    public int experiencePointsGainedIfKilled = 5;
     public List<ActionOnNPCSO> friendlyActionOnNPC = new List<ActionOnNPCSO>();
     public List<ActionOnNPCSO> fearfulActionOnNPC = new List<ActionOnNPCSO>();
     public List<ActionOnNPCSO> neutralActionOnNPC = new List<ActionOnNPCSO>();
@@ -42,16 +45,23 @@ public class Person : Object
     public GameManager gameManager;
     public Player player;
 
+    protected override void Awake()
+    {
+        if (personSO != null) id = personSO.personID;   // set before registering
+        base.Awake();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        personID = personSO.personID;
+        id = personSO.personID;
         name_ = personSO.name_;
-        personStats = personSO.personStats;
+        stats = personSO.personStats;
         threatRelationshipValue = personSO.threatRelationshipValue;
         allegianceRelationshipValue = personSO.allegianceRelationshipValue;
-        isAlive = personSO.isAlive;
+        isActive = personSO.isActive;
         learningRate = personSO.learningRate;
+        experiencePointsGainedIfKilled = personSO.experiencePointsGainedIfKilled;
 
         friendlyActionOnNPC = personSO.friendlyActionOnNPC;
         fearfulActionOnNPC = personSO.fearfulActionOnNPC;
@@ -88,7 +98,7 @@ public class Person : Object
         inputNPCProcessing.threatRelationshipValue = threatRelationshipValue;
         inputNPCProcessing.allegianceRelationshipValue = allegianceRelationshipValue;
         inputNPCProcessing.playerStats = player.playerStats;
-        inputNPCProcessing.npcStats = personStats;
+        inputNPCProcessing.npcStats = stats;
 
 
         // Check Friendly
@@ -203,11 +213,11 @@ public class Person : Object
         // APPLY NPC HEALTH
         // ------------------------------------------------
 
-        int storedHealth = personStats.health;
+        int storedHealth = stats.health;
 
-        personStats.health = Mathf.RoundToInt(
+        stats.health = Mathf.RoundToInt(
             InteractionProcessing.CalculateNewHealthValue(
-                personStats.health,
+                stats.health,
                 playerActionSO.netHealthImpact,
                 npcActionResponse.setHealthImpact,
                 npcActionResponse.newHealthImpact,
@@ -216,7 +226,7 @@ public class Person : Object
             )
         );
 
-        int netHealthImpactOnNPC = personStats.health - storedHealth;
+        int netHealthImpactOnNPC = stats.health - storedHealth;
 
         // ------------------------------------------------
         // APPLY NPC THREAT

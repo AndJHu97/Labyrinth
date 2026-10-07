@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class Room : Object
 {
-    public string roomID;
-    public string name_;
     public Object rightObject;
     public Object leftObject;
     public Object upObject;
