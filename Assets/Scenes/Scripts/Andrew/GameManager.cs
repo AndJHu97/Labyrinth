@@ -8,8 +8,8 @@ public struct GameState
     public int actionStep;
     public int totalActionStep;
     public PlayerIntentSO playerIntent;
-    public RoomSO room;
-
+    public Room room;
+    public List<string> displayTexts;
     public string targetID;
 }
 
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public int roundNumber = 1;
     public int actionStep = 0;
     public int totalActionStep = 0;
-    public RoomSO currentRoom = null;
+    public Room currentRoom = null;
     public List<GameState> gameLog = new();
     public static GameManager Instance;
 
@@ -31,5 +31,34 @@ public class GameManager : MonoBehaviour
     public void PlayerDeath()
     {
         Debug.Log("Player has died.");
+        roundNumber++;
+        actionStep = 0;
+    }
+
+    public void LogAction(PlayerIntentSO playerIntent, Room room, string targetID)
+    {
+        GameState gameState = new GameState
+        {
+            roundNumber = roundNumber,
+            actionStep = actionStep,
+            totalActionStep = totalActionStep,
+            playerIntent = playerIntent,
+            room = room,
+            targetID = targetID
+        };
+        gameLog.Add(gameState);
+
+        actionStep++;
+        totalActionStep++;
+    }
+
+    public void LogDisplayTextsToRecentLog(List<string> consoleTexts)
+    {
+        if (gameLog.Count > 0)
+        {
+            GameState lastGameState = gameLog[gameLog.Count - 1];
+            lastGameState.displayTexts = new List<string>(consoleTexts);
+            gameLog[gameLog.Count - 1] = lastGameState;
+        }
     }
 }

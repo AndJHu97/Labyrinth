@@ -269,7 +269,7 @@ public static class InteractionProcessing
         {
             foreach (var ac in c.activeConditions)
             {
-                Object target = ObjectRegistry.Get(ac.targetID);
+                Object_ target = ObjectRegistry.Get(ac.targetID);
                 if (target == null)
                 {
                     Debug.LogWarning($"Condition: no Object with id '{ac.targetID}' for active check.");
@@ -284,7 +284,7 @@ public static class InteractionProcessing
         {
             foreach (var sc in c.statChecks)
             {
-                Object target = ObjectRegistry.Get(sc.targetID);
+                Object_ target = ObjectRegistry.Get(sc.targetID);
                 if (target == null)
                 {
                     Debug.LogWarning($"Condition: no Object with id '{sc.targetID}' for stat check.");
@@ -433,7 +433,7 @@ public static class InteractionProcessing
         {
             foreach (var ac in c.activeConsequences)
             {
-                Object target = ObjectRegistry.Get(ac.targetID);
+                Object_ target = ObjectRegistry.Get(ac.targetID);
                 if (target == null)
                 {
                     Debug.LogWarning($"Consequence: no Object with id '{ac.targetID}' for active change.");

@@ -55,18 +55,32 @@ public class Player : MonoBehaviour
 
     //pick right keys to perform on the NPC
     //TODO: Will have to include one to act on onself
-    public void PerformAction(EmotionKey emotionKey, MotorSensorKey motorSensorKey, Person person)
+    public void PerformAction(EmotionKey emotionKey, MotorSensorKey motorSensorKey, Object_ object_)
     {
         foreach(var intent in playerIntentions)
         {
             if(intent.emotionKey == emotionKey && intent.motorSensorKey == motorSensorKey)
             {
-                // Perform the action associated with the intent
-                Debug.Log($"Performing action: {intent.actionText}");
                 playerStats.health += intent.netSelfHealthImpact;
-                person.PlayerActionOnNPC(intent);
+
+                string targetID = object_ != null ? object_.id : null;
+                GameManager.Instance.LogAction(intent, GameManager.Instance.currentRoom, targetID);
+                if (object_ != null)
+                {
+                    object_.ReceivePlayerAction(intent);
+                }
+                else
+                {
+                    // Nothing there: the action text is the whole result
+                    Debug.Log(intent.actionText);
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { intent.actionText });
+                }
+
+                if (playerStats.health <= 0) GameManager.Instance.PlayerDeath();
                 return;
             }
+
+            Debug.Log($"No intent matches {emotionKey} + {motorSensorKey}.");
         }
     }
 

@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomSO : MonoBehaviour
+[CreateAssetMenu(fileName = "RoomSO", menuName = "Objects/RoomSO", order = 1)]
+public class RoomSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Object_ rightObject;
+    public Object_ leftObject;
+    public Object_ upObject;
+    public Object_ downObject;
+    public Object_ straightAheadObject;
 }

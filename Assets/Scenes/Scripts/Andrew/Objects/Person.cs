@@ -21,7 +21,7 @@ public enum StatType
 }
 
 
-public class Person : Object
+public class Person : Object_
 {
     [SerializeField]
     public PersonSO personSO;
@@ -82,7 +82,7 @@ public class Person : Object
         player = gameManager.player;
     }
 
-    public void PlayerActionOnNPC(PlayerIntentSO playerActionSO)
+    public override void ReceivePlayerAction(PlayerIntentSO playerActionSO)
     {
         //Check what type of action this is on the NPC by finding this in the list
         //threat relationship value and allegiance relationship value of the NPC
@@ -99,6 +99,13 @@ public class Person : Object
         inputNPCProcessing.allegianceRelationshipValue = allegianceRelationshipValue;
         inputNPCProcessing.playerStats = player.playerStats;
         inputNPCProcessing.npcStats = stats;
+
+        foreach (var conditionConsequence in conditionConsequences)
+        {
+
+            InteractionProcessing.ProcessPairing(conditionConsequence);
+        }
+        Debug.Log($"{name_} has no reaction to '{playerActionSO.name}'.");
 
 
         // Check Friendly
