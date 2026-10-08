@@ -23,9 +23,7 @@ public enum StatType
 
 public class Person : Object_
 {
-    [SerializeField]
-    public PersonSO personSO;
-    public float learningRate = 0.1f;
+    public float learningRate = 0.5f;
     public int experiencePointsGainedIfKilled = 5;
     public List<ActionOnNPCSO> friendlyActionOnNPC = new List<ActionOnNPCSO>();
     public List<ActionOnNPCSO> fearfulActionOnNPC = new List<ActionOnNPCSO>();
@@ -40,49 +38,15 @@ public class Person : Object_
     public List<NPCActionResponseSO> neutralResponses = new List<NPCActionResponseSO>();
     public List<NPCActionResponseSO> aggressiveResponses = new List<NPCActionResponseSO>();
 
-    public List<TriggeredResponseSO> triggeredResponses = new List<TriggeredResponseSO>();
-
-    public GameManager gameManager;
-    public Player player;
-
-    protected override void Awake()
-    {
-        if (personSO != null) id = personSO.personID;   // set before registering
-        base.Awake();
-    }
+   
 
     // Start is called before the first frame update
     void Start()
     {
-        id = personSO.personID;
-        name_ = personSO.name_;
-        stats = personSO.personStats;
-        threatRelationshipValue = personSO.threatRelationshipValue;
-        allegianceRelationshipValue = personSO.allegianceRelationshipValue;
-        isActive = personSO.isActive;
-        learningRate = personSO.learningRate;
-        experiencePointsGainedIfKilled = personSO.experiencePointsGainedIfKilled;
 
-        friendlyActionOnNPC = personSO.friendlyActionOnNPC;
-        fearfulActionOnNPC = personSO.fearfulActionOnNPC;
-        neutralActionOnNPC = personSO.neutralActionOnNPC;
-        aggressiveActionOnNPC = personSO.aggressiveActionOnNPC;
-
-        friendlyResponses = personSO.friendlyResponses;
-        fearfulResponses = personSO.fearfulResponses;
-        likeResponses = personSO.likeResponses;
-        dislikeResponses = personSO.dislikeResponses;
-        neutralResponses = personSO.neutralResponses;
-        aggressiveResponses = personSO.aggressiveResponses;
-
-        triggeredResponses = personSO.triggeredResponses;
-
-        gameManager = FindObjectOfType<GameManager>();
-
-        player = gameManager.player;
     }
 
-    public override void ReceivePlayerAction(PlayerIntentSO playerActionSO)
+    public override void ReceivePlayerAction(PlayerIntentSO playerIntentSO)
     {
         //Check what type of action this is on the NPC by finding this in the list
         //threat relationship value and allegiance relationship value of the NPC
@@ -97,21 +61,16 @@ public class Person : Object_
         InputNPCProcessing inputNPCProcessing = new InputNPCProcessing();
         inputNPCProcessing.threatRelationshipValue = threatRelationshipValue;
         inputNPCProcessing.allegianceRelationshipValue = allegianceRelationshipValue;
-        inputNPCProcessing.playerStats = player.playerStats;
+        inputNPCProcessing.playerStats = GameManager.Instance.player.playerStats;
         inputNPCProcessing.npcStats = stats;
 
-        foreach (var conditionConsequence in conditionConsequences)
-        {
-
-            InteractionProcessing.ProcessPairing(conditionConsequence);
-        }
-        Debug.Log($"{name_} has no reaction to '{playerActionSO.name}'.");
+        CheckConditions(playerIntentSO);
 
 
         // Check Friendly
         foreach (ActionOnNPCSO action in friendlyActionOnNPC)
         {
-            if (action.playerAction == playerActionSO)
+            if (action.playerAction == playerIntentSO)
             {
                 actionOnNPC = action;
                 actionEmotionType = PlayerActionEmotionType.Friendly;
@@ -124,7 +83,7 @@ public class Person : Object_
         {
             foreach (ActionOnNPCSO action in fearfulActionOnNPC)
             {
-                if (action.playerAction == playerActionSO)
+                if (action.playerAction == playerIntentSO)
                 {
                     actionOnNPC = action;
                     actionEmotionType = PlayerActionEmotionType.Fearful;
@@ -138,7 +97,7 @@ public class Person : Object_
         {
             foreach (ActionOnNPCSO action in neutralActionOnNPC)
             {
-                if (action.playerAction == playerActionSO)
+                if (action.playerAction == playerIntentSO)
                 {
                     actionOnNPC = action;
                     actionEmotionType = PlayerActionEmotionType.Neutral;
@@ -152,7 +111,7 @@ public class Person : Object_
         {
             foreach (ActionOnNPCSO action in aggressiveActionOnNPC)
             {
-                if (action.playerAction == playerActionSO)
+                if (action.playerAction == playerIntentSO)
                 {
                     actionOnNPC = action;
                     actionEmotionType = PlayerActionEmotionType.Aggressive;
@@ -213,7 +172,7 @@ public class Person : Object_
         NPCActionResponseSO npcActionResponse =
             responseList[Random.Range(0, responseList.Count)];
 
-        Debug.Log($"NPC response: {npcActionResponse.name}");
+        Debug.Log($"NPC response: {npcActionResponse.name_}");
 
         //This is strange part because NPCActionResponseSO also has the change in relationship automatically in there for the NPC while also holding action to the player. So we need to apply the relationship change to the NPC and then apply the action to the player.
         // ------------------------------------------------
@@ -225,7 +184,7 @@ public class Person : Object_
         stats.health = Mathf.RoundToInt(
             InteractionProcessing.CalculateNewHealthValue(
                 stats.health,
-                playerActionSO.netHealthImpact,
+                playerIntentSO.netHealthImpact,
                 npcActionResponse.setHealthImpact,
                 npcActionResponse.newHealthImpact,
                 npcActionResponse.healthMultiplier,
@@ -242,7 +201,8 @@ public class Person : Object_
         threatRelationshipValue =
             InteractionProcessing.CalculateNewRelationshipValue(
                 threatRelationshipValue,
-                netHealthImpactOnNPC,
+                //negative because decreasing health makes it more threatening. 
+                -netHealthImpactOnNPC,
                 npcActionResponse.setThreatImpact,
                 npcActionResponse.newThreatImpact,
                 npcActionResponse.threatMultiplier,
@@ -269,21 +229,19 @@ public class Person : Object_
         // APPLY EFFECT TO PLAYER
         // ------------------------------------------------
 
-        player.playerStats.health +=
+        GameManager.Instance.player.playerStats.health +=
             npcActionResponse.netHealthImpactOnPlayer;
-
-        if (player.playerStats.health <= 0)
-        {
-            GameManager.Instance.PlayerDeath();
-        }
 
         // ------------------------------------------------
         // DISPLAY RESPONSE
         // ------------------------------------------------
+        foreach(string displayText in npcActionResponse.displayTexts)
+        {
+            Debug.Log(displayText);
+        }
+        GameManager.Instance.LogDisplayTextsToRecentLog(npcActionResponse.displayTexts);
 
-        Debug.Log(npcActionResponse.actionText);
 
-        
     }
 
 }

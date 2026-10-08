@@ -5,8 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public struct KeyBinding<T> where T : System.Enum
 {
-    public KeyCode key;
+    [Tooltip("A single character, e.g. q. Upper or lower case doesn't matter.")]
+    public string key;
     public T value;
+
+    // The bound character, always lower case ('\0' if the field is empty)
+    public char Char => string.IsNullOrEmpty(key) ? '\0' : char.ToLowerInvariant(key[0]);
 }
 
 [System.Serializable]
@@ -14,11 +18,19 @@ public class KeyCategory<T> where T : System.Enum
 {
     public List<KeyBinding<T>> bindings = new();
 
-    public bool TryGetValue(KeyCode key, out T value)
+    // Is this character bound in this category?
+    public bool Contains(char c)
+    {
+        foreach (var b in bindings)
+            if (b.Char == c) return true;
+        return false;
+    }
+
+    public bool TryGetValue(char c, out T value)
     {
         foreach (var b in bindings)
         {
-            if (b.key == key)
+            if (b.Char == c)
             {
                 value = b.value;
                 return true;
@@ -28,9 +40,9 @@ public class KeyCategory<T> where T : System.Enum
         return false;
     }
 
-    // Looks through the typed keys from newest to oldest and takes the
+    // Looks through the typed characters from newest to oldest and takes the
     // most recent one that belongs to this category.
-    public bool TryResolve(List<KeyCode> buffer, out T value, out KeyCode usedKey)
+    public bool TryResolve(List<char> buffer, out T value, out char usedKey)
     {
         for (int i = buffer.Count - 1; i >= 0; i--)
         {
@@ -41,7 +53,7 @@ public class KeyCategory<T> where T : System.Enum
             }
         }
         value = default;
-        usedKey = KeyCode.None;
+        usedKey = '\0';
         return false;
     }
 
@@ -56,61 +68,58 @@ public class PlayerController : MonoBehaviour
 {
     public Player player;
 
-    [Header("Keybinds (only these keys can be typed)")]
+    [Header("Keybinds (type these characters; case is ignored)")]
     public KeyCategory<EmotionKey> emotion = new();
     public KeyCategory<MotorSensorKey> motor = new();
     public KeyCategory<ConcentrationKey> concentration = new();
 
     [Header("Console input")]
-    public int maxKeys = 10;
-    public KeyCode backspaceKey = KeyCode.Backspace;
+    public int maxKeys = 3;
 
-    // What the player has typed so far (like a console line)
-    private readonly List<KeyCode> buffer = new();
+    // What the player has typed so far (like a console line), always lower case
+    private readonly List<char> buffer = new();
 
     // UI can read this to show the typed line
-    public IReadOnlyList<KeyCode> Buffer => buffer;
+    public IReadOnlyList<char> Buffer => buffer;
+
+    void Awake()
+    {
+        ValidateBindings();
+    }
 
     void Update()
     {
         if (player == null || player.playerStats.health <= 0) return;
 
-        // Submit with Enter
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        // inputString holds the characters typed this frame
+        foreach (char raw in Input.inputString)
         {
-            Submit();
-            return;
+            // Enter submits
+            if (raw == '\n' || raw == '\r')
+            {
+                Submit();
+                return;
+            }
+
+            // Backspace deletes the last typed character
+            if (raw == '\b')
+            {
+                if (buffer.Count > 0) buffer.RemoveAt(buffer.Count - 1);
+                continue;
+            }
+
+            // Lower-case automatically
+            char c = char.ToLowerInvariant(raw);
+
+            // Only allowed characters, up to the max
+            if (buffer.Count >= maxKeys) continue;
+            if (IsAllowed(c)) buffer.Add(c);
         }
-
-        // Delete last typed key
-        if (Input.GetKeyDown(backspaceKey))
-        {
-            if (buffer.Count > 0) buffer.RemoveAt(buffer.Count - 1);
-            return;
-        }
-
-        // Type a key (only allowed keys, up to the max)
-        if (buffer.Count >= maxKeys) return;
-
-        if (TryGetPressedAllowedKey(out KeyCode pressed))
-            buffer.Add(pressed);
     }
 
-    // Finds an allowed key that went down this frame
-    bool TryGetPressedAllowedKey(out KeyCode pressed)
+    bool IsAllowed(char c)
     {
-        pressed = KeyCode.None;
-
-        foreach (var b in emotion.bindings)
-            if (Input.GetKeyDown(b.key)) { pressed = b.key; return true; }
-
-        foreach (var b in motor.bindings)
-            if (Input.GetKeyDown(b.key)) { pressed = b.key; return true; }
-
-        foreach (var b in concentration.bindings)
-            if (Input.GetKeyDown(b.key)) { pressed = b.key; return true; }
-
-        return false;
+        return emotion.Contains(c) || motor.Contains(c) || concentration.Contains(c);
     }
 
     void Submit()
@@ -118,14 +127,14 @@ public class PlayerController : MonoBehaviour
         // Nothing typed, nothing happens
         if (buffer.Count == 0) return;
 
-        // Resolve each category: most recent typed key wins, otherwise random
-        bool emotionTyped = emotion.TryResolve(buffer, out EmotionKey e, out KeyCode eKey);
+        // Resolve each category: most recent typed character wins, otherwise random
+        bool emotionTyped = emotion.TryResolve(buffer, out EmotionKey e, out char eKey);
         if (!emotionTyped) e = emotion.RandomValue();
 
-        bool motorTyped = motor.TryResolve(buffer, out MotorSensorKey m, out KeyCode mKey);
+        bool motorTyped = motor.TryResolve(buffer, out MotorSensorKey m, out char mKey);
         if (!motorTyped) m = motor.RandomValue();
 
-        bool concTyped = concentration.TryResolve(buffer, out ConcentrationKey c, out KeyCode cKey);
+        bool concTyped = concentration.TryResolve(buffer, out ConcentrationKey c, out char cKey);
         if (!concTyped) c = concentration.RandomValue();
 
         LogSubmission(emotionTyped, e, eKey, motorTyped, m, mKey, concTyped, c, cKey);
@@ -142,13 +151,13 @@ public class PlayerController : MonoBehaviour
         var room = GameManager.Instance.currentRoom;
         Object_ target = room != null ? room.GetPart(c) : null;
 
-        player.PerformAction(e, m, target);
+        player.PerformAction(e, m, c, target);
     }
 
     void LogSubmission(
-        bool emotionTyped, EmotionKey e, KeyCode eKey,
-        bool motorTyped, MotorSensorKey m, KeyCode mKey,
-        bool concTyped, ConcentrationKey c, KeyCode cKey)
+        bool emotionTyped, EmotionKey e, char eKey,
+        bool motorTyped, MotorSensorKey m, char mKey,
+        bool concTyped, ConcentrationKey c, char cKey)
     {
         var sb = new StringBuilder();
 
@@ -165,5 +174,31 @@ public class PlayerController : MonoBehaviour
         sb.Append($"  Concentration: {c} {(concTyped ? $"(typed {cKey})" : "(random)")}");
 
         Debug.Log(sb.ToString());
+    }
+
+    // Warns about bad bindings so they can be fixed in the inspector
+    void ValidateBindings()
+    {
+        foreach (var b in emotion.bindings) CheckBinding(b.key, b.Char, "Emotion");
+        foreach (var b in motor.bindings) CheckBinding(b.key, b.Char, "Motor");
+        foreach (var b in concentration.bindings) CheckBinding(b.key, b.Char, "Concentration");
+
+        foreach (var b in emotion.bindings)
+            if (motor.Contains(b.Char) || concentration.Contains(b.Char))
+                Debug.LogWarning($"PlayerController: '{b.Char}' is bound in more than one category.");
+
+        foreach (var b in motor.bindings)
+            if (concentration.Contains(b.Char))
+                Debug.LogWarning($"PlayerController: '{b.Char}' is bound in more than one category.");
+    }
+
+    void CheckBinding(string raw, char c, string category)
+    {
+        if (c == '\0')
+            Debug.LogWarning($"PlayerController: a {category} binding has an empty key.");
+        else if (raw.Length > 1)
+            Debug.LogWarning($"PlayerController: {category} binding '{raw}' has more than one character; only '{c}' is used.");
+        else if (c == '\n' || c == '\r' || c == '\b')
+            Debug.LogWarning($"PlayerController: {category} binding uses a reserved character (Enter/Backspace).");
     }
 }

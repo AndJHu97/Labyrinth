@@ -6,7 +6,7 @@ using UnityEngine;
 public class NPCActionResponseSO : ScriptableObject
 {
     public string name_;
-    public string actionText;
+    public List<string> displayTexts;
     public int netHealthImpactOnPlayer;
 
     public bool setHealthImpact;

@@ -11,8 +11,9 @@ public class Object_ : MonoBehaviour
     public float threatRelationshipValue;
     public float allegianceRelationshipValue;
     public bool isActive = true;
-
-    public List<ConditionConsequencesPairingsSO> conditionConsequences = new();
+    
+    public List<ConditionConsequencePairings> conditionConsequences = new();
+    public List<ConditionConsequencePairings> triggeredResponses = new();
     protected virtual void Awake()
     {
         ObjectRegistry.Register(id, this);
@@ -25,11 +26,24 @@ public class Object_ : MonoBehaviour
 
     public virtual void ReceivePlayerAction(PlayerIntentSO intent)
     {
+        CheckConditions(intent);
+    }
+
+    public void CheckConditions(PlayerIntentSO intent)
+    {
         foreach (var conditionConsequence in conditionConsequences)
         {
-            
+
             InteractionProcessing.ProcessPairing(conditionConsequence);
         }
         Debug.Log($"{name_} has no reaction to '{intent.name}'.");
+    }
+
+    public void CheckTriggerConditions(PlayerIntentSO intent)
+    {
+        foreach (var conditionConsequence in triggeredResponses)
+        {
+            InteractionProcessing.ProcessPairing(conditionConsequence);
+        }
     }
 }

@@ -45,4 +45,26 @@ public static class ObjectRegistry
     {
         return Get(id) as T;
     }
+
+    // Run something on every registered object
+    public static void ForEach(System.Action<Object_> action)
+    {
+        var snapshot = new List<Object_>(objects.Values);
+        foreach (var o in snapshot)
+        {
+            if (o == null) continue;   // destroyed since the snapshot (Unity null check)
+            action(o);
+        }
+    }
+
+    // Only objects of a given type, e.g. every Person
+    public static void ForEach<T>(System.Action<T> action) where T : Object_
+    {
+        var snapshot = new List<Object_>(objects.Values);
+        foreach (var o in snapshot)
+        {
+            if (o == null) continue;
+            if (o is T typed) action(typed);
+        }
+    }
 }

@@ -1,0 +1,305 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6892024325980570298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2136958684231699229}
+  - component: {fileID: 2097573618063178908}
+  m_Layer: 0
+  m_Name: DownHole-ENV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2136958684231699229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6892024325980570298}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2097573618063178908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6892024325980570298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59fe09587ab700a4f87b1989c96f4998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: r1Hole
+  name_: Hole In Ground
+  stats:
+    health: 0
+    fortitude: 0
+    strength: 0
+    agility: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences:
+  - name_: Grabbing key
+    conditions:
+    - name_: Arm reaching action without key
+      requiredItems: []
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
+      actionConditions:
+      - name_: Reaching arm
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 1
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    - name_: Old man doesn't perceive you as a threat
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions:
+      - target: {fileID: 0}
+        requiredValue: 60
+        comparison: 5
+        relationshipType: 1
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 1
+      statChecks: []
+      groupNumber: 0
+    - name_: Arm reaching action without key (2)
+      requiredItems: []
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
+      actionConditions:
+      - name_: Arm Down
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 1
+    - name_: Old man dead (2)
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks: []
+      groupNumber: 1
+    successfulConsequences:
+    - name_: Grab the key
+      itemsToAdd:
+      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      displayTexts:
+      - You reach your hand into the cold crack in the ground.
+      - The cool surface snaps the nerves until the pain numbs. Before losing complete
+        feelings of the fingers, your hand grasps a metallic key.
+      experiencePointsChange: 5
+    failingConsequences: []
+  - name_: Old Man Attacking you
+    conditions:
+    - name_: Alive and poor relationship
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions:
+      - target: {fileID: 0}
+        requiredValue: 60
+        comparison: 0
+        relationshipType: 1
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 1
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Old man attacks you
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact:
+      - isPlayer: 1
+        healthChange: -5
+        target: {fileID: 0}
+      displayTexts:
+      - Your hand reaches into the depths of the crack in the ground.
+      - The crack... now the old man looks at you. He's about to crack YOU!
+      - The old man cracks you and he smiles. "OH YEAAA!"
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: No key inside since already picked it up
+    conditions:
+    - name_: already has key
+      requiredItems:
+      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    - name_: Old man dead
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks: []
+      groupNumber: 0
+    - name_: pick up key
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: 
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 1
+        stepValue: 0
+        stepComparison: 0
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    - name_: pick up key (2)
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: 
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 1
+        stepValue: 0
+        stepComparison: 0
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 1
+    - name_: old man doesn't perceive you as a threat (2)
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions:
+      - target: {fileID: 0}
+        requiredValue: 60
+        comparison: 5
+        relationshipType: 1
+      activeConditions: []
+      statChecks: []
+      groupNumber: 1
+    - name_: already has key (2)
+      requiredItems:
+      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 1
+    successfulConsequences:
+    - name_: 
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      displayTexts:
+      - You reach your hand into the cold crack in the ground.
+      - The cool surface snaps the nerves until the pain numbs. Before losing complete
+        feelings of the fingers, you withdraw your hand. Nothing there.
+      experiencePointsChange: 1
+    failingConsequences: []
+  triggeredResponses: []
+  displayTextResponses:
+  - displayTexts:
+    - 'You stomp with rage onto the crack. Your foot slips into the hole but quickly
+      you retract. '
+    - It's deeper than you thought...
+    playerIntent: {fileID: 11400000, guid: 1a68c0122c797f243a8dd6dd1e7e7f0a, type: 2}

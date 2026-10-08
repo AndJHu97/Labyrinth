@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53ebb296f8ae9743a74d1d79d37bb18, type: 3}
+  m_Name: Punch NPC
+  m_EditorClassIdentifier: 
+  playerAction: {fileID: 11400000, guid: 3b483f4a5eb42dc4db9516bec174a6f2, type: 2}
+  name_: Punching Old man
+  setHealthValue: 0
+  newHealthValue: 0
+  healthMultiplier: 1
+  additiveHealthValue: 0
+  setThreatValue: 0
+  newThreatValue: 0
+  threatMultiplier: 1
+  additiveThreatValue: 0
+  setAllegianceValue: 0
+  newAllegianceValue: 0
+  allegianceMultiplier: 1
+  additiveAllegianceValue: 0

@@ -23,13 +23,7 @@ public class Player : MonoBehaviour
 
     public void Start()
     {
-        playerStats = new stats
-        {
-            health = 10,
-            fortitude = 5,
-            strength = 5,
-            agility = 5
-        };
+        
     }
 
     public void GainExperience(int amount)
@@ -55,7 +49,7 @@ public class Player : MonoBehaviour
 
     //pick right keys to perform on the NPC
     //TODO: Will have to include one to act on onself
-    public void PerformAction(EmotionKey emotionKey, MotorSensorKey motorSensorKey, Object_ object_)
+    public void PerformAction(EmotionKey emotionKey, MotorSensorKey motorSensorKey, ConcentrationKey concentrationKey, Object_ object_)
     {
         foreach(var intent in playerIntentions)
         {
@@ -64,7 +58,8 @@ public class Player : MonoBehaviour
                 playerStats.health += intent.netSelfHealthImpact;
 
                 string targetID = object_ != null ? object_.id : null;
-                GameManager.Instance.LogAction(intent, GameManager.Instance.currentRoom, targetID);
+                GameManager.Instance.LogAction(intent, emotionKey, motorSensorKey, concentrationKey,
+                               GameManager.Instance.currentRoom, targetID);
                 if (object_ != null)
                 {
                     object_.ReceivePlayerAction(intent);
@@ -76,12 +71,15 @@ public class Player : MonoBehaviour
                     GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { intent.actionText });
                 }
 
+                ObjectRegistry.ForEach(o => o.CheckTriggerConditions(intent));
+
                 if (playerStats.health <= 0) GameManager.Instance.PlayerDeath();
                 return;
             }
 
-            Debug.Log($"No intent matches {emotionKey} + {motorSensorKey}.");
+            
         }
+        Debug.Log($"No intent matches {emotionKey} + {motorSensorKey}.");
     }
 
     public void PerformAction(EmotionKey emotionKey, MotorSensorKey motorSensorKey)
