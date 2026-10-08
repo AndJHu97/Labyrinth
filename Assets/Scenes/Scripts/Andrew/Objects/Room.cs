@@ -9,18 +9,10 @@ public class Room : Object_
     public Object_ upObject;
     public Object_ downObject;
     public Object_ straightAheadObject;
-    public RoomSO roomSO;
 
     public void Start()
     {
-        if (roomSO != null)
-        {
-            rightObject = roomSO.rightObject;
-            leftObject = roomSO.leftObject;
-            upObject = roomSO.upObject;
-            downObject = roomSO.downObject;
-            straightAheadObject = roomSO.straightAheadObject;
-        }
+        
     }
 
     public Object_ GetPart(ConcentrationKey key)

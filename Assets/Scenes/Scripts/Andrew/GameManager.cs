@@ -8,6 +8,9 @@ public struct GameState
     public int actionStep;
     public int totalActionStep;
     public PlayerIntentSO playerIntent;
+    public EmotionKey emotionKey;
+    public MotorSensorKey motorSensorKey;
+    public ConcentrationKey concentrationKey;
     public Room room;
     public List<string> displayTexts;
     public string targetID;
@@ -35,21 +38,27 @@ public class GameManager : MonoBehaviour
         actionStep = 0;
     }
 
-    public void LogAction(PlayerIntentSO playerIntent, Room room, string targetID)
+    public void LogAction(PlayerIntentSO intent, EmotionKey emotionKey, MotorSensorKey motorSensorKey,
+                       ConcentrationKey concentrationKey, Room room, string targetID)
     {
-        GameState gameState = new GameState
+        actionStep++;
+        totalActionStep++;
+
+        gameLog.Add(new GameState
         {
             roundNumber = roundNumber,
             actionStep = actionStep,
             totalActionStep = totalActionStep,
-            playerIntent = playerIntent,
+            playerIntent = intent,
+            emotionKey = emotionKey,
+            motorSensorKey = motorSensorKey,
+            concentrationKey = concentrationKey,
             room = room,
-            targetID = targetID
-        };
-        gameLog.Add(gameState);
+            targetID = targetID,
+            displayTexts = new List<string>()
+        });
 
-        actionStep++;
-        totalActionStep++;
+        ObjectRegistry.ForEach(o => o.CheckTriggerConditions(intent));
     }
 
     public void LogDisplayTextsToRecentLog(List<string> consoleTexts)

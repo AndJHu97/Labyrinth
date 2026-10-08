@@ -123,6 +123,379 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &101243564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 101243565}
+  - component: {fileID: 101243566}
+  m_Layer: 0
+  m_Name: RightOldMan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &101243565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101243564}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1555009311}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &101243566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101243564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f16dc90ebfda73428933254c2ffd8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: r1oldman
+  name_: oldman
+  stats:
+    health: 20
+    fortitude: 5
+    strength: 10
+    agility: 0
+  threatRelationshipValue: 80
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences: []
+  triggeredResponses: []
+  learningRate: 0.1
+  experiencePointsGainedIfKilled: 25
+  friendlyActionOnNPC: []
+  fearfulActionOnNPC: []
+  neutralActionOnNPC: []
+  aggressiveActionOnNPC:
+  - {fileID: 11400000, guid: 0e186ed16e77ff940907430be72305ac, type: 2}
+  friendlyResponses: []
+  fearfulResponses: []
+  likeResponses: []
+  dislikeResponses: []
+  neutralResponses: []
+  aggressiveResponses:
+  - {fileID: 11400000, guid: 3d8f7a7884bae914593ff2bc15343341, type: 2}
+--- !u!1 &114154926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114154927}
+  - component: {fileID: 114154928}
+  m_Layer: 0
+  m_Name: DownHole-ENV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &114154927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114154926}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1555009311}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114154928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114154926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59fe09587ab700a4f87b1989c96f4998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: r1Hole
+  name_: Hole In Ground
+  stats:
+    health: 0
+    fortitude: 0
+    strength: 0
+    agility: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences:
+  - name_: Grabbing key
+    conditions:
+    - name_: Arm reaching action without key
+      requiredItems: []
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
+      actionConditions:
+      - name_: Reaching arm
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 1555009310}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 1
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    - name_: Old man doesn't perceive you as a threat
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions:
+      - target: {fileID: 101243566}
+        requiredValue: 60
+        comparison: 5
+        relationshipType: 1
+      activeConditions:
+      - target: {fileID: 101243566}
+        requiredActiveStatus: 1
+      statChecks: []
+      groupNumber: 0
+    - name_: Arm reaching action without key (2)
+      requiredItems: []
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
+      actionConditions:
+      - name_: Arm Down
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 1555009310}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 1
+    - name_: Old man dead (2)
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 101243566}
+        requiredActiveStatus: 0
+      statChecks: []
+      groupNumber: 1
+    successfulConsequences:
+    - name_: Grab the key
+      itemsToAdd:
+      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      displayTexts:
+      - You reach your hand into the cold crack in the ground.
+      - The cool surface snaps the nerves until the pain numbs. Before losing complete
+        feelings of the fingers, your hand grasps a metallic key.
+      experiencePointsChange: 5
+    failingConsequences: []
+  - name_: Old Man Attacking you
+    conditions:
+    - name_: Alive and poor relationship
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions:
+      - target: {fileID: 101243566}
+        requiredValue: 60
+        comparison: 0
+        relationshipType: 1
+      activeConditions:
+      - target: {fileID: 101243566}
+        requiredActiveStatus: 1
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Old man attacks you
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact:
+      - isPlayer: 1
+        healthChange: -5
+        target: {fileID: 0}
+      displayTexts:
+      - Your hand reaches into the depths of the crack in the ground.
+      - The crack... now the old man looks at you. He's about to crack YOU!
+      - The old man cracks you and he smiles. "OH YEAAA!"
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: No key inside since already picked it up
+    conditions:
+    - name_: already has key
+      requiredItems:
+      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    - name_: Old man dead
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 101243566}
+        requiredActiveStatus: 0
+      statChecks: []
+      groupNumber: 0
+    - name_: pick up key
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: 
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 1
+        stepValue: 0
+        stepComparison: 0
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    - name_: pick up key (2)
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: 
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 1
+        stepValue: 0
+        stepComparison: 0
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 1
+    - name_: old man doesn't perceive you as a threat (2)
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions:
+      - target: {fileID: 101243566}
+        requiredValue: 60
+        comparison: 5
+        relationshipType: 1
+      activeConditions: []
+      statChecks: []
+      groupNumber: 1
+    - name_: already has key (2)
+      requiredItems:
+      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 1
+    successfulConsequences:
+    - name_: 
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      displayTexts:
+      - You reach your hand into the cold crack in the ground.
+      - The cool surface snaps the nerves until the pain numbs. Before losing complete
+        feelings of the fingers, you withdraw your hand. Nothing there.
+      experiencePointsChange: 1
+    failingConsequences: []
+  triggeredResponses: []
+  displayTextResponses:
+  - displayTexts:
+    - 'You stomp with rage onto the crack. Your foot slips into the hole but quickly
+      you retract. '
+    - It's deeper than you thought...
+    playerIntent: {fileID: 11400000, guid: 1a68c0122c797f243a8dd6dd1e7e7f0a, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +588,207 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &654454518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 654454519}
+  - component: {fileID: 654454520}
+  m_Layer: 0
+  m_Name: LeftDoor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &654454519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654454518}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1555009311}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &654454520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654454518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf0ae1d12aff7142b8ea06900229e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: ldr1
+  name_: Left Door Room 1
+  stats:
+    health: 10
+    fortitude: 0
+    strength: 0
+    agility: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 0
+  conditionConsequences: []
+  triggeredResponses: []
+  nextRoom: {fileID: 1807197755}
+--- !u!1 &1103038715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103038716}
+  - component: {fileID: 1103038717}
+  m_Layer: 0
+  m_Name: PlayerController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1103038716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103038715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1633443377}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1103038717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103038715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c4acd5ef898174b8ba85082006e253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1633443376}
+  emotion:
+    bindings:
+    - key: 1
+      value: 0
+    - key: 2
+      value: 1
+  motor:
+    bindings:
+    - key: a
+      value: 0
+    - key: b
+      value: 1
+    - key: c
+      value: 2
+    - key: d
+      value: 3
+    - key: e
+      value: 4
+    - key: f
+      value: 5
+  concentration:
+    bindings:
+    - key: g
+      value: 0
+    - key: h
+      value: 1
+    - key: i
+      value: 2
+    - key: j
+      value: 3
+    - key: k
+      value: 4
+    - key: l
+      value: 5
+  maxKeys: 10
+--- !u!1 &1555009309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1555009311}
+  - component: {fileID: 1555009310}
+  m_Layer: 0
+  m_Name: R1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1555009310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555009309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b10b51fd814504db4fc5aa5975b42b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  name_: 
+  stats:
+    health: 0
+    fortitude: 0
+    strength: 0
+    agility: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences: []
+  triggeredResponses: []
+  rightObject: {fileID: 101243566}
+  leftObject: {fileID: 654454520}
+  upObject: {fileID: 0}
+  downObject: {fileID: 114154928}
+  straightAheadObject: {fileID: 0}
+--- !u!4 &1555009311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555009309}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 654454519}
+  - {fileID: 114154927}
+  - {fileID: 101243565}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1633443375
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,12 +819,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats:
-    health: 0
-    fortitude: 0
-    strength: 0
-    agility: 0
+    health: 5
+    fortitude: 5
+    strength: 5
+    agility: 5
   playerIntentions:
   - {fileID: 11400000, guid: 3b483f4a5eb42dc4db9516bec174a6f2, type: 2}
+  - {fileID: 11400000, guid: 0b335b9f61fc99842ac51dffebb4966f, type: 2}
+  - {fileID: 11400000, guid: 1a68c0122c797f243a8dd6dd1e7e7f0a, type: 2}
+  - {fileID: 11400000, guid: 088d76c0890225c439589b549d99ca3a, type: 2}
+  - {fileID: 11400000, guid: 584c7c6d1a56ebd4b91275c6b3d09aa2, type: 2}
+  - {fileID: 11400000, guid: b66b6b6ed9de7334d80a3d2cab4959ea, type: 2}
+  experiencePoints: 0
+  totalStats: 15
+  faithLevel: 0
+  level: 1
+  inventory: []
 --- !u!4 &1633443377
 Transform:
   m_ObjectHideFlags: 0
@@ -258,6 +842,117 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633443375}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1103038716}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1807197754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1807197756}
+  - component: {fileID: 1807197755}
+  m_Layer: 0
+  m_Name: R2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1807197755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807197754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b10b51fd814504db4fc5aa5975b42b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: r2
+  name_: Prayer Site
+  stats:
+    health: 0
+    fortitude: 0
+    strength: 0
+    agility: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences: []
+  triggeredResponses: []
+  rightObject: {fileID: 0}
+  leftObject: {fileID: 0}
+  upObject: {fileID: 0}
+  downObject: {fileID: 0}
+  straightAheadObject: {fileID: 0}
+--- !u!4 &1807197756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807197754}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2112186962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2112186964}
+  - component: {fileID: 2112186963}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2112186963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112186962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2296672960117347881591cda44957a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1633443376}
+  roundNumber: 1
+  actionStep: 0
+  totalActionStep: 0
+  currentRoom: {fileID: 1555009310}
+--- !u!4 &2112186964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112186962}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -272,3 +967,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 1633443377}
+  - {fileID: 2112186964}
+  - {fileID: 1555009311}
+  - {fileID: 1807197756}

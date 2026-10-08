@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1b74c16565a224eb0ebd66b9d49ee7, type: 3}
+  m_Name: AttackBack
+  m_EditorClassIdentifier: 
+  name_: Attack Back
+  displayTexts:
+  - 'He seethes and punches you in the face. '
+  netHealthImpactOnPlayer: -5
+  setHealthImpact: 0
+  newHealthImpact: 0
+  healthMultiplier: 1
+  additiveHealthValue: 0
+  setThreatImpact: 0
+  newThreatImpact: 0
+  threatMultiplier: 1
+  additiveThreatValue: 0
+  setAllegianceImpact: 0
+  newAllegianceImpact: 0
+  allegianceMultiplier: 1
+  additiveAllegianceValue: 0

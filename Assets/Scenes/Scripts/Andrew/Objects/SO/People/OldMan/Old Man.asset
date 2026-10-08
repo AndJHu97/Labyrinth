@@ -14,10 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   personID: oldman
   name_: Old Man
+  personStats:
+    health: 0
+    fortitude: 0
+    strength: 0
+    agility: 0
   threatRelationshipValue: 80
   allegianceRelationshipValue: 0
-  isAlive: 0
+  isActive: 1
   learningRate: 0.1
+  experiencePointsGainedIfKilled: 5
   friendlyActionOnNPC: []
   fearfulActionOnNPC: []
   neutralActionOnNPC: []
@@ -28,4 +34,5 @@ MonoBehaviour:
   dislikeResponses: []
   neutralResponses: []
   aggressiveResponses: []
+  conditionConsequences: []
   triggeredResponses: []

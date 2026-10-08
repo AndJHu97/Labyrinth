@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f549f8d0e0098b44ab911093780f476, type: 3}
-  m_Name: Angry Voice
+  m_Name: Angry Manipulate
   m_EditorClassIdentifier: 
-  name_: Angry Voice
-  actionText: A low-pitched grumble rumbles from you. It takes a second to recollect
-    yourself.
+  name_: Angry Manipulate
+  actionText: A seething red rumbles to your hands. Wanting to grasp and use something
+    but nothing's there. It takes a second to recollect yourself.
   netHealthImpact: 0
   netSelfHealthImpact: 0
   emotionKey: 0
-  motorSensorKey: 3
+  motorSensorKey: 5

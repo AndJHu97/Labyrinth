@@ -41,7 +41,7 @@ public static class InteractionProcessing
     public static int ALLEGIANCECUTOFF_LOW = 30;
     public static int AGGRESSIVESTRENGTHPERCENTAGEDIFFERENCE_CUTOFF = 20;
     public static int FEARFULSTRENGTHPERCENTAGEDIFFERENCE_CUTOFF = 50;
-    public static int FORTITUDECUTOFF_LOW = 30;
+    public static int FORTITUDECUTOFF_LOW = 3;
     public static NPCActionEmotionType DetermineNPCEmotionResponse(InputNPCProcessing inputNPCProcessing)
     {
         /**
@@ -250,16 +250,16 @@ public static class InteractionProcessing
         {
             foreach (var rc in c.relationshipConditions)
             {
-                Person person = ObjectRegistry.Get<Person>(rc.targetID);
-                if (person == null)
+                Object_ target = rc.target;
+                if (target == null)
                 {
-                    Debug.LogWarning($"Condition: no Person with id '{rc.targetID}' for relationship check.");
+                    Debug.LogWarning($"Condition: no Person with id '{rc.target}' for relationship check.");
                     return false;
                 }
 
                 float value = rc.relationshipType == RelationshipType.Allegiance
-                    ? person.allegianceRelationshipValue
-                    : person.threatRelationshipValue;
+                    ? target.allegianceRelationshipValue
+                    : target.threatRelationshipValue;
 
                 if (!Compare(value, rc.comparison, rc.requiredValue)) return false;
             }
@@ -269,10 +269,10 @@ public static class InteractionProcessing
         {
             foreach (var ac in c.activeConditions)
             {
-                Object_ target = ObjectRegistry.Get(ac.targetID);
+                Object_ target = ac.target;
                 if (target == null)
                 {
-                    Debug.LogWarning($"Condition: no Object with id '{ac.targetID}' for active check.");
+                    Debug.LogWarning($"Condition: no Object with id '{ac.target}' for active check.");
                     return false;
                 }
                 if (target.isActive != ac.requiredActiveStatus) return false;
@@ -284,10 +284,10 @@ public static class InteractionProcessing
         {
             foreach (var sc in c.statChecks)
             {
-                Object_ target = ObjectRegistry.Get(sc.targetID);
+                Object_ target = sc.target;
                 if (target == null)
                 {
-                    Debug.LogWarning($"Condition: no Object with id '{sc.targetID}' for stat check.");
+                    Debug.LogWarning($"Condition: no Object with id '{sc.target.name_}' for stat check.");
                     return false;
                 }
 
@@ -311,9 +311,11 @@ public static class InteractionProcessing
 
         foreach (var entry in gm.gameLog)
         {
-            // WHAT (null = any)
-            if (ac.playerIntent != null && entry.playerIntent != ac.playerIntent) continue;
-            if (ac.roomSO != null && entry.room != ac.roomSO) continue;
+            // WHAT (each filter is optional; off = any)
+            if (ac.useEmotionKey && entry.emotionKey != ac.emotionKey) continue;
+            if (ac.useMotorSensorKey && entry.motorSensorKey != ac.motorSensorKey) continue;
+            if (ac.useConcentrationKey && entry.concentrationKey != ac.concentrationKey) continue;
+            if (ac.room != null && entry.room != ac.room) continue;
 
             // Frequency scope
             if (ac.useFrequency && ac.frequencyScope == FrequencyScope.CurrentRound
@@ -329,7 +331,7 @@ public static class InteractionProcessing
         if (ac.useFrequency)
             return Compare(matchCount, ac.frequencyComparison, ac.frequency);
 
-        return matchCount > 0; // default: happened at least once
+        return matchCount > 0;
     }
 
     private static bool MatchesRound(ActionCondition ac, GameState entry, GameManager gm)
@@ -414,17 +416,17 @@ public static class InteractionProcessing
         {
             foreach (var rc in c.relationshipConsequences)
             {
-                Person person = ObjectRegistry.Get<Person>(rc.targetID);
-                if (person == null)
+                Object_ target = rc.target;
+                if (target == null)
                 {
-                    Debug.LogWarning($"Consequence: no Person with id '{rc.targetID}' for relationship change.");
+                    Debug.LogWarning($"Consequence: no Person with id '{rc.target.name_}' for relationship change.");
                     continue;
                 }
 
                 if (rc.relationshipType == RelationshipType.Allegiance)
-                    person.allegianceRelationshipValue = Mathf.Clamp(person.allegianceRelationshipValue + rc.valueChange, 0f, 100f);
+                    target.allegianceRelationshipValue = Mathf.Clamp(target.allegianceRelationshipValue + rc.valueChange, 0f, 100f);
                 else
-                    person.threatRelationshipValue = Mathf.Clamp(person.threatRelationshipValue + rc.valueChange, 0f, 100f);
+                    target.threatRelationshipValue = Mathf.Clamp(target.threatRelationshipValue + rc.valueChange, 0f, 100f);
             }
         }
 
@@ -433,10 +435,10 @@ public static class InteractionProcessing
         {
             foreach (var ac in c.activeConsequences)
             {
-                Object_ target = ObjectRegistry.Get(ac.targetID);
+                Object_ target = ac.target;
                 if (target == null)
                 {
-                    Debug.LogWarning($"Consequence: no Object with id '{ac.targetID}' for active change.");
+                    Debug.LogWarning($"Consequence: no Object with id '{ac.target.name_}' for active change.");
                     continue;
                 }
                 target.isActive = ac.setActiveStatus;
@@ -455,10 +457,34 @@ public static class InteractionProcessing
                 //OnDisplayText?.Invoke(text);
             }
         }
+
+        // Health changes
+        if (c.netHealthImpact != null)
+        {
+            foreach (var hi in c.netHealthImpact)
+            {
+                if (hi.isPlayer)
+                {
+                    player.playerStats.health += hi.healthChange;
+
+                }
+                else
+                {
+                    Object_ target = hi.target;
+                    if (target == null)
+                    {
+                        Debug.LogWarning($"Consequence: no Object with id '{hi.target.name_}' for health change.");
+                        continue;
+                    }
+
+                    target.stats.health += hi.healthChange;
+                }
+            }
+        }
     }
 
     // Convenience: check conditions, then apply the matching consequence list
-    public static bool ProcessPairing(ConditionConsequencesPairingsSO pairing)
+    public static bool ProcessPairing(ConditionConsequencePairings pairing)
     {
         bool success = ProcessConditions(pairing.conditions);
         ApplyConsequences(success ? pairing.successfulConsequences : pairing.failingConsequences);
