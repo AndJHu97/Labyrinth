@@ -389,15 +389,15 @@ public static class InteractionProcessing
         }
     }
 
-    public static void ApplyConsequences(List<Consequence> consequences)
+    public static void ApplyConsequences(List<Consequence> consequences, Object_ owner = null)
     {
         if (consequences == null) return;
 
         foreach (var consequence in consequences)
-            ApplyConsequence(consequence);
+            ApplyConsequence(consequence, owner);
     }
 
-    public static void ApplyConsequence(Consequence c)
+    public static void ApplyConsequence(Consequence c, Object_ owner = null)
     {
         var player = GameManager.Instance.player;
 
@@ -451,11 +451,10 @@ public static class InteractionProcessing
         // Display text
         if (c.displayTexts != null)
         {
-            foreach (var text in c.displayTexts)
-            {
-                Debug.Log(text);
-                //OnDisplayText?.Invoke(text);
-            }
+           
+            if (c.displayTexts != null && c.displayTexts.Count > 0)
+                GameManager.Instance.LogDisplayTextsToRecentLog(c.displayTexts, owner);
+            
         }
 
         // Health changes
@@ -484,10 +483,10 @@ public static class InteractionProcessing
     }
 
     // Convenience: check conditions, then apply the matching consequence list
-    public static bool ProcessPairing(ConditionConsequencePairings pairing)
+    public static bool ProcessPairing(ConditionConsequencePairings pairing, Object_ owner = null)
     {
         bool success = ProcessConditions(pairing.conditions);
-        ApplyConsequences(success ? pairing.successfulConsequences : pairing.failingConsequences);
+        ApplyConsequences(success ? pairing.successfulConsequences : pairing.failingConsequences, owner);
         return success;
     }
 }

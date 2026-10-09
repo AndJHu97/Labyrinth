@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Action On NPC", menuName = "Interactions/Action On NPC")]
-public class ActionOnNPCSO : ScriptableObject
+public class ActionOnObjectSO : ScriptableObject
 {
-    public PlayerIntentSO playerAction;
+    public PlayerIntentSO playerIntent;
     public string name_;
+    public List<string> defaultInteractingDisplayText;
     public bool setHealthValue;
     public int newHealthValue;
 

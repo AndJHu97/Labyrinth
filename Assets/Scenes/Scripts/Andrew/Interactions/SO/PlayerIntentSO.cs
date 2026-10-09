@@ -34,7 +34,7 @@ public enum MotorSensorKey
 public class PlayerIntentSO : ScriptableObject
 {
     public string name_;
-    public string actionText;
+    public string defaultNoninteractableText;
     public int netHealthImpact;
     public int netSelfHealthImpact;
 

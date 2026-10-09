@@ -123,379 +123,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &101243564
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 101243565}
-  - component: {fileID: 101243566}
-  m_Layer: 0
-  m_Name: RightOldMan
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &101243565
+--- !u!4 &101243565 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4913704698866191632, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+  m_PrefabInstance: {fileID: 2433297272161853565}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 101243564}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1555009311}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &101243566
+--- !u!114 &101243566 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+  m_PrefabInstance: {fileID: 2433297272161853565}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 101243564}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f16dc90ebfda73428933254c2ffd8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: r1oldman
-  name_: oldman
-  stats:
-    health: 20
-    fortitude: 5
-    strength: 10
-    agility: 0
-  threatRelationshipValue: 80
-  allegianceRelationshipValue: 0
-  isActive: 1
-  conditionConsequences: []
-  triggeredResponses: []
-  learningRate: 0.1
-  experiencePointsGainedIfKilled: 25
-  friendlyActionOnNPC: []
-  fearfulActionOnNPC: []
-  neutralActionOnNPC: []
-  aggressiveActionOnNPC:
-  - {fileID: 11400000, guid: 0e186ed16e77ff940907430be72305ac, type: 2}
-  friendlyResponses: []
-  fearfulResponses: []
-  likeResponses: []
-  dislikeResponses: []
-  neutralResponses: []
-  aggressiveResponses:
-  - {fileID: 11400000, guid: 3d8f7a7884bae914593ff2bc15343341, type: 2}
---- !u!1 &114154926
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 114154927}
-  - component: {fileID: 114154928}
-  m_Layer: 0
-  m_Name: DownHole-ENV
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &114154927
+--- !u!4 &114154927 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2136958684231699229, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+  m_PrefabInstance: {fileID: 2317949649356629300}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114154926}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1555009311}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114154928
+--- !u!114 &114154928 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+  m_PrefabInstance: {fileID: 2317949649356629300}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114154926}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59fe09587ab700a4f87b1989c96f4998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: r1Hole
-  name_: Hole In Ground
-  stats:
-    health: 0
-    fortitude: 0
-    strength: 0
-    agility: 0
-  threatRelationshipValue: 0
-  allegianceRelationshipValue: 0
-  isActive: 1
-  conditionConsequences:
-  - name_: Grabbing key
-    conditions:
-    - name_: Arm reaching action without key
-      requiredItems: []
-      mustBeAbsentItems:
-      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
-      actionConditions:
-      - name_: Reaching arm
-        useEmotionKey: 0
-        emotionKey: 0
-        useMotorSensorKey: 1
-        motorSensorKey: 0
-        useConcentrationKey: 1
-        concentrationKey: 3
-        room: {fileID: 1555009310}
-        useFrequency: 0
-        frequency: 0
-        frequencyComparison: 1
-        frequencyScope: 1
-        useRound: 0
-        roundReference: 0
-        roundValue: 0
-        roundComparison: 0
-        useStep: 1
-        stepReference: 2
-        stepValue: 0
-        stepComparison: 2
-      relationshipConditions: []
-      activeConditions: []
-      statChecks: []
-      groupNumber: 0
-    - name_: Old man doesn't perceive you as a threat
-      requiredItems: []
-      mustBeAbsentItems: []
-      actionConditions: []
-      relationshipConditions:
-      - target: {fileID: 101243566}
-        requiredValue: 60
-        comparison: 5
-        relationshipType: 1
-      activeConditions:
-      - target: {fileID: 101243566}
-        requiredActiveStatus: 1
-      statChecks: []
-      groupNumber: 0
-    - name_: Arm reaching action without key (2)
-      requiredItems: []
-      mustBeAbsentItems:
-      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
-      actionConditions:
-      - name_: Arm Down
-        useEmotionKey: 0
-        emotionKey: 0
-        useMotorSensorKey: 1
-        motorSensorKey: 0
-        useConcentrationKey: 1
-        concentrationKey: 3
-        room: {fileID: 1555009310}
-        useFrequency: 0
-        frequency: 0
-        frequencyComparison: 0
-        frequencyScope: 0
-        useRound: 0
-        roundReference: 0
-        roundValue: 0
-        roundComparison: 0
-        useStep: 0
-        stepReference: 2
-        stepValue: 0
-        stepComparison: 2
-      relationshipConditions: []
-      activeConditions: []
-      statChecks: []
-      groupNumber: 1
-    - name_: Old man dead (2)
-      requiredItems: []
-      mustBeAbsentItems: []
-      actionConditions: []
-      relationshipConditions: []
-      activeConditions:
-      - target: {fileID: 101243566}
-        requiredActiveStatus: 0
-      statChecks: []
-      groupNumber: 1
-    successfulConsequences:
-    - name_: Grab the key
-      itemsToAdd:
-      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
-      itemsToRemove: []
-      relationshipConsequences: []
-      activeConsequences: []
-      netHealthImpact: []
-      displayTexts:
-      - You reach your hand into the cold crack in the ground.
-      - The cool surface snaps the nerves until the pain numbs. Before losing complete
-        feelings of the fingers, your hand grasps a metallic key.
-      experiencePointsChange: 5
-    failingConsequences: []
-  - name_: Old Man Attacking you
-    conditions:
-    - name_: Alive and poor relationship
-      requiredItems: []
-      mustBeAbsentItems: []
-      actionConditions: []
-      relationshipConditions:
-      - target: {fileID: 101243566}
-        requiredValue: 60
-        comparison: 0
-        relationshipType: 1
-      activeConditions:
-      - target: {fileID: 101243566}
-        requiredActiveStatus: 1
-      statChecks: []
-      groupNumber: 0
-    successfulConsequences:
-    - name_: Old man attacks you
-      itemsToAdd: []
-      itemsToRemove: []
-      relationshipConsequences: []
-      activeConsequences: []
-      netHealthImpact:
-      - isPlayer: 1
-        healthChange: -5
-        target: {fileID: 0}
-      displayTexts:
-      - Your hand reaches into the depths of the crack in the ground.
-      - The crack... now the old man looks at you. He's about to crack YOU!
-      - The old man cracks you and he smiles. "OH YEAAA!"
-      experiencePointsChange: 0
-    failingConsequences: []
-  - name_: No key inside since already picked it up
-    conditions:
-    - name_: already has key
-      requiredItems:
-      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
-      mustBeAbsentItems: []
-      actionConditions: []
-      relationshipConditions: []
-      activeConditions: []
-      statChecks: []
-      groupNumber: 0
-    - name_: Old man dead
-      requiredItems: []
-      mustBeAbsentItems: []
-      actionConditions: []
-      relationshipConditions: []
-      activeConditions:
-      - target: {fileID: 101243566}
-        requiredActiveStatus: 0
-      statChecks: []
-      groupNumber: 0
-    - name_: pick up key
-      requiredItems: []
-      mustBeAbsentItems: []
-      actionConditions:
-      - name_: 
-        useEmotionKey: 0
-        emotionKey: 0
-        useMotorSensorKey: 1
-        motorSensorKey: 0
-        useConcentrationKey: 1
-        concentrationKey: 3
-        room: {fileID: 0}
-        useFrequency: 0
-        frequency: 0
-        frequencyComparison: 0
-        frequencyScope: 0
-        useRound: 0
-        roundReference: 0
-        roundValue: 0
-        roundComparison: 0
-        useStep: 1
-        stepReference: 1
-        stepValue: 0
-        stepComparison: 0
-      relationshipConditions: []
-      activeConditions: []
-      statChecks: []
-      groupNumber: 0
-    - name_: pick up key (2)
-      requiredItems: []
-      mustBeAbsentItems: []
-      actionConditions:
-      - name_: 
-        useEmotionKey: 0
-        emotionKey: 0
-        useMotorSensorKey: 1
-        motorSensorKey: 0
-        useConcentrationKey: 1
-        concentrationKey: 3
-        room: {fileID: 0}
-        useFrequency: 0
-        frequency: 0
-        frequencyComparison: 0
-        frequencyScope: 0
-        useRound: 0
-        roundReference: 0
-        roundValue: 0
-        roundComparison: 0
-        useStep: 1
-        stepReference: 1
-        stepValue: 0
-        stepComparison: 0
-      relationshipConditions: []
-      activeConditions: []
-      statChecks: []
-      groupNumber: 1
-    - name_: old man doesn't perceive you as a threat (2)
-      requiredItems: []
-      mustBeAbsentItems: []
-      actionConditions: []
-      relationshipConditions:
-      - target: {fileID: 101243566}
-        requiredValue: 60
-        comparison: 5
-        relationshipType: 1
-      activeConditions: []
-      statChecks: []
-      groupNumber: 1
-    - name_: already has key (2)
-      requiredItems:
-      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
-      mustBeAbsentItems: []
-      actionConditions: []
-      relationshipConditions: []
-      activeConditions: []
-      statChecks: []
-      groupNumber: 1
-    successfulConsequences:
-    - name_: 
-      itemsToAdd: []
-      itemsToRemove: []
-      relationshipConsequences: []
-      activeConsequences: []
-      netHealthImpact: []
-      displayTexts:
-      - You reach your hand into the cold crack in the ground.
-      - The cool surface snaps the nerves until the pain numbs. Before losing complete
-        feelings of the fingers, you withdraw your hand. Nothing there.
-      experiencePointsChange: 1
-    failingConsequences: []
-  triggeredResponses: []
-  displayTextResponses:
-  - displayTexts:
-    - 'You stomp with rage onto the crack. Your foot slips into the hole but quickly
-      you retract. '
-    - It's deeper than you thought...
-    playerIntent: {fileID: 11400000, guid: 1a68c0122c797f243a8dd6dd1e7e7f0a, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,63 +247,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &654454518
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 654454519}
-  - component: {fileID: 654454520}
-  m_Layer: 0
-  m_Name: LeftDoor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &654454519
+--- !u!4 &654454519 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 983256255905631602, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+  m_PrefabInstance: {fileID: 5121590658930014605}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654454518}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1555009311}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &654454520
+--- !u!114 &654454520 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8661252434389021111, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+  m_PrefabInstance: {fileID: 5121590658930014605}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654454518}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eaf0ae1d12aff7142b8ea06900229e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: ldr1
-  name_: Left Door Room 1
-  stats:
-    health: 10
-    fortitude: 0
-    strength: 0
-    agility: 0
-  threatRelationshipValue: 0
-  allegianceRelationshipValue: 0
-  isActive: 0
-  conditionConsequences: []
-  triggeredResponses: []
-  nextRoom: {fileID: 1807197755}
 --- !u!1 &1103038715
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,6 +384,8 @@ MonoBehaviour:
   isActive: 1
   conditionConsequences: []
   triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts: []
+  allActionsOnObject: []
   rightObject: {fileID: 101243566}
   leftObject: {fileID: 654454520}
   upObject: {fileID: 0}
@@ -892,6 +512,8 @@ MonoBehaviour:
   isActive: 1
   conditionConsequences: []
   triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts: []
+  allActionsOnObject: []
   rightObject: {fileID: 0}
   leftObject: {fileID: 0}
   upObject: {fileID: 0}
@@ -961,6 +583,314 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2317949649356629300
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1555009311}
+    m_Modifications:
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].motorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].UseMotorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].name_
+      value: Using hand to reach into hole
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].displayTexts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].displayTexts.Array.data[0]
+      value: 'You stomp with rage onto the crack. Your foot slips into the hole,
+        but you quickly retract. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].displayTexts.Array.data[1]
+      value: It's deeper than you thought...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].actionConditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].activeConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].relationshipConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[0].conditions.Array.data[0].actionConditions.Array.data[0].room
+      value: 
+      objectReference: {fileID: 1555009310}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[0].conditions.Array.data[2].actionConditions.Array.data[0].room
+      value: 
+      objectReference: {fileID: 1555009310}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].actionConditions.Array.data[0].room
+      value: 
+      objectReference: {fileID: 1555009310}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].actionConditions.Array.data[0].name_
+      value: Reaching down with hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[0].conditions.Array.data[1].activeConditions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 101243566}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[0].conditions.Array.data[3].activeConditions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 101243566}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[0].activeConditions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 101243566}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].activeConditions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 101243566}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[2].conditions.Array.data[1].activeConditions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 101243566}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].actionConditions.Array.data[0].useStep
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[0].conditions.Array.data[1].relationshipConditions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 101243566}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[0].relationshipConditions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 101243566}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].relationshipConditions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 101243566}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[2].conditions.Array.data[4].relationshipConditions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 101243566}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].actionConditions.Array.data[0].stepReference
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].actionConditions.Array.data[0].stepComparison
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].actionConditions.Array.data[0].concentrationKey
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].actionConditions.Array.data[0].useMotorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].actionConditions.Array.data[0].useConcentrationKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].relationshipConditions.Array.data[0].requiredValue
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].activeConditions.Array.data[0].requiredActiveStatus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].relationshipConditions.Array.data[0].relationshipType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136958684231699229, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136958684231699229, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136958684231699229, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136958684231699229, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136958684231699229, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136958684231699229, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136958684231699229, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136958684231699229, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136958684231699229, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136958684231699229, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892024325980570298, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: m_Name
+      value: DownHole-ENV
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+--- !u!1001 &2433297272161853565
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1555009311}
+    m_Modifications:
+    - target: {fileID: 4913704698866191632, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913704698866191632, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913704698866191632, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913704698866191632, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913704698866191632, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913704698866191632, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913704698866191632, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913704698866191632, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913704698866191632, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913704698866191632, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207556843113830887, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: m_Name
+      value: RightOldMan
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+--- !u!1001 &5121590658930014605
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1555009311}
+    m_Modifications:
+    - target: {fileID: 983256255905631602, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983256255905631602, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983256255905631602, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983256255905631602, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 983256255905631602, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983256255905631602, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983256255905631602, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983256255905631602, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983256255905631602, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983256255905631602, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573705118102940702, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: m_Name
+      value: LeftDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661252434389021111, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: nextRoom
+      value: 
+      objectReference: {fileID: 1807197755}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

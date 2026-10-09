@@ -25,10 +25,10 @@ public class Person : Object_
 {
     public float learningRate = 0.5f;
     public int experiencePointsGainedIfKilled = 5;
-    public List<ActionOnNPCSO> friendlyActionOnNPC = new List<ActionOnNPCSO>();
-    public List<ActionOnNPCSO> fearfulActionOnNPC = new List<ActionOnNPCSO>();
-    public List<ActionOnNPCSO> neutralActionOnNPC = new List<ActionOnNPCSO>();
-    public List<ActionOnNPCSO> aggressiveActionOnNPC = new List<ActionOnNPCSO>();
+    public List<ActionOnObjectSO> friendlyActionOnNPC = new List<ActionOnObjectSO>();
+    public List<ActionOnObjectSO> fearfulActionOnNPC = new List<ActionOnObjectSO>();
+    public List<ActionOnObjectSO> neutralActionOnNPC = new List<ActionOnObjectSO>();
+    public List<ActionOnObjectSO> aggressiveActionOnNPC = new List<ActionOnObjectSO>();
 
 
     public List<NPCActionResponseSO> friendlyResponses = new List<NPCActionResponseSO>();
@@ -43,7 +43,10 @@ public class Person : Object_
     // Start is called before the first frame update
     void Start()
     {
-
+        allActionsOnObject.AddRange(friendlyActionOnNPC);
+        allActionsOnObject.AddRange(fearfulActionOnNPC);
+        allActionsOnObject.AddRange(neutralActionOnNPC);
+        allActionsOnObject.AddRange(aggressiveActionOnNPC);
     }
 
     public override void ReceivePlayerAction(PlayerIntentSO playerIntentSO)
@@ -56,7 +59,7 @@ public class Person : Object_
         //Then pick random action from the list type returned by the processing.
         
         //Do action on player
-        ActionOnNPCSO actionOnNPC = null;
+        ActionOnObjectSO actionOnNPC = null;
         PlayerActionEmotionType actionEmotionType = PlayerActionEmotionType.Neutral;
         InputNPCProcessing inputNPCProcessing = new InputNPCProcessing();
         inputNPCProcessing.threatRelationshipValue = threatRelationshipValue;
@@ -68,9 +71,9 @@ public class Person : Object_
 
 
         // Check Friendly
-        foreach (ActionOnNPCSO action in friendlyActionOnNPC)
+        foreach (ActionOnObjectSO action in friendlyActionOnNPC)
         {
-            if (action.playerAction == playerIntentSO)
+            if (action.playerIntent == playerIntentSO)
             {
                 actionOnNPC = action;
                 actionEmotionType = PlayerActionEmotionType.Friendly;
@@ -81,9 +84,9 @@ public class Person : Object_
         // Check Fearful if not found
         if (actionOnNPC == null)
         {
-            foreach (ActionOnNPCSO action in fearfulActionOnNPC)
+            foreach (ActionOnObjectSO action in fearfulActionOnNPC)
             {
-                if (action.playerAction == playerIntentSO)
+                if (action.playerIntent == playerIntentSO)
                 {
                     actionOnNPC = action;
                     actionEmotionType = PlayerActionEmotionType.Fearful;
@@ -95,9 +98,9 @@ public class Person : Object_
         // Check Neutral if not found
         if (actionOnNPC == null)
         {
-            foreach (ActionOnNPCSO action in neutralActionOnNPC)
+            foreach (ActionOnObjectSO action in neutralActionOnNPC)
             {
-                if (action.playerAction == playerIntentSO)
+                if (action.playerIntent == playerIntentSO)
                 {
                     actionOnNPC = action;
                     actionEmotionType = PlayerActionEmotionType.Neutral;
@@ -109,9 +112,9 @@ public class Person : Object_
         // Check Aggressive if not found
         if (actionOnNPC == null)
         {
-            foreach (ActionOnNPCSO action in aggressiveActionOnNPC)
+            foreach (ActionOnObjectSO action in aggressiveActionOnNPC)
             {
-                if (action.playerAction == playerIntentSO)
+                if (action.playerIntent == playerIntentSO)
                 {
                     actionOnNPC = action;
                     actionEmotionType = PlayerActionEmotionType.Aggressive;
@@ -235,10 +238,6 @@ public class Person : Object_
         // ------------------------------------------------
         // DISPLAY RESPONSE
         // ------------------------------------------------
-        foreach(string displayText in npcActionResponse.displayTexts)
-        {
-            Debug.Log(displayText);
-        }
         GameManager.Instance.LogDisplayTextsToRecentLog(npcActionResponse.displayTexts);
 
 

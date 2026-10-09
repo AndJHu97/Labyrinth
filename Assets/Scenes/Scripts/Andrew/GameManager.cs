@@ -13,7 +13,7 @@ public struct GameState
     public ConcentrationKey concentrationKey;
     public Room room;
     public List<string> displayTexts;
-    public string targetID;
+    public Object_ target;
 }
 
 public class GameManager : MonoBehaviour
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void LogAction(PlayerIntentSO intent, EmotionKey emotionKey, MotorSensorKey motorSensorKey,
-                       ConcentrationKey concentrationKey, Room room, string targetID)
+                       ConcentrationKey concentrationKey, Room room, Object_ target)
     {
         actionStep++;
         totalActionStep++;
@@ -54,20 +54,27 @@ public class GameManager : MonoBehaviour
             motorSensorKey = motorSensorKey,
             concentrationKey = concentrationKey,
             room = room,
-            targetID = targetID,
+            target = target,
             displayTexts = new List<string>()
         });
 
         ObjectRegistry.ForEach(o => o.CheckTriggerConditions(intent));
     }
 
-    public void LogDisplayTextsToRecentLog(List<string> consoleTexts)
+    public void LogDisplayTextsToRecentLog(List<string> texts, Object_ self = null)
     {
-        if (gameLog.Count > 0)
+        if (texts == null || gameLog.Count == 0) return;
+
+        GameState last = gameLog[gameLog.Count - 1];
+        if (last.displayTexts == null) last.displayTexts = new List<string>();
+
+        foreach (var raw in texts)
         {
-            GameState lastGameState = gameLog[gameLog.Count - 1];
-            lastGameState.displayTexts = new List<string>(consoleTexts);
-            gameLog[gameLog.Count - 1] = lastGameState;
+            string formatted = TextFormatter.Format(raw, self);
+            Debug.Log(formatted);
+            last.displayTexts.Add(formatted);
         }
+
+        gameLog[gameLog.Count - 1] = last;
     }
 }

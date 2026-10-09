@@ -1,6 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
+public struct DisplayTextResponse
+{
+    public bool UseEmotionKey;
+    public EmotionKey emotionKey;
+    public bool UseMotorSensorKey;
+    public MotorSensorKey motorSensorKey;
+    public List<string> displayTexts;
+}
 public class Object_ : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -14,6 +22,9 @@ public class Object_ : MonoBehaviour
     
     public List<ConditionConsequencePairings> conditionConsequences = new();
     public List<ConditionConsequencePairings> triggeredResponses = new();
+
+    public List<DisplayTextResponse> UniqueResponseToPlayerDisplayTexts = new();
+    public List<ActionOnObjectSO> allActionsOnObject = new List<ActionOnObjectSO>();
     protected virtual void Awake()
     {
         ObjectRegistry.Register(id, this);
@@ -34,7 +45,7 @@ public class Object_ : MonoBehaviour
         foreach (var conditionConsequence in conditionConsequences)
         {
 
-            InteractionProcessing.ProcessPairing(conditionConsequence);
+            InteractionProcessing.ProcessPairing(conditionConsequence, this);
         }
         Debug.Log($"{name_} has no reaction to '{intent.name}'.");
     }
@@ -43,7 +54,7 @@ public class Object_ : MonoBehaviour
     {
         foreach (var conditionConsequence in triggeredResponses)
         {
-            InteractionProcessing.ProcessPairing(conditionConsequence);
+            InteractionProcessing.ProcessPairing(conditionConsequence, this);
         }
     }
 }

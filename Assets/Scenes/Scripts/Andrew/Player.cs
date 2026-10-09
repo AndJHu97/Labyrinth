@@ -57,18 +57,35 @@ public class Player : MonoBehaviour
             {
                 playerStats.health += intent.netSelfHealthImpact;
 
-                string targetID = object_ != null ? object_.id : null;
                 GameManager.Instance.LogAction(intent, emotionKey, motorSensorKey, concentrationKey,
-                               GameManager.Instance.currentRoom, targetID);
+                               GameManager.Instance.currentRoom, object_);
+
+                
+                //Check if interacting with anything
                 if (object_ != null)
                 {
+                    ActionOnObjectSO actionOnObjectInObject = null;
+                    //Find the what the intent does to the object (like angry arm does punch to one object but to another it is a slap)
+                    foreach (ActionOnObjectSO action in object_.allActionsOnObject)
+                    {
+                        if (action.playerIntent == intent)
+                        {
+                            //action may have specific texts to display
+                            actionOnObjectInObject = action;
+                        }
+                    }
+
+                    //if object_ has unique response, highest priority
+                    //if actionOnObject in the object has response, second priority
+                    //if no object_ or actionOnObject in the object has response, use default text from intent (idle)
+                    ResolveAndLogInteractionTexts(intent, object_, actionOnObjectInObject);
+
                     object_.ReceivePlayerAction(intent);
                 }
+                //Idle chats
                 else
                 {
-                    // Nothing there: the action text is the whole result
-                    Debug.Log(intent.actionText);
-                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { intent.actionText });
+                    ResolveAndLogInteractionTexts(intent);
                 }
 
                 ObjectRegistry.ForEach(o => o.CheckTriggerConditions(intent));
@@ -82,6 +99,44 @@ public class Player : MonoBehaviour
         Debug.Log($"No intent matches {emotionKey} + {motorSensorKey}.");
     }
 
+    public void ResolveAndLogInteractionTexts(PlayerIntentSO intent, Object_ object_ = null, ActionOnObjectSO actionOnObject = null)
+    {
+        
+        if (object_ != null)
+        {
+          
+            if (object_.UniqueResponseToPlayerDisplayTexts != null && object_.UniqueResponseToPlayerDisplayTexts.Count > 0)
+            {
+                foreach(var response in object_.UniqueResponseToPlayerDisplayTexts)
+                {
+
+                    //match the key binds to the object's unique response and log the display texts if they match
+                    if ((!response.UseEmotionKey || response.emotionKey == intent.emotionKey) &&
+(!response.UseMotorSensorKey || response.motorSensorKey == intent.motorSensorKey))
+                    {
+                        GameManager.Instance.LogDisplayTextsToRecentLog(response.displayTexts, object_);
+                        return;
+                    }
+                }
+            }
+
+            
+            if (actionOnObject != null && actionOnObject.defaultInteractingDisplayText != null && actionOnObject.defaultInteractingDisplayText.Count > 0)
+            {
+                GameManager.Instance.LogDisplayTextsToRecentLog(actionOnObject.defaultInteractingDisplayText, object_);
+                return;
+            }
+
+            //this means there are no direct texts to display for the object or action, so we will use the default text from the intent
+            return;
+        }
+
+        GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { intent.defaultNoninteractableText });
+
+
+    }
+
+    //PERFORMING ACTION ON ONESELF
     public void PerformAction(EmotionKey emotionKey, MotorSensorKey motorSensorKey)
     {
         foreach(var intent in playerIntentions)
@@ -89,7 +144,7 @@ public class Player : MonoBehaviour
             if(intent.emotionKey == emotionKey && intent.motorSensorKey == motorSensorKey)
             {
                 // Perform the action associated with the intent
-                Debug.Log($"Performing action: {intent.actionText}");
+                Debug.Log($"Performing action: {intent.defaultNoninteractableText}");
                 playerStats.health += intent.netSelfHealthImpact;
                 // Here you would implement the logic for acting on oneself
                 //TODO
