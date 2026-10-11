@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    public stats playerStats;
+    public stats stats;
     [SerializeField]
     public List<PlayerIntentSO> playerIntentions = new();
     [SerializeField]
@@ -49,13 +49,13 @@ public class Player : MonoBehaviour
 
     //pick right keys to perform on the NPC
     //TODO: Will have to include one to act on onself
-    public void PerformAction(EmotionKey emotionKey, MotorSensorKey motorSensorKey, ConcentrationKey concentrationKey, Object_ object_)
+    public void PerformActionObject(EmotionKey emotionKey, MotorSensorKey motorSensorKey, ConcentrationKey concentrationKey, Object_ object_)
     {
         foreach(var intent in playerIntentions)
         {
             if(intent.emotionKey == emotionKey && intent.motorSensorKey == motorSensorKey)
             {
-                playerStats.health += intent.netSelfHealthImpact;
+                stats.health += intent.netSelfHealthImpact;
 
                 GameManager.Instance.LogAction(intent, emotionKey, motorSensorKey, concentrationKey,
                                GameManager.Instance.currentRoom, object_);
@@ -90,13 +90,18 @@ public class Player : MonoBehaviour
 
                 ObjectRegistry.ForEach(o => o.CheckTriggerConditions(intent));
 
-                if (playerStats.health <= 0) GameManager.Instance.PlayerDeath();
+                if (stats.health <= 0) GameManager.Instance.PlayerDeath();
                 return;
             }
 
             
         }
         Debug.Log($"No intent matches {emotionKey} + {motorSensorKey}.");
+    }
+
+    public void PlayerDeath()
+    {
+
     }
 
     public void ResolveAndLogInteractionTexts(PlayerIntentSO intent, Object_ object_ = null, ActionOnObjectSO actionOnObject = null)
@@ -137,7 +142,7 @@ public class Player : MonoBehaviour
     }
 
     //PERFORMING ACTION ON ONESELF
-    public void PerformAction(EmotionKey emotionKey, MotorSensorKey motorSensorKey)
+    public void PerformActionOnSelf(EmotionKey emotionKey, MotorSensorKey motorSensorKey)
     {
         foreach(var intent in playerIntentions)
         {
@@ -145,7 +150,7 @@ public class Player : MonoBehaviour
             {
                 // Perform the action associated with the intent
                 Debug.Log($"Performing action: {intent.defaultNoninteractableText}");
-                playerStats.health += intent.netSelfHealthImpact;
+                stats.health += intent.netSelfHealthImpact;
                 // Here you would implement the logic for acting on oneself
                 //TODO
                 return;

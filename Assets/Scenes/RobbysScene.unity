@@ -170,8 +170,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2041977626}
+  viewport: {fileID: 0}
   scrollSpeed: 0.075
   activationDistance: 3.7
+  invertScroll: 0
 --- !u!1 &337087304
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +332,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.8862746, b: 0, a: 1}
+  m_Color: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -386,19 +388,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8be050a58ec9a4a97ddd5f7aa6da68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pages:
-  - notes:
-    - Note 1 Page 1
-    - Note 2 Page 1
-  - notes:
-    - Note 1
-    - Note 2
-  - notes:
-    - this is a really long text I need to test while I'm listening to nobody's son
-  currentPage:
-    notes: []
-  index: 0
+  tabsText: {fileID: 0}
   textMeshPro: {fileID: 2041977626}
+  toggleWritingKey: 9
+  stopWritingKey: 27
+  previousTabKey: 276
+  nextTabKey: 275
+  sections: []
+  tabIndex: 0
 --- !u!1 &1481806844
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +803,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  - {fileID: 2100000, guid: 749b9069dc4742c5bfa5c74644049926, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -875,8 +872,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 5629808834093289408}
+  viewport: {fileID: 0}
   scrollSpeed: 0.075
   activationDistance: 4.9
+  invertScroll: 0
 --- !u!4 &5629808833493956722
 Transform:
   m_ObjectHideFlags: 0
@@ -923,23 +922,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06aafc710f455194d89a84c12386bc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowConsoleTimeout: 0
-  consoleTimeout: 3
+  playerController: {fileID: 0}
+  scroller: {fileID: 0}
+  backgroundSpriteRenderer: {fileID: 0}
+  textParent: {fileID: 0}
+  textMeshes:
+  - {fileID: 5629808834093289408}
   consoleBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   consoleFontColor: {r: 1, g: 1, b: 1, a: 1}
+  inputPrefix: '> '
+  showCursor: 1
+  maxLines: 200
+  messages: []
+  allowConsoleTimeout: 0
+  consoleTimeout: 3
+  isVisible: 0
+  timer: 0
   showDebuggingMessages: 0
   keyToPressToCreateDebugMessage: 32
   debuggingMessage: This is a test and I'll make sure this works!
-  consolePreviousLineCode: 273
-  consoleNextLineCode: 274
-  backgroundSpriteRenderer: {fileID: 0}
-  textParent: {fileID: 0}
-  isVisible: 0
-  timer: 0
-  textMeshes:
-  - {fileID: 5629808834093289408}
-  messages: []
-  currentLine: 0
 --- !u!4 &5629808833535596804
 Transform:
   m_ObjectHideFlags: 0

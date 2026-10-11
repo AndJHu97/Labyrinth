@@ -66,12 +66,14 @@ public class KeyCategory<T> where T : System.Enum
 
 public class PlayerController : MonoBehaviour
 {
-    public Player player;
 
     [Header("Keybinds (type these characters; case is ignored)")]
     public KeyCategory<EmotionKey> emotion = new();
     public KeyCategory<MotorSensorKey> motor = new();
     public KeyCategory<ConcentrationKey> concentration = new();
+
+    public event System.Action OnBufferChanged;
+    public event System.Action<string> OnSubmitted;
 
     [Header("Console input")]
     public int maxKeys = 3;
@@ -85,11 +87,12 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         ValidateBindings();
+        Debug.Log($"PlayerController bindings: emotion={emotion.bindings.Count}, motor={motor.bindings.Count}, concentration={concentration.bindings.Count}");
     }
 
     void Update()
     {
-        if (player == null || player.playerStats.health <= 0) return;
+        if (GameManager.Instance.player == null || GameManager.Instance.player.stats.health <= 0 || Notebook.IsWriting) return;
 
         // inputString holds the characters typed this frame
         foreach (char raw in Input.inputString)
@@ -104,7 +107,11 @@ public class PlayerController : MonoBehaviour
             // Backspace deletes the last typed character
             if (raw == '\b')
             {
-                if (buffer.Count > 0) buffer.RemoveAt(buffer.Count - 1);
+                if (buffer.Count > 0)
+                {
+                    buffer.RemoveAt(buffer.Count - 1);
+                    OnBufferChanged?.Invoke();
+                }
                 continue;
             }
 
@@ -113,7 +120,11 @@ public class PlayerController : MonoBehaviour
 
             // Only allowed characters, up to the max
             if (buffer.Count >= maxKeys) continue;
-            if (IsAllowed(c)) buffer.Add(c);
+            if (IsAllowed(c))
+            {
+                buffer.Add(c);
+                OnBufferChanged?.Invoke();
+            }
         }
     }
 
@@ -139,19 +150,22 @@ public class PlayerController : MonoBehaviour
 
         LogSubmission(emotionTyped, e, eKey, motorTyped, m, mKey, concTyped, c, cKey);
 
+        string typed = string.Concat(buffer);
         buffer.Clear();
+        OnSubmitted?.Invoke(typed);        //the terminal echoes "> typed"
+        OnBufferChanged?.Invoke();         //and clears its live input line
 
         // Self-interaction is its own method (TODO in Player)
         if (c == ConcentrationKey.Self)
         {
-            player.PerformAction(e, m);
+            GameManager.Instance.player.PerformActionOnSelf(e, m);
             return;
         }
 
         var room = GameManager.Instance.currentRoom;
         Object_ target = room != null ? room.GetPart(c) : null;
 
-        player.PerformAction(e, m, c, target);
+        GameManager.Instance.player.PerformActionObject(e, m, c, target);
     }
 
     void LogSubmission(
@@ -176,7 +190,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log(sb.ToString());
     }
 
-    // Warns about bad bindings so they can be fixed in the inspector
+    //Warns about bad bindings so they can be fixed in the inspector. Doesn't show up in the UI
     void ValidateBindings()
     {
         foreach (var b in emotion.bindings) CheckBinding(b.key, b.Char, "Emotion");

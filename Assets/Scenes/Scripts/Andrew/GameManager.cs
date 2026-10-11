@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public List<GameState> gameLog = new();
     public static GameManager Instance;
 
+    public static event System.Action<string> OnTextDisplayed;
+
     private void Awake()
     {
         Instance = this;
@@ -72,6 +74,9 @@ public class GameManager : MonoBehaviour
         {
             string formatted = TextFormatter.Format(raw, self);
             Debug.Log(formatted);
+
+            //This invokes AddLine which puts it in the screen. 
+            OnTextDisplayed?.Invoke(formatted);
             last.displayTexts.Add(formatted);
         }
 

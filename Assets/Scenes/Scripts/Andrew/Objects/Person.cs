@@ -64,7 +64,7 @@ public class Person : Object_
         InputNPCProcessing inputNPCProcessing = new InputNPCProcessing();
         inputNPCProcessing.threatRelationshipValue = threatRelationshipValue;
         inputNPCProcessing.allegianceRelationshipValue = allegianceRelationshipValue;
-        inputNPCProcessing.playerStats = GameManager.Instance.player.playerStats;
+        inputNPCProcessing.playerStats = GameManager.Instance.player.stats;
         inputNPCProcessing.npcStats = stats;
 
         CheckConditions(playerIntentSO);
@@ -184,9 +184,8 @@ public class Person : Object_
 
         int storedHealth = stats.health;
 
-        stats.health = Mathf.RoundToInt(
-            InteractionProcessing.CalculateNewHealthValue(
-                stats.health,
+        int netHealthImpactOnNPC = Mathf.RoundToInt(
+            InteractionProcessing.CalculateNewHealthImpactForObjects(
                 playerIntentSO.netHealthImpact,
                 npcActionResponse.setHealthImpact,
                 npcActionResponse.newHealthImpact,
@@ -195,7 +194,24 @@ public class Person : Object_
             )
         );
 
-        int netHealthImpactOnNPC = stats.health - storedHealth;
+        netHealthImpactOnNPC = BattleMechanics.CalculateDamage(
+            GameManager.Instance.player.stats.strength,
+            stats.fortitude,
+            stats.agility,
+            name_,
+            true
+        );
+
+        stats.health += netHealthImpactOnNPC;
+
+        CheckPersonDeath();
+
+        if(stats.health<= 0)
+        {
+            // If the NPC is dead, we don't need to apply further relationship changes nor display any response, so we can return early.
+            return;
+        }
+
 
         // ------------------------------------------------
         // APPLY NPC THREAT
@@ -232,14 +248,38 @@ public class Person : Object_
         // APPLY EFFECT TO PLAYER
         // ------------------------------------------------
 
-        GameManager.Instance.player.playerStats.health +=
-            npcActionResponse.netHealthImpactOnPlayer;
+        int netHealthImpactOnPlayer = BattleMechanics.CalculateDamage(
+            stats.strength,
+            GameManager.Instance.player.stats.fortitude,
+            GameManager.Instance.player.stats.agility,
+            name_,
+            false
+        );
+
+        GameManager.Instance.player.stats.health +=
+            netHealthImpactOnPlayer;
 
         // ------------------------------------------------
         // DISPLAY RESPONSE
         // ------------------------------------------------
         GameManager.Instance.LogDisplayTextsToRecentLog(npcActionResponse.displayTexts);
 
+
+    }
+
+    public void CheckPersonDeath()
+    {
+        if(stats.health<= 0)
+        {
+            // Handle NPC death logic here
+            Debug.Log($"{name_} has died.");
+
+            GameManager.Instance.player.experiencePoints += experiencePointsGainedIfKilled;
+
+            isActive = false; // Mark the NPC as inactive or dead
+
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"{name_} has died. You gained {experiencePointsGainedIfKilled} experience points." });
+        }
 
     }
 

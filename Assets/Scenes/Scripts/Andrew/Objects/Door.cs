@@ -23,6 +23,9 @@ public class Door : Object_
             if(motorSensoryKey == MotorSensorKey.Manipulate || motorSensoryKey == MotorSensorKey.Arm || motorSensoryKey == MotorSensorKey.Leg)
             {
                 Debug.Log($"Player has entered the next room {nextRoom.name_}");
+
+                GameManager.Instance.currentRoom = nextRoom;
+                GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"Player has entered the next room {nextRoom.name_}"}, this);
             }
         }
     }
@@ -34,11 +37,13 @@ public class Door : Object_
             if (stats.health <= 0)
             {
                 Debug.Log($"{name_} is unlocked.");
+                GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"{name_} is unlocked." }, this);
                 isActive = true;
             }
             else
             {
                 Debug.Log($"{name_} is locked.");
+                GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"{name_} is locked." }, this);
                 isActive = false;
             }
         }

@@ -179,9 +179,8 @@ public static class InteractionProcessing
         return currentValue;
     }
 
-    public static float CalculateNewHealthValue
+    public static float CalculateNewHealthImpactForObjects
     (
-    float currentHealth,
     float netHealthImpact,
     bool setNetHealthImpact,
     float newNetHealthImpact,
@@ -193,12 +192,10 @@ public static class InteractionProcessing
             netHealthImpact = newNetHealthImpact;
         }
 
-        currentHealth += netHealthImpact;
+        netHealthImpact *= multiplier;
+        netHealthImpact += additiveValue;
 
-        currentHealth *= multiplier;
-        currentHealth += additiveValue;
-
-        return currentHealth;
+        return netHealthImpact;
     }
 
     public static bool ProcessConditions(List<Condition> conditions)
@@ -291,7 +288,7 @@ public static class InteractionProcessing
                     return false;
                 }
 
-                int playerValue = GetStat(player.playerStats, sc.statType);
+                int playerValue = GetStat(player.stats, sc.statType);
                 int targetValue = GetStat(target.stats, sc.statType);
 
                 if (!Compare(playerValue, sc.comparison, targetValue)) return false;
@@ -464,7 +461,7 @@ public static class InteractionProcessing
             {
                 if (hi.isPlayer)
                 {
-                    player.playerStats.health += hi.healthChange;
+                    player.stats.health += hi.healthChange;
 
                 }
                 else

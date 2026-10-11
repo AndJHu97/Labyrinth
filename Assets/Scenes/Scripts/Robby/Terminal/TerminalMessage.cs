@@ -1,23 +1,21 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public class TerminalMessage
 {
-    [SerializeField] string message;
+    [SerializeField] string text;
     [SerializeField] string timeEntered;
     [SerializeField] int roundNumber;
 
-    public string Message { get => message; set => message = value; }
-    public string TimeEntered { get => timeEntered; set => timeEntered = value; }
-    public int RoundNumber { get => roundNumber; set => roundNumber = value; }
+    public string Text => text;
+    public string TimeEntered => timeEntered;
+    public int RoundNumber => roundNumber;
 
-    public TerminalMessage(string message, string timeEntered, int roundNumber) 
+    public TerminalMessage(string text, int roundNumber)
     {
-        this.message = message;
-        this.timeEntered = timeEntered;
+        this.text = text;
         this.roundNumber = roundNumber;
+        timeEntered = DateTime.Now.ToString("HH:mm:ss");
     }
 }
