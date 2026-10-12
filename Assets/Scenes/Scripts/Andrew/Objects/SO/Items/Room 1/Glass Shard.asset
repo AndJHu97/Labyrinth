@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f549f8d0e0098b44ab911093780f476, type: 3}
-  m_Name: Angry Arm
+  m_Script: {fileID: 11500000, guid: 6d6e9e51db270684c9db1299f4a1023d, type: 3}
+  m_Name: Glass Shard
   m_EditorClassIdentifier: 
-  name_: Angry Arm
-  actionText: A rumbling redness flow to the end of your fingertips. It takes a second
-    to recollect yourself.
-  netHealthImpact: -5
-  emotionKey: 0
-  motorSensorKey: 0
+  name_: glass shard
+  statsModification:
+    health: 0
+    maxHealth: 0
+    fortitude: 0
+    strength: 1
+    agility: 0
+    faith: 0

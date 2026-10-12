@@ -8,7 +8,7 @@ public class Door : Object_
 
     public override void ReceivePlayerAction(PlayerIntentSO playerIntentSO)
     {
-        CheckConditions(playerIntentSO);
+        CheckAndRunConditions(playerIntentSO);
 
         stats.health += playerIntentSO.netHealthImpact;
 
@@ -25,7 +25,8 @@ public class Door : Object_
                 Debug.Log($"Player has entered the next room {nextRoom.name_}");
 
                 GameManager.Instance.currentRoom = nextRoom;
-                GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"Player has entered the next room {nextRoom.name_}"}, this);
+                GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"You entered the next room {nextRoom.name_}"}, this);
+                GameManager.Instance.LogDisplayTextsToRecentLog(nextRoom.roomDescription, this);
             }
         }
     }

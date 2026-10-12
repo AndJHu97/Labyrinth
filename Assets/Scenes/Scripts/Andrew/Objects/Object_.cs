@@ -37,24 +37,64 @@ public class Object_ : MonoBehaviour
 
     public virtual void ReceivePlayerAction(PlayerIntentSO intent)
     {
-        CheckConditions(intent);
+        CheckAndRunConditions(intent);
     }
 
-    public void CheckConditions(PlayerIntentSO intent)
+
+
+    public void CheckAndRunConditions(PlayerIntentSO intent)
     {
-        foreach (var conditionConsequence in conditionConsequences)
-        {
+        Debug.Log($"{name_}: Checking intent '{intent.name}'");
 
-            InteractionProcessing.ProcessPairing(conditionConsequence, this);
+        foreach (var pairing in conditionConsequences)
+        {
+            Debug.Log($"{name_}: Checking pairing");
+
+            if (pairing.conditions == null || pairing.conditions.Count == 0)
+            {
+                Debug.LogWarning($"{name_}: Pairing has no conditions.");
+                continue;
+            }
+
+            foreach (var condition in pairing.conditions)
+            {
+                bool passed = InteractionProcessing.ProcessConditions(
+                    new List<Condition> { condition }
+                );
+
+                Debug.Log(
+                    $"{name_}: Condition group {condition.groupNumber} " +
+                    $"individually passed = {passed}"
+                );
+            }
+
+            bool allPassed = InteractionProcessing.ProcessConditions(
+                pairing.conditions
+            );
+
+            Debug.Log($"{name_}: Entire pairing passed = {allPassed}");
+
+            if (allPassed)
+            {
+                InteractionProcessing.ApplyConsequences(
+                    pairing.successfulConsequences,
+                    this
+                );
+            }
         }
-        Debug.Log($"{name_} has no reaction to '{intent.name}'.");
     }
 
-    public void CheckTriggerConditions(PlayerIntentSO intent)
+
+
+    public void CheckAndRunTriggerConditions(PlayerIntentSO intent)
     {
         foreach (var conditionConsequence in triggeredResponses)
         {
             InteractionProcessing.ProcessPairing(conditionConsequence, this);
         }
+
+
     }
+
+   
 }

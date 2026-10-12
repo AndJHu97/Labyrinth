@@ -19,6 +19,10 @@ public static class TextFormatter
         bool capitalize = char.IsUpper(key[0]);
         string lowerKey = key.ToLowerInvariant();
 
+        //finds the direction to input before resolving the object_
+        if (lowerKey == "direction")
+            return ResolveDirection(capitalize);
+
         Object_ subject;
         switch (lowerKey)
         {
@@ -28,6 +32,8 @@ public static class TextFormatter
             case "name": subject = ObjectRegistry.Get(arg); break;
             default: return m.Value;   // unknown token: leave as written
         }
+
+        
 
         string value;
         if (subject == null)
@@ -48,6 +54,35 @@ public static class TextFormatter
         var log = GameManager.Instance.gameLog;
         if (log.Count == 0) return null;
         return log[log.Count - 1].target;
+    }
+
+    private static string ResolveDirection(bool capitalize)
+    {
+        var gm = GameManager.Instance;
+
+        if (gm == null || gm.gameLog.Count == 0)
+            return "{direction}";
+
+        var direction = gm.gameLog[gm.gameLog.Count - 1].concentrationKey;
+
+        string value = direction switch
+        {
+            ConcentrationKey.Right => "to your right",
+            ConcentrationKey.Left => "to your left",
+            ConcentrationKey.Up => "above you",
+            ConcentrationKey.Down => "below you",
+            ConcentrationKey.Straight_Ahead => "in front of you",
+            ConcentrationKey.Self => "within yourself",
+            ConcentrationKey.Behind => "behind you",
+            _ => "{direction}"
+        };
+
+        string message = $"There was nothing to interact with {value}.";
+
+        if (capitalize && value.Length > 0)
+            value = char.ToUpperInvariant(value[0]) + value.Substring(1);
+
+        return value;
     }
 
 }

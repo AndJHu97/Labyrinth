@@ -6,18 +6,22 @@ using UnityEngine;
 public struct stats
 {
     public int health;
+    public int maxHealth;
     public int fortitude;
     public int strength;
     public int agility;
+    public int faith;
 }
 
 [System.Serializable]
 public enum StatType
 {
     Health,
+    MaxHealth,
     Fortitude,
     Strength,
-    Agility
+    Agility, 
+    Faith
 }
 
 
@@ -64,10 +68,10 @@ public class Person : Object_
         InputNPCProcessing inputNPCProcessing = new InputNPCProcessing();
         inputNPCProcessing.threatRelationshipValue = threatRelationshipValue;
         inputNPCProcessing.allegianceRelationshipValue = allegianceRelationshipValue;
-        inputNPCProcessing.playerStats = GameManager.Instance.player.stats;
+        inputNPCProcessing.playerStats = GameManager.Instance.player.totalStats;
         inputNPCProcessing.npcStats = stats;
 
-        CheckConditions(playerIntentSO);
+        CheckAndRunConditions(playerIntentSO);
 
 
         // Check Friendly
@@ -194,11 +198,11 @@ public class Person : Object_
             )
         );
 
-        netHealthImpactOnNPC = BattleMechanics.CalculateDamage(
-            GameManager.Instance.player.stats.strength,
+        netHealthImpactOnNPC = -BattleMechanics.CalculateDamage(
+            GameManager.Instance.player.totalStats.strength,
             stats.fortitude,
             stats.agility,
-            name_,
+            this,
             true
         );
 
@@ -245,25 +249,26 @@ public class Person : Object_
             );
 
         // ------------------------------------------------
-        // APPLY EFFECT TO PLAYER
-        // ------------------------------------------------
-
-        int netHealthImpactOnPlayer = BattleMechanics.CalculateDamage(
-            stats.strength,
-            GameManager.Instance.player.stats.fortitude,
-            GameManager.Instance.player.stats.agility,
-            name_,
-            false
-        );
-
-        GameManager.Instance.player.stats.health +=
-            netHealthImpactOnPlayer;
-
-        // ------------------------------------------------
         // DISPLAY RESPONSE
         // ------------------------------------------------
         GameManager.Instance.LogDisplayTextsToRecentLog(npcActionResponse.displayTexts);
 
+        // ------------------------------------------------
+        // APPLY EFFECT TO PLAYER
+        // ------------------------------------------------
+
+        int netHealthImpactOnPlayer = -BattleMechanics.CalculateDamage(
+            stats.strength,
+            GameManager.Instance.player.totalStats.fortitude,
+            GameManager.Instance.player.totalStats.agility,
+            this,
+            false
+        );
+
+        
+
+        GameManager.Instance.player.baseStats.health +=
+            netHealthImpactOnPlayer;
 
     }
 

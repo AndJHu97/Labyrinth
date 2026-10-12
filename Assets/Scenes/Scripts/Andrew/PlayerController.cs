@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.player == null || GameManager.Instance.player.stats.health <= 0 || Notebook.IsWriting) return;
+        if (GameManager.Instance.player == null || GameManager.Instance.player.totalStats.health <= 0 || Notebook.IsWriting) return;
 
         // inputString holds the characters typed this frame
         foreach (char raw in Input.inputString)

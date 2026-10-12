@@ -20,7 +20,7 @@ public enum ComparisonType
 
 
 [System.Serializable]
-public class RelationshipCondition
+public struct RelationshipCondition
 {
     public Object_ target;
     public int requiredValue;
@@ -29,7 +29,7 @@ public class RelationshipCondition
 }
 
 [System.Serializable]
-public class ActiveCondition
+public struct ActiveCondition
 {
     public Object_ target;
     public bool requiredActiveStatus;
@@ -48,6 +48,15 @@ public struct ActiveConsequence
 {
     public Object_ target;
     public bool setActiveStatus;
+}
+[System.Serializable]
+public struct StatConsequence
+{
+    public string name_;
+    public StatType statType;
+    public int valueChange;
+    public bool isPlayer;
+    public Object_ target;
 }
 
 [System.Serializable]
@@ -144,6 +153,7 @@ public struct Consequence
     public List<RelationshipConsequence> relationshipConsequences;
     public List<ActiveConsequence> activeConsequences;
     public List<HealthImpact> netHealthImpact;
+    public List<StatConsequence> statConsequences;
     public List<string> displayTexts;
     public int experiencePointsChange;
 }

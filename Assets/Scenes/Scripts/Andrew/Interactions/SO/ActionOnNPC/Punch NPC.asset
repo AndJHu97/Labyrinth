@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53ebb296f8ae9743a74d1d79d37bb18, type: 3}
   m_Name: Punch NPC
   m_EditorClassIdentifier: 
-  playerAction: {fileID: 11400000, guid: 3b483f4a5eb42dc4db9516bec174a6f2, type: 2}
-  name_: Punching Old man
+  playerIntent: {fileID: 11400000, guid: 3b483f4a5eb42dc4db9516bec174a6f2, type: 2}
+  name_: Punching
+  defaultInteractingDisplayText:
+  - Your hand closes to a fist and you direct your sight to the {direction}.
+  - You punch the {target} as hard as you can.
   setHealthValue: 0
   newHealthValue: 0
   healthMultiplier: 1

@@ -227,9 +227,11 @@ public static class InteractionProcessing
         switch (type)
         {
             case StatType.Health: return s.health;
+            case StatType.MaxHealth: return s.maxHealth;
             case StatType.Fortitude: return s.fortitude;
             case StatType.Strength: return s.strength;
             case StatType.Agility: return s.agility;
+            case StatType.Faith: return s.faith;
             default: return 0;
         }
     }
@@ -288,7 +290,7 @@ public static class InteractionProcessing
                     return false;
                 }
 
-                int playerValue = GetStat(player.stats, sc.statType);
+                int playerValue = GetStat(player.totalStats, sc.statType);
                 int targetValue = GetStat(target.stats, sc.statType);
 
                 if (!Compare(playerValue, sc.comparison, targetValue)) return false;
@@ -394,6 +396,20 @@ public static class InteractionProcessing
             ApplyConsequence(consequence, owner);
     }
 
+    public static string GetStatDisplayName(StatType type)
+    {
+        switch (type)
+        {
+            case StatType.Health: return "Health";
+            case StatType.MaxHealth: return "Maximum Health";
+            case StatType.Fortitude: return "Fortitude";
+            case StatType.Strength: return "Strength";
+            case StatType.Agility: return "Agility";
+            case StatType.Faith: return "Faith";
+            default: return type.ToString();
+        }
+    }
+
     public static void ApplyConsequence(Consequence c, Object_ owner = null)
     {
         var player = GameManager.Instance.player;
@@ -401,12 +417,78 @@ public static class InteractionProcessing
         // Items
         if (c.itemsToAdd != null)
             foreach (var item in c.itemsToAdd)
-                player.inventory.Add(item);
+                player.AddItemToInventory(item);
 
         if (c.itemsToRemove != null)
             foreach (var item in c.itemsToRemove)
                 if (!player.inventory.Remove(item))
                     Debug.LogWarning($"Consequence: tried to remove '{item}' but it isn't in the inventory.");
+
+        if(c.statConsequences != null)
+        {
+            foreach (var sc in c.statConsequences)
+            {
+                if (sc.isPlayer)
+                {
+                    switch (sc.statType)
+                    {
+                        case StatType.Health:
+                            player.statsModifications.health += sc.valueChange;
+                            break;
+                        case StatType.MaxHealth:
+                            player.statsModifications.maxHealth += sc.valueChange;
+                            break;
+                        case StatType.Fortitude:
+                            player.statsModifications.fortitude += sc.valueChange;
+                            break;
+                        case StatType.Strength:
+                            player.statsModifications.strength += sc.valueChange;
+                            break;
+                        case StatType.Agility:
+                            player.statsModifications.agility += sc.valueChange;
+                            break;
+                        case StatType.Faith:
+                            player.statsModifications.faith += sc.valueChange;
+                            break;
+                    }
+
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You gained " + sc.valueChange + " in " + GetStatDisplayName(sc.statType) + "." });
+                }
+                else
+                {
+                    Object_ target = sc.target;
+                    if (target == null)
+                    {
+                        Debug.LogWarning($"Consequence: no Object with id '{sc.target.name_}' for stat change.");
+                        continue;
+                    }
+                    switch (sc.statType)
+                    {
+                        case StatType.Health:
+                            target.stats.health += sc.valueChange;
+                            break;
+                        case StatType.MaxHealth:
+                            target.stats.maxHealth += sc.valueChange;
+                            break;
+                        case StatType.Fortitude:
+                            target.stats.fortitude += sc.valueChange;
+                            break;
+                        case StatType.Strength:
+                            target.stats.strength += sc.valueChange;
+                            break;
+                        case StatType.Agility:
+                            target.stats.agility += sc.valueChange;
+                            break;
+                        case StatType.Faith:
+                            target.stats.faith += sc.valueChange;
+                            break;
+                    }
+
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { target.name_ + " gained " + sc.valueChange + " in " + GetStatDisplayName(sc.statType) + "." });
+                }
+                
+            }
+        }
 
         // Relationships (clamped 0-100, same as CalculateNewRelationshipValue)
         if (c.relationshipConsequences != null)
@@ -461,7 +543,7 @@ public static class InteractionProcessing
             {
                 if (hi.isPlayer)
                 {
-                    player.stats.health += hi.healthChange;
+                    player.baseStats.health += hi.healthChange;
 
                 }
                 else
@@ -485,5 +567,48 @@ public static class InteractionProcessing
         bool success = ProcessConditions(pairing.conditions);
         ApplyConsequences(success ? pairing.successfulConsequences : pairing.failingConsequences, owner);
         return success;
+    }
+    private static bool CheckSatisfiedPairings(List<ConditionConsequencePairings> pairings)
+    {
+        if (pairings == null) return false;
+
+        bool anySatisfied = false;
+
+        foreach (var pairing in pairings)
+        {
+            if (!ProcessConditions(pairing.conditions)) continue;
+            anySatisfied = true;
+        }
+
+        return anySatisfied;
+    }
+    public static bool CheckAllTriggersAndConditions()
+    {
+        bool anySatisfied = false;
+
+        ObjectRegistry.ForEach(o =>
+        {
+            if (CheckSatisfiedPairings(o.triggeredResponses)) anySatisfied = true;
+            if (CheckSatisfiedPairings(o.conditionConsequences)) anySatisfied = true;
+        });
+
+        return anySatisfied;
+    }
+
+    public static stats TotalItemModification()
+    {
+        stats totalModification = new stats { health = 0, maxHealth = 0, fortitude = 0, strength = 0, agility = 0 };
+
+        foreach (var item in GameManager.Instance.player.inventory)
+        {
+            totalModification.health += item.statsModification.health;
+            totalModification.maxHealth += item.statsModification.maxHealth;
+            totalModification.fortitude += item.statsModification.fortitude;
+            totalModification.strength += item.statsModification.strength;
+            totalModification.agility += item.statsModification.agility;
+            totalModification.faith += item.statsModification.faith;
+        }
+
+        return totalModification;
     }
 }

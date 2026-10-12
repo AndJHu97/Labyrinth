@@ -156,26 +156,6 @@ public class Notebook : MonoBehaviour
         }
     }
 
-    //Click a tab name
-    void HandleTabClick()
-    {
-        if (tabsText == null || !Input.GetMouseButtonDown(0)) return;
-
-        Camera cam = Camera.main;
-        if (cam == null) return;
-
-        int link = TMP_TextUtilities.FindIntersectingLink(tabsText, Input.mousePosition, cam);
-        if (link < 0) return;
-
-        string linkId = tabsText.textInfo.linkInfo[link].GetLinkID();
-        if (int.TryParse(linkId, out int index) && index >= 0 && index < visibleTabs.Count)
-        {
-            tabIndex = index;
-            notesPage = 1;
-            Redraw();
-        }
-    }
-
     //Returns true if a tab name was clicked
     bool TryClickTab()
     {

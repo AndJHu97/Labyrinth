@@ -9,6 +9,8 @@ public class Room : Object_
     public Object_ upObject;
     public Object_ downObject;
     public Object_ straightAheadObject;
+    public Object_ behindObject;
+    public List<string> roomDescription;
 
     public void Start()
     {
@@ -24,6 +26,7 @@ public class Room : Object_
             case ConcentrationKey.Up: return upObject;
             case ConcentrationKey.Down: return downObject;
             case ConcentrationKey.Straight_Ahead: return straightAheadObject;
+            case ConcentrationKey.Behind: return behindObject;
             default: return null;
         }
     }

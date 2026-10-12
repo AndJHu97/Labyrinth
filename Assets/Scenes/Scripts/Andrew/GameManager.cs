@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public struct GameState
 {
     public int roundNumber;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     public Room currentRoom = null;
     public List<GameState> gameLog = new();
     public static GameManager Instance;
+    public int experienceGainedWhenNewAction = 10; // Amount of experience gained when a new action is performed
 
     public static event System.Action<string> OnTextDisplayed;
 
@@ -33,11 +35,21 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    public void PlayerDeath()
+   public void Start()
     {
-        Debug.Log("Player has died.");
-        roundNumber++;
-        actionStep = 0;
+        if (currentRoom == null)
+            return;
+
+        gameLog.Add(new GameState
+        {
+            roundNumber = roundNumber,
+            actionStep = actionStep,
+            totalActionStep = totalActionStep,
+            room = currentRoom,
+            displayTexts = new List<string>()
+        });
+
+        LogDisplayTextsToRecentLog(currentRoom.roomDescription);
     }
 
     public void LogAction(PlayerIntentSO intent, EmotionKey emotionKey, MotorSensorKey motorSensorKey,
@@ -45,6 +57,16 @@ public class GameManager : MonoBehaviour
     {
         actionStep++;
         totalActionStep++;
+
+        bool hasPerformedActionBefore = false;
+        foreach (GameState state in gameLog)
+        {
+            if(state.playerIntent == intent && state.room == room && state.target == target && state.concentrationKey == concentrationKey)
+            {
+                
+                hasPerformedActionBefore = true;
+            }
+        }
 
         gameLog.Add(new GameState
         {
@@ -60,7 +82,13 @@ public class GameManager : MonoBehaviour
             displayTexts = new List<string>()
         });
 
-        ObjectRegistry.ForEach(o => o.CheckTriggerConditions(intent));
+        if (!hasPerformedActionBefore)
+        {
+            player.GainExperience(experienceGainedWhenNewAction);
+            LogDisplayTextsToRecentLog(new List<string> { $"Yes, keep trying... Gain {experienceGainedWhenNewAction} experience for discovering a new action." });
+        }
+
+        ObjectRegistry.ForEach(o => o.CheckAndRunTriggerConditions(intent));
     }
 
     public void LogDisplayTextsToRecentLog(List<string> texts, Object_ self = null)

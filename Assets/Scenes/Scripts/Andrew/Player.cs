@@ -1,22 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    public stats stats;
-    [SerializeField]
+    public stats baseStats;
+    public stats statsModifications;
+
+    public stats totalStats
+    {
+        get
+        {
+            return new stats
+            {
+                health = baseStats.health + statsModifications.health,
+                maxHealth = baseStats.maxHealth + statsModifications.maxHealth,
+                strength = baseStats.strength + statsModifications.strength,
+                agility = baseStats.agility + statsModifications.agility,
+                fortitude = baseStats.fortitude + statsModifications.fortitude,
+                //capped at one stat. 
+                faith = baseStats.faith + statsModifications.faith > 10 ? 10 : baseStats.faith + statsModifications.faith
+            };
+        }
+    }
+
+        [SerializeField]
     public List<PlayerIntentSO> playerIntentions = new();
     [SerializeField]
     public int experiencePoints = 0;
     [SerializeField]
-    public int totalStats = 15;
+    public int totalStatPoints = 15;
     [SerializeField]
     public int faithLevel = 0;
 
     [SerializeField]
     public int level = 1;
+
+    public int experienceGainedUponDeath = 50; // Amount of experience gained upon death
 
     [SerializeField]
     public List<ItemSO> inventory = new();
@@ -44,7 +66,7 @@ public class Player : MonoBehaviour
     public void LevelUp()
     {
         level++;
-        totalStats += 1;
+        totalStatPoints += 1;
     }
 
     //pick right keys to perform on the NPC
@@ -55,7 +77,7 @@ public class Player : MonoBehaviour
         {
             if(intent.emotionKey == emotionKey && intent.motorSensorKey == motorSensorKey)
             {
-                stats.health += intent.netSelfHealthImpact;
+                baseStats.health += intent.netSelfHealthImpact;
 
                 GameManager.Instance.LogAction(intent, emotionKey, motorSensorKey, concentrationKey,
                                GameManager.Instance.currentRoom, object_);
@@ -85,12 +107,14 @@ public class Player : MonoBehaviour
                 //Idle chats
                 else
                 {
+                    
                     ResolveAndLogInteractionTexts(intent);
+                    
                 }
 
-                ObjectRegistry.ForEach(o => o.CheckTriggerConditions(intent));
+                ObjectRegistry.ForEach(o => o.CheckAndRunTriggerConditions(intent));
 
-                if (stats.health <= 0) GameManager.Instance.PlayerDeath();
+                if (totalStats.health <= 0) PlayerDeath();
                 return;
             }
 
@@ -101,7 +125,12 @@ public class Player : MonoBehaviour
 
     public void PlayerDeath()
     {
+        Debug.Log("Player has died.");
 
+        experiencePoints += (int)experienceGainedUponDeath;
+        GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You have died before discovering your only purpose. A waste. We must again craft another one." });
+        GameManager.Instance.roundNumber++;
+        GameManager.Instance.actionStep = 0;
     }
 
     public void ResolveAndLogInteractionTexts(PlayerIntentSO intent, Object_ object_ = null, ActionOnObjectSO actionOnObject = null)
@@ -117,7 +146,7 @@ public class Player : MonoBehaviour
 
                     //match the key binds to the object's unique response and log the display texts if they match
                     if ((!response.UseEmotionKey || response.emotionKey == intent.emotionKey) &&
-(!response.UseMotorSensorKey || response.motorSensorKey == intent.motorSensorKey))
+                    (!response.UseMotorSensorKey || response.motorSensorKey == intent.motorSensorKey))
                     {
                         GameManager.Instance.LogDisplayTextsToRecentLog(response.displayTexts, object_);
                         return;
@@ -133,11 +162,22 @@ public class Player : MonoBehaviour
             }
 
             //this means there are no direct texts to display for the object or action, so we will use the default text from the intent
-            return;
+            //Only if no other conditions are met, we will display the default text from the intent
+            if (!InteractionProcessing.CheckAllTriggersAndConditions())
+            {
+                GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You focus on the {target} {direction}. Your action has no effect on {target}." }, object_);
+                GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { intent.defaultNoninteractableText }, object_);
+                return;
+            }
         }
 
-        GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { intent.defaultNoninteractableText });
-
+        if (!InteractionProcessing.CheckAllTriggersAndConditions())
+        {
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "There was nothing to interact with {direction}." });
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { intent.defaultNoninteractableText });
+            return;
+        }
+        
 
     }
 
@@ -150,7 +190,7 @@ public class Player : MonoBehaviour
             {
                 // Perform the action associated with the intent
                 Debug.Log($"Performing action: {intent.defaultNoninteractableText}");
-                stats.health += intent.netSelfHealthImpact;
+                baseStats.health += intent.netSelfHealthImpact;
                 // Here you would implement the logic for acting on oneself
                 //TODO
                 return;
@@ -158,5 +198,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AddItemToInventory(ItemSO item)
+    {
+        if (item != null && !inventory.Contains(item))
+        {
+            inventory.Add(item);
+            //get the new stats modifications
+            statsModifications = InteractionProcessing.TotalItemModification();
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"You have acquired: {item.name}" });
+            Debug.Log($"Added {item.name} to inventory.");
+        }
+    }
 
 }

@@ -17,6 +17,7 @@ public enum ConcentrationKey
     Up,
     Down,
     Straight_Ahead,
+    Behind,
     Self
 }
 

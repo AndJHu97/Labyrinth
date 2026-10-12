@@ -1,0 +1,207 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1955409773647825599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2422435447990682155}
+  - component: {fileID: 1403442226802473318}
+  m_Layer: 0
+  m_Name: PlayerController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2422435447990682155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955409773647825599}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4573808861479760051}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1403442226802473318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955409773647825599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c4acd5ef898174b8ba85082006e253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emotion:
+    bindings:
+    - key: 1
+      value: 0
+    - key: 2
+      value: 1
+    - key: 3
+      value: 2
+    - key: 4
+      value: 3
+  motor:
+    bindings:
+    - key: a
+      value: 0
+    - key: b
+      value: 1
+    - key: c
+      value: 2
+    - key: d
+      value: 3
+    - key: e
+      value: 4
+    - key: f
+      value: 5
+  concentration:
+    bindings:
+    - key: g
+      value: 0
+    - key: h
+      value: 1
+    - key: i
+      value: 2
+    - key: j
+      value: 3
+    - key: k
+      value: 4
+    - key: l
+      value: 5
+  maxKeys: 10
+--- !u!1 &2697429785391105678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4573808861479760051}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4573808861479760051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697429785391105678}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8887570955517760515}
+  - {fileID: 2422435447990682155}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8623250005029615548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8887570955517760515}
+  - component: {fileID: 4590650970883278305}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8887570955517760515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8623250005029615548}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4573808861479760051}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4590650970883278305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8623250005029615548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824e7a51d57da1c41a93353bc5c16739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseStats:
+    health: 5
+    maxHealth: 5
+    fortitude: 5
+    strength: 5
+    agility: 5
+    faith: 5
+  statsModifications:
+    health: 0
+    maxHealth: 0
+    fortitude: 0
+    strength: 0
+    agility: 0
+    faith: 0
+  playerIntentions:
+  - {fileID: 11400000, guid: 3b483f4a5eb42dc4db9516bec174a6f2, type: 2}
+  - {fileID: 11400000, guid: 0b335b9f61fc99842ac51dffebb4966f, type: 2}
+  - {fileID: 11400000, guid: 1a68c0122c797f243a8dd6dd1e7e7f0a, type: 2}
+  - {fileID: 11400000, guid: 088d76c0890225c439589b549d99ca3a, type: 2}
+  - {fileID: 11400000, guid: 584c7c6d1a56ebd4b91275c6b3d09aa2, type: 2}
+  - {fileID: 11400000, guid: b66b6b6ed9de7334d80a3d2cab4959ea, type: 2}
+  - {fileID: 11400000, guid: 79983c75269e2534ba0e0d167d8d7763, type: 2}
+  - {fileID: 11400000, guid: acea9fef0a235a845a774ed7ce4a8754, type: 2}
+  - {fileID: 11400000, guid: dfa77e15714fb394198aa4f9ba9079b3, type: 2}
+  - {fileID: 11400000, guid: 8912759d2568de84d9fa6c9e40ba654a, type: 2}
+  - {fileID: 11400000, guid: 397abb18cb96fa4499c9c0bf31fc566d, type: 2}
+  - {fileID: 11400000, guid: 845654a1cd2d5eb46b4e91466539d058, type: 2}
+  - {fileID: 11400000, guid: 0f50de134e205b441891cd4f44a8b054, type: 2}
+  - {fileID: 11400000, guid: 8ad6a88729d0a71488471ec5433ed9a5, type: 2}
+  - {fileID: 11400000, guid: b728367ad7e48814ea25c4334dc6318b, type: 2}
+  - {fileID: 11400000, guid: 18db914d8a47067478c05ba4cdfe0021, type: 2}
+  - {fileID: 11400000, guid: fac3b53215160af46b4f2266b354cb4e, type: 2}
+  - {fileID: 11400000, guid: a92e904c54c4cb94d90070a42fd1594b, type: 2}
+  - {fileID: 11400000, guid: 39ff1f42555d6264a9efd5a0416241d7, type: 2}
+  - {fileID: 11400000, guid: 8c208a76f39d9714483ef9ffc2ec2cdf, type: 2}
+  - {fileID: 11400000, guid: 98eb273cfb7f95f4c8ec8cb4fd88defe, type: 2}
+  - {fileID: 11400000, guid: eb01cdef3eea29242938f28c52d8b010, type: 2}
+  - {fileID: 11400000, guid: bbc16e5653151d84cbda488732ced08d, type: 2}
+  - {fileID: 11400000, guid: 5289f6645f5275d42ae31fced471b6a0, type: 2}
+  experiencePoints: 0
+  totalStatPoints: 15
+  faithLevel: 0
+  level: 1
+  experienceGainedUponDeath: 50
+  inventory: []

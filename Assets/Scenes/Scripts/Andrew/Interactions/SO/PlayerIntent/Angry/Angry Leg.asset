@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Angry Leg
   m_EditorClassIdentifier: 
   name_: Angry Leg
-  actionText: A rumbling redness flow to the end of your toes. It takes a second
-    to recollect yourself.
+  defaultNoninteractableText: A rumbling redness flow from your legs to your toes.
+    It takes a second to collect yourself.
   netHealthImpact: -5
+  netSelfHealthImpact: 0
   emotionKey: 0
   motorSensorKey: 1

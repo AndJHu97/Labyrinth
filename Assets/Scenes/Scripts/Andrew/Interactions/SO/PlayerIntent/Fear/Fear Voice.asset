@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f549f8d0e0098b44ab911093780f476, type: 3}
-  m_Name: Angry Gut
+  m_Name: Fear Voice
   m_EditorClassIdentifier: 
-  name_: 
-  actionText: A rumbling redness flow to the abominal region. It takes a second to
-    recollect yourself... and your stomach.
-  netHealthImpact: -1
-  netSelfHealthImpact: -1
-  emotionKey: 0
-  motorSensorKey: 0
+  name_: Fear Voice
+  defaultNoninteractableText: 'You cover your mouth, but you can''t contain the scream.
+    One of the strongest primordial urges translated into a cry for help. '
+  netHealthImpact: 0
+  netSelfHealthImpact: 0
+  emotionKey: 3
+  motorSensorKey: 3
