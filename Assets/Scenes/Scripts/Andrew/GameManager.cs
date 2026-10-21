@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
             LogDisplayTextsToRecentLog(new List<string> { $"Yes, keep trying... Gain {experienceGainedWhenNewAction} experience for discovering a new action." });
         }
 
+        //Check all objects to see if you triggered anything
         ObjectRegistry.ForEach(o => o.CheckAndRunTriggerConditions(intent));
     }
 
@@ -109,5 +110,10 @@ public class GameManager : MonoBehaviour
         }
 
         gameLog[gameLog.Count - 1] = last;
+    }
+
+    public void CheckAllTriggers(PlayerIntentSO intent)
+    {
+        ObjectRegistry.ForEach(o => o.CheckAndRunTriggerConditions(intent));
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class BattleMechanics 
 {
-    public static int CalculateDamage(int attackerStrength, int defenderFortitude, int attackerAgility, Person npc, bool isPlayerAttacking)
+    public static int CalculateDamage(int defaultDamage, int attackerStrength, int defenderFortitude, int attackerAgility, Person npc, bool isPlayerAttacking)
     {
         
 
@@ -24,7 +24,7 @@ public static class BattleMechanics
         }
         else
         {
-            int damage = System.Math.Max(0, attackerStrength - defenderFortitude);
+            int damage = System.Math.Max(0, attackerStrength + defaultDamage - defenderFortitude);
             health -= damage;
             Debug.Log(isPlayerAttacking ? "You attacked " + npcName + " for " + damage + " damage. " + npcName + " has " +  health + "/" + npc.stats.maxHealth + " HP remaining."
                 : npcName + " attacked you for " + damage);

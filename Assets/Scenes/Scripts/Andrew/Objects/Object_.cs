@@ -3,6 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public struct DisplayTextResponse
 {
+    public string name_;
     public bool UseEmotionKey;
     public EmotionKey emotionKey;
     public bool UseMotorSensorKey;

@@ -11,16 +11,13 @@ public class NPCActionResponseSO : ScriptableObject
 
     public bool setHealthImpact;
     public int newHealthImpact;
-    public float healthMultiplier = 1f;
     public int additiveHealthValue;
 
     public bool setThreatImpact;
     public int newThreatImpact;
-    public float threatMultiplier = 1f;
     public int additiveThreatValue;
 
     public bool setAllegianceImpact;
     public int newAllegianceImpact;
-    public float allegianceMultiplier = 1f;
     public int additiveAllegianceValue;
 }

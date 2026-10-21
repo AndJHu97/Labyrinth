@@ -165,7 +165,7 @@ public class Player : MonoBehaviour
             //Only if no other conditions are met, we will display the default text from the intent
             if (!InteractionProcessing.CheckAllTriggersAndConditions())
             {
-                GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You focus on the {target} {direction}. Your action has no effect on {target}." }, object_);
+                GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You focus on the {target} {direction}." }, object_);
                 GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { intent.defaultNoninteractableText }, object_);
                 return;
             }

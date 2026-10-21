@@ -193,12 +193,12 @@ public class Person : Object_
                 playerIntentSO.netHealthImpact,
                 npcActionResponse.setHealthImpact,
                 npcActionResponse.newHealthImpact,
-                npcActionResponse.healthMultiplier,
                 npcActionResponse.additiveHealthValue
             )
         );
 
         netHealthImpactOnNPC = -BattleMechanics.CalculateDamage(
+            netHealthImpactOnNPC,
             GameManager.Instance.player.totalStats.strength,
             stats.fortitude,
             stats.agility,
@@ -221,14 +221,13 @@ public class Person : Object_
         // APPLY NPC THREAT
         // ------------------------------------------------
 
-        threatRelationshipValue =
+        threatRelationshipValue = 
             InteractionProcessing.CalculateNewRelationshipValue(
                 threatRelationshipValue,
                 //negative because decreasing health makes it more threatening. 
                 -netHealthImpactOnNPC,
                 npcActionResponse.setThreatImpact,
                 npcActionResponse.newThreatImpact,
-                npcActionResponse.threatMultiplier,
                 npcActionResponse.additiveThreatValue,
                 learningRate
             );
@@ -243,7 +242,6 @@ public class Person : Object_
                 netHealthImpactOnNPC,
                 npcActionResponse.setAllegianceImpact,
                 npcActionResponse.newAllegianceImpact,
-                npcActionResponse.allegianceMultiplier,
                 npcActionResponse.additiveAllegianceValue,
                 learningRate
             );
@@ -257,7 +255,10 @@ public class Person : Object_
         // APPLY EFFECT TO PLAYER
         // ------------------------------------------------
 
+        
+
         int netHealthImpactOnPlayer = -BattleMechanics.CalculateDamage(
+            npcActionResponse.netHealthImpactOnPlayer,
             stats.strength,
             GameManager.Instance.player.totalStats.fortitude,
             GameManager.Instance.player.totalStats.agility,

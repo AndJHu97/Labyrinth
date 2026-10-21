@@ -150,7 +150,7 @@ public static class InteractionProcessing
         return NPCActionEmotionType.Neutral;
     }
 
-    public static float CalculateNewRelationshipValue(float currentValue, float netHealthImpact, bool setNetRelationshipImpact, float newNetRelationshipImpact, float multiplicativeValue, float additiveValue, float learningRate)
+    public static float CalculateNewRelationshipValue(float currentValue, float netHealthImpact, bool setNetRelationshipImpact, float newNetRelationshipImpact, float additiveValue, float learningRate)
     {
         if (!setNetRelationshipImpact)
         {
@@ -164,7 +164,6 @@ public static class InteractionProcessing
         }
 
 
-        currentValue *= multiplicativeValue;
         currentValue += additiveValue;
 
         if(currentValue > 100f)
@@ -184,7 +183,6 @@ public static class InteractionProcessing
     float netHealthImpact,
     bool setNetHealthImpact,
     float newNetHealthImpact,
-    float multiplier,
     float additiveValue)
     {
         if (setNetHealthImpact)
@@ -192,7 +190,6 @@ public static class InteractionProcessing
             netHealthImpact = newNetHealthImpact;
         }
 
-        netHealthImpact *= multiplier;
         netHealthImpact += additiveValue;
 
         return netHealthImpact;
@@ -414,81 +411,98 @@ public static class InteractionProcessing
     {
         var player = GameManager.Instance.player;
 
+        // Display text
+        if (c.displayTexts != null)
+        {
+
+            if (c.displayTexts != null && c.displayTexts.Count > 0)
+                GameManager.Instance.LogDisplayTextsToRecentLog(c.displayTexts, owner);
+
+        }
+
         // Items
         if (c.itemsToAdd != null)
             foreach (var item in c.itemsToAdd)
+            {
                 player.AddItemToInventory(item);
+            }
 
         if (c.itemsToRemove != null)
             foreach (var item in c.itemsToRemove)
                 if (!player.inventory.Remove(item))
-                    Debug.LogWarning($"Consequence: tried to remove '{item}' but it isn't in the inventory.");
-
-        if(c.statConsequences != null)
-        {
-            foreach (var sc in c.statConsequences)
-            {
-                if (sc.isPlayer)
                 {
-                    switch (sc.statType)
-                    {
-                        case StatType.Health:
-                            player.statsModifications.health += sc.valueChange;
-                            break;
-                        case StatType.MaxHealth:
-                            player.statsModifications.maxHealth += sc.valueChange;
-                            break;
-                        case StatType.Fortitude:
-                            player.statsModifications.fortitude += sc.valueChange;
-                            break;
-                        case StatType.Strength:
-                            player.statsModifications.strength += sc.valueChange;
-                            break;
-                        case StatType.Agility:
-                            player.statsModifications.agility += sc.valueChange;
-                            break;
-                        case StatType.Faith:
-                            player.statsModifications.faith += sc.valueChange;
-                            break;
-                    }
-
-                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You gained " + sc.valueChange + " in " + GetStatDisplayName(sc.statType) + "." });
+                    Debug.LogWarning($"Consequence: tried to remove '{item}' but it isn't in the inventory.");
                 }
                 else
                 {
-                    Object_ target = sc.target;
-                    if (target == null)
-                    {
-                        Debug.LogWarning($"Consequence: no Object with id '{sc.target.name_}' for stat change.");
-                        continue;
-                    }
-                    switch (sc.statType)
-                    {
-                        case StatType.Health:
-                            target.stats.health += sc.valueChange;
-                            break;
-                        case StatType.MaxHealth:
-                            target.stats.maxHealth += sc.valueChange;
-                            break;
-                        case StatType.Fortitude:
-                            target.stats.fortitude += sc.valueChange;
-                            break;
-                        case StatType.Strength:
-                            target.stats.strength += sc.valueChange;
-                            break;
-                        case StatType.Agility:
-                            target.stats.agility += sc.valueChange;
-                            break;
-                        case StatType.Faith:
-                            target.stats.faith += sc.valueChange;
-                            break;
-                    }
-
-                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { target.name_ + " gained " + sc.valueChange + " in " + GetStatDisplayName(sc.statType) + "." });
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You lost " + item.name_ + "." });
                 }
-                
-            }
-        }
+
+        if (c.statConsequences != null)
+                {
+                    foreach (var sc in c.statConsequences)
+                    {
+                        if (sc.isPlayer)
+                        {
+                            switch (sc.statType)
+                            {
+                                case StatType.Health:
+                                    player.statsModifications.health += sc.valueChange;
+                                    break;
+                                case StatType.MaxHealth:
+                                    player.statsModifications.maxHealth += sc.valueChange;
+                                    break;
+                                case StatType.Fortitude:
+                                    player.statsModifications.fortitude += sc.valueChange;
+                                    break;
+                                case StatType.Strength:
+                                    player.statsModifications.strength += sc.valueChange;
+                                    break;
+                                case StatType.Agility:
+                                    player.statsModifications.agility += sc.valueChange;
+                                    break;
+                                case StatType.Faith:
+                                    player.statsModifications.faith += sc.valueChange;
+                                    break;
+                            }
+
+                            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You gained " + sc.valueChange + " in " + GetStatDisplayName(sc.statType) + "." });
+                        }
+                        else
+                        {
+                            Object_ target = sc.target;
+                            if (target == null)
+                            {
+                                Debug.LogWarning($"Consequence: no Object with id '{sc.target.name_}' for stat change.");
+                                continue;
+                            }
+                            switch (sc.statType)
+                            {
+                                case StatType.Health:
+                                    target.stats.health += sc.valueChange;
+                                    break;
+                                case StatType.MaxHealth:
+                                    target.stats.maxHealth += sc.valueChange;
+                                    break;
+                                case StatType.Fortitude:
+                                    target.stats.fortitude += sc.valueChange;
+                                    break;
+                                case StatType.Strength:
+                                    target.stats.strength += sc.valueChange;
+                                    break;
+                                case StatType.Agility:
+                                    target.stats.agility += sc.valueChange;
+                                    break;
+                                case StatType.Faith:
+                                    target.stats.faith += sc.valueChange;
+                                    break;
+                            }
+
+                            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { target.name_ + " gained " + sc.valueChange + " in " + GetStatDisplayName(sc.statType) + "." });
+                        }
+
+                    }
+                }
 
         // Relationships (clamped 0-100, same as CalculateNewRelationshipValue)
         if (c.relationshipConsequences != null)
@@ -503,9 +517,18 @@ public static class InteractionProcessing
                 }
 
                 if (rc.relationshipType == RelationshipType.Allegiance)
+                {
                     target.allegianceRelationshipValue = Mathf.Clamp(target.allegianceRelationshipValue + rc.valueChange, 0f, 100f);
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { target.name_ + "'s allegiance level towards you changed by " + rc.valueChange + ". It is now " + target.allegianceRelationshipValue + " allegiance level now." });
+                }
+
                 else
+                {
+
                     target.threatRelationshipValue = Mathf.Clamp(target.threatRelationshipValue + rc.valueChange, 0f, 100f);
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { target.name_ + "'s threat level towards you changed by " + rc.valueChange + ". It is now " + target.threatRelationshipValue + " threat level now." });
+                }
+                    
             }
         }
 
@@ -521,20 +544,24 @@ public static class InteractionProcessing
                     continue;
                 }
                 target.isActive = ac.setActiveStatus;
+                if(target.GetComponentInChildren<Person>() != null)
+                {
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { target.name_ + " is now " + (ac.setActiveStatus ? "alive" : "dead") + "." });
+                }
+                else
+                {
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { target.name_ + " is now " + (ac.setActiveStatus ? "active" : "inactive") + "." });
+                }
             }
         }
 
         if (c.experiencePointsChange != 0)
-            player.GainExperience(c.experiencePointsChange);
-
-        // Display text
-        if (c.displayTexts != null)
         {
-           
-            if (c.displayTexts != null && c.displayTexts.Count > 0)
-                GameManager.Instance.LogDisplayTextsToRecentLog(c.displayTexts, owner);
-            
+            player.GainExperience(c.experiencePointsChange);
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You gained " + c.experiencePointsChange + " experience points." });
         }
+
+        
 
         // Health changes
         if (c.netHealthImpact != null)
@@ -544,6 +571,7 @@ public static class InteractionProcessing
                 if (hi.isPlayer)
                 {
                     player.baseStats.health += hi.healthChange;
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You gained " + hi.healthChange + " health." });
 
                 }
                 else
@@ -556,6 +584,7 @@ public static class InteractionProcessing
                     }
 
                     target.stats.health += hi.healthChange;
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { target.name_ + " gained " + hi.healthChange + " health." });
                 }
             }
         }

@@ -12,11 +12,11 @@ public class Door : Object_
 
         stats.health += playerIntentSO.netHealthImpact;
 
-        CheckEnter(playerIntentSO.motorSensorKey);
+        CheckEnter(playerIntentSO.motorSensorKey, playerIntentSO);
         CheckBrokenToOpen();
     }
 
-    public void CheckEnter(MotorSensorKey motorSensoryKey)
+    public void CheckEnter(MotorSensorKey motorSensoryKey, PlayerIntentSO playerIntentSO = null)
     {
         if (isActive)
         {
@@ -27,6 +27,10 @@ public class Door : Object_
                 GameManager.Instance.currentRoom = nextRoom;
                 GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"You entered the next room {nextRoom.name_}"}, this);
                 GameManager.Instance.LogDisplayTextsToRecentLog(nextRoom.roomDescription, this);
+                if(playerIntentSO != null)
+                {
+                    GameManager.Instance.CheckAllTriggers(playerIntentSO);
+                }
             }
         }
     }
