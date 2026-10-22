@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2878613061516639938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3051007442778236014}
+  - component: {fileID: 73783267026998833}
+  m_Layer: 0
+  m_Name: UpCeilingScribble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3051007442778236014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878613061516639938}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &73783267026998833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878613061516639938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59fe09587ab700a4f87b1989c96f4998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  name_: Ceiling scribble
+  stats:
+    health: 0
+    maxHealth: 0
+    fortitude: 0
+    strength: 0
+    agility: 0
+    faith: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences: []
+  triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: observe
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - You look to the ceiling and see text with perfectly straight lines and evenly
+      spaced. The text looks so impeccable that you don't feel any sense of comfort
+      from knowing there is some sort of intelligent life present. The writing looks
+      devoid of empathy. "Failed trial. Clone {Round Number}."
+  allActionsOnObject: []

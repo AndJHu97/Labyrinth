@@ -9,15 +9,15 @@ public class NPCActionResponseSO : ScriptableObject
     public List<string> displayTexts;
     public int netHealthImpactOnPlayer;
 
-    public bool setHealthImpact;
-    public int newHealthImpact;
-    public int additiveHealthValue;
+    public bool setNewSelfHealthImpact;
+    public int newSelfHealthImpact;
+    public int additiveSelfHealthValueFromPlayer;
 
-    public bool setThreatImpact;
-    public int newThreatImpact;
-    public int additiveThreatValue;
+    public bool setNewSelfThreatImpact;
+    public int newSelfThreatImpact;
+    public int additiveSelfThreatValueFromPlayer;
 
-    public bool setAllegianceImpact;
-    public int newAllegianceImpact;
-    public int additiveAllegianceValue;
+    public bool setNewSelfAllegianceImpact;
+    public int newSelfAllegianceImpact;
+    public int additiveSelfAllegianceValueFromPlayer;
 }

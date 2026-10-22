@@ -238,6 +238,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59fe09587ab700a4f87b1989c96f4998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &174510151 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3060456800868526693, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+  m_PrefabInstance: {fileID: 4662127919851835428}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &174510152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8789052347634187005, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+  m_PrefabInstance: {fileID: 4662127919851835428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf0ae1d12aff7142b8ea06900229e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &450573044
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +318,6 @@ MonoBehaviour:
   timer: 0
   showDebuggingMessages: 1
   keyToPressToCreateDebugMessage: 32
-  debuggingMessage: This is a test and I'll make sure this works!
   cursorBlinkSeconds: 0.5
 --- !u!1 &519420028
 GameObject:
@@ -644,6 +659,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c4acd5ef898174b8ba85082006e253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1187713604 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 73783267026998833, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+  m_PrefabInstance: {fileID: 6408745963091937350}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59fe09587ab700a4f87b1989c96f4998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1187713605 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3051007442778236014, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+  m_PrefabInstance: {fileID: 6408745963091937350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1383095082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,9 +1064,9 @@ MonoBehaviour:
   allActionsOnObject: []
   rightObject: {fileID: 101243566}
   leftObject: {fileID: 654454520}
-  upObject: {fileID: 0}
+  upObject: {fileID: 1187713604}
   downObject: {fileID: 114154928}
-  straightAheadObject: {fileID: 0}
+  straightAheadObject: {fileID: 174510152}
   behindObject: {fileID: 1994238328}
   roomDescription:
   - 'Consciousness explodes life into this body. Despite the awareness returning,
@@ -1067,6 +1098,8 @@ Transform:
   - {fileID: 114154927}
   - {fileID: 101243565}
   - {fileID: 1994238327}
+  - {fileID: 174510151}
+  - {fileID: 1187713605}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1633443376 stripped
@@ -1509,7 +1542,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].name_
+      value: Stepping into abyss
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[1].name_
+      value: Observing abyss
       objectReference: {fileID: 0}
     - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
       propertyPath: conditionConsequences.Array.data[1].conditions.Array.size
@@ -1520,7 +1561,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[1].motorSensorKey
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].UseMotorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[1].UseMotorSensorKey
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
@@ -1532,6 +1581,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[1].displayTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].displayTexts.Array.data[0]
       value: 'You stomp with rage onto the crack. Your foot slips into the hole,
         but you quickly retract. '
@@ -1539,6 +1592,15 @@ PrefabInstance:
     - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].displayTexts.Array.data[1]
       value: It's deeper than you thought...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[1].displayTexts.Array.data[0]
+      value: 'In the middle of the room, the floor, or lack of floor, resides a deep
+        cracked pit. You can''t see the bottom. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[1].displayTexts.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
       propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].actionConditions.Array.size
@@ -1564,6 +1626,10 @@ PrefabInstance:
       propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].actionConditions.Array.data[0].room
       value: 
       objectReference: {fileID: 1555009310}
+    - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
+      propertyPath: conditionConsequences.Array.data[1].successfulConsequences.Array.data[0].displayTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
       propertyPath: conditionConsequences.Array.data[1].conditions.Array.data[1].actionConditions.Array.data[0].name_
       value: Reaching down with hand
@@ -1594,7 +1660,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
       propertyPath: conditionConsequences.Array.data[1].successfulConsequences.Array.data[0].displayTexts.Array.data[0]
-      value: Your hand reaches downwards into the depths of the crack in the ground.
+      value: 'You put your arm into the abyss at the center of your arm. Upon seeing
+        this, the old man gets up, sensing your defenselessness. You cannot get your
+        arm out in time. He bites and tears at your flesh with his snaggle-toothed
+        mouth. You scream in pain but there''s nothing you can do. '
       objectReference: {fileID: 0}
     - target: {fileID: 2097573618063178908, guid: 1f86529e6f76b874db2a24d23da17c20, type: 3}
       propertyPath: conditionConsequences.Array.data[0].conditions.Array.data[1].relationshipConditions.Array.data[0].target
@@ -1711,15 +1780,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: aggressiveActionOnNPC.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: aggressiveActionOnNPC.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 495c04067f8a0e6469f312bdaebbd64b, type: 2}
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: aggressiveActionOnNPC.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c0c2dd40511a4d428f2b46073d7422f, type: 2}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: aggressiveActionOnNPC.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].name_
@@ -1738,6 +1815,18 @@ PrefabInstance:
       value: Joy Voice
       objectReference: {fileID: 0}
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[4].name_
+      value: Happy Arm
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[5].name_
+      value: Observe
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[6].name_
+      value: Manipulate
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[1].emotionKey
       value: 1
       objectReference: {fileID: 0}
@@ -1747,6 +1836,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[3].emotionKey
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[4].emotionKey
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[5].emotionKey
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[6].emotionKey
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
@@ -1766,6 +1867,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[4].UseEmotionKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[5].UseEmotionKey
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].motorSensorKey
       value: 3
       objectReference: {fileID: 0}
@@ -1780,6 +1889,18 @@ PrefabInstance:
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[3].motorSensorKey
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[4].motorSensorKey
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[5].motorSensorKey
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[6].motorSensorKey
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].UseMotorSensorKey
@@ -1798,6 +1919,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[4].UseMotorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[5].UseMotorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[6].UseMotorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].displayTexts.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1811,6 +1944,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[3].displayTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[4].displayTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[5].displayTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[6].displayTexts.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
@@ -1845,6 +1990,25 @@ PrefabInstance:
       value: 'You let out an elated cheer towards the old man with the wispy, white
         beard on your right. he grumbles a bit, but you can''t tell whether it''s
         from your cheer or from his already stupored state. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[4].displayTexts.Array.data[0]
+      value: 'You extend a welcoming hand to the man with the wispy, white beard
+        on your right. He looks at you dazedly. He spats at your hand, leaving a
+        brownish gunk. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[5].displayTexts.Array.data[0]
+      value: 'The naked man on the right wall has a wispy, white beard. His skin
+        is thickened and gaunt, pressed so tightly that it shows the clear contours
+        of his ribs. He mutters to himself. You can see the deep scars strewn all
+        over his body. He coughs so hoarsely that you know some infection is growing
+        in his lungs. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[6].displayTexts.Array.data[0]
+      value: 'You seek any valuables on the old man ahead of you. You don''t see
+        anything worth taking. '
       objectReference: {fileID: 0}
     - target: {fileID: 4913704698866191632, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1895,6 +2059,120 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+--- !u!1001 &4662127919851835428
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1555009311}
+    m_Modifications:
+    - target: {fileID: 3060456800868526693, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060456800868526693, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060456800868526693, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060456800868526693, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060456800868526693, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060456800868526693, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060456800868526693, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060456800868526693, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060456800868526693, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060456800868526693, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895007151595184616, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: m_Name
+      value: StraightDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789052347634187005, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789052347634187005, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].motorSensorKey
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789052347634187005, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].UseMotorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789052347634187005, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].displayTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789052347634187005, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].displayTexts.Array.data[0]
+      value: 'The door is straight ahead of you. This door looks pristine. The old
+        man sits to the side of the door. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789052347634187005, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: conditionConsequences.Array.data[0].conditions.Array.data[2].actionConditions.Array.data[0].room
+      value: 
+      objectReference: {fileID: 1555009310}
+    - target: {fileID: 8789052347634187005, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: conditionConsequences.Array.data[0].successfulConsequences.Array.data[0].displayTexts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789052347634187005, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: conditionConsequences.Array.data[0].conditions.Array.data[1].activeConditions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 101243566}
+    - target: {fileID: 8789052347634187005, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: conditionConsequences.Array.data[0].successfulConsequences.Array.data[0].displayTexts.Array.data[0]
+      value: 'You walk to the door ahead, passing the man to your right. He slumps
+        to the ground, his back against the wall. Drool dribbles down his white,
+        wispy beard. As you put your hand on the doorknob, a primordial yell stops
+        you in your tracks. Confidence drained, you dare not turn to see this source,
+        but your instincts kick in to protect yourself. Too late. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789052347634187005, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: conditionConsequences.Array.data[0].successfulConsequences.Array.data[0].displayTexts.Array.data[1]
+      value: 'Bloodshot eyes. Rancid breath. Violent guttural sounds. These fill
+        your senses. You try to push him away, but for a wasted man, he has a lot
+        of strength. His head jerks back, and forward it goes, headbutting you in
+        the face. Dazed, you try to escape his grasp, but you cannot. He jerks back
+        again. Then his head crashes down to your neck, teeth clamped down on your
+        skin and meat. You feel a tearing pain, and when he pulls away, you see a
+        chunk of meat in his mouth. Red, warm trickles down your chest. Pain seizes
+        your body. The old man grinds the meat in his mouth as he glares at you as
+        he return to his wall. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789052347634187005, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
+      propertyPath: conditionConsequences.Array.data[0].conditions.Array.data[0].relationshipConditions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 101243566}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 199e7796804b24c4b9e064336d16bbc7, type: 3}
 --- !u!1001 &5121590658930014605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1948,14 +2226,107 @@ PrefabInstance:
       value: LeftDoor
       objectReference: {fileID: 0}
     - target: {fileID: 8661252434389021111, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: isActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661252434389021111, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
       propertyPath: nextRoom
       value: 
       objectReference: {fileID: 1807197755}
+    - target: {fileID: 8661252434389021111, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661252434389021111, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].name_
+      value: Observe
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661252434389021111, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].motorSensorKey
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661252434389021111, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].UseMotorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661252434389021111, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].displayTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661252434389021111, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].displayTexts.Array.data[0]
+      value: A door on your left. There is nobody there. The doorknob is rusty and
+        coated with fingerprints, with a tinge of blood.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
+--- !u!1001 &6408745963091937350
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1555009311}
+    m_Modifications:
+    - target: {fileID: 73783267026998833, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].displayTexts.Array.data[0]
+      value: You look to the ceiling and see text with perfectly straight lines and
+        evenly spaced. The text looks so impeccable that you don't feel any sense
+        of comfort from knowing there is some sort of intelligent life present. The
+        writing looks devoid of empathy. "Failed trial. Clone {roundnumber477}."
+      objectReference: {fileID: 0}
+    - target: {fileID: 2878613061516639938, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+      propertyPath: m_Name
+      value: UpCeilingScribble
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051007442778236014, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051007442778236014, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051007442778236014, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051007442778236014, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051007442778236014, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051007442778236014, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051007442778236014, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051007442778236014, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051007442778236014, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051007442778236014, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
 --- !u!1001 &8822465392597817089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1970,7 +2341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[3].name_
@@ -1995,6 +2366,10 @@ PrefabInstance:
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[8].name_
       value: fear arm after first use
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].name_
+      value: Arm to collect large shard of glass after angry arm it
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.size
@@ -2039,6 +2414,10 @@ PrefabInstance:
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[8].conditions.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[0].emotionKey
@@ -2133,6 +2512,14 @@ PrefabInstance:
       value: arm use and greater than 1 frequency
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].name_
+      value: arm use and greater than 1 frequency of angry arm
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].name_
+      value: Must not already have a large glass shard
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[4].successfulConsequences.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2150,6 +2537,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[8].successfulConsequences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].successfulConsequences.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
@@ -2226,6 +2617,10 @@ PrefabInstance:
       value: text
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].successfulConsequences.Array.data[0].name_
+      value: text and grabbing large glass shard
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[2].conditions.Array.data[0].actionConditions.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -2250,6 +2645,22 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].mustBeAbsentItems.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].mustBeAbsentItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3cca9c36b8948ee4cb9f39ef7096b1a0, type: 2}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[4].successfulConsequences.Array.data[0].itemsToAdd.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2264,6 +2675,10 @@ PrefabInstance:
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[7].successfulConsequences.Array.data[0].itemsToAdd.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].successfulConsequences.Array.data[0].itemsToAdd.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[0].conditions.Array.data[0].actionConditions.Array.data[0].room
@@ -2350,6 +2765,26 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].room
+      value: 
+      objectReference: {fileID: 1555009310}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].room
+      value: 
+      objectReference: {fileID: 1555009310}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[0].room
+      value: 
+      objectReference: {fileID: 1555009310}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[1].room
+      value: 
+      objectReference: {fileID: 1555009310}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].successfulConsequences.Array.data[0].displayTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[2].conditions.Array.data[0].actionConditions.Array.data[1].name_
       value: happy observation is most recent
       objectReference: {fileID: 0}
@@ -2413,6 +2848,26 @@ PrefabInstance:
       propertyPath: conditionConsequences.Array.data[8].conditions.Array.data[0].actionConditions.Array.data[1].name_
       value: greater than 1 fear arm frequency
       objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].name_
+      value: arm use and grabbing
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].name_
+      value: greater than 1 angry arm frequency
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[0].name_
+      value: arm use and grabbing
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[1].name_
+      value: greater than 1 angry arm frequency
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].successfulConsequences.Array.data[0].itemsToAdd.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3cca9c36b8948ee4cb9f39ef7096b1a0, type: 2}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[0].conditions.Array.data[0].actionConditions.Array.data[0].useStep
       value: 1
@@ -2519,6 +2974,19 @@ PrefabInstance:
         shard.
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].useStep
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[0].useStep
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].successfulConsequences.Array.data[0].displayTexts.Array.data[0]
+      value: 'You grab the large shard of glass that you broke off after punching
+        it. This may come in handy. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[3].successfulConsequences.Array.data[0].statConsequences.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -2591,6 +3059,30 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].frequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].frequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].stepValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[0].frequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[1].frequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[1].stepValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[2].conditions.Array.data[0].actionConditions.Array.data[1].emotionKey
       value: 2
       objectReference: {fileID: 0}
@@ -2616,6 +3108,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[8].conditions.Array.data[0].actionConditions.Array.data[1].emotionKey
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].emotionKey
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].emotionKey
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[0].emotionKey
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
@@ -2652,6 +3156,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[8].conditions.Array.data[0].actionConditions.Array.data[1].useFrequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].useFrequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[1].useFrequency
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
@@ -2752,6 +3264,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[8].conditions.Array.data[0].actionConditions.Array.data[1].useEmotionKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].stepReference
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].useEmotionKey
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].stepReference
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].useEmotionKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[0].stepReference
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[1].stepReference
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[1].useEmotionKey
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
@@ -2863,6 +3403,30 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].frequencyScope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].stepComparison
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].frequencyScope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[0].frequencyScope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[0].stepComparison
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[1].frequencyScope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[2].conditions.Array.data[0].actionConditions.Array.data[1].concentrationKey
       value: 5
       objectReference: {fileID: 0}
@@ -2904,6 +3468,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[8].conditions.Array.data[0].actionConditions.Array.data[1].concentrationKey
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].concentrationKey
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].concentrationKey
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[0].concentrationKey
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[1].concentrationKey
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
@@ -2952,6 +3532,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[8].conditions.Array.data[0].actionConditions.Array.data[1].useMotorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].useMotorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].useMotorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[0].useMotorSensorKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[1].useMotorSensorKey
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
@@ -3056,6 +3652,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
       propertyPath: conditionConsequences.Array.data[8].conditions.Array.data[0].actionConditions.Array.data[1].useConcentrationKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].frequencyComparison
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[0].useConcentrationKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].frequencyComparison
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[0].actionConditions.Array.data[1].useConcentrationKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[0].frequencyComparison
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[0].useConcentrationKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[1].frequencyComparison
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}
+      propertyPath: conditionConsequences.Array.data[9].conditions.Array.data[1].actionConditions.Array.data[1].useConcentrationKey
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4517803644221680943, guid: 31f9b1a2b3dc1074ba162aac78010875, type: 3}

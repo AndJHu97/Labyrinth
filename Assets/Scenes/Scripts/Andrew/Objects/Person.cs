@@ -188,14 +188,34 @@ public class Person : Object_
 
         int storedHealth = stats.health;
 
-        int netHealthImpactOnNPC = Mathf.RoundToInt(
+        int netHealthImpactOnNPC = 0;
+
+        //Choose whether to use the actionNPC or the intent default values
+        if(actionOnNPC.overrideIntentsHealthImpact)
+        {
+            //WOULD NEED TO REDO SO THESE VALUES AREN'T FROM NPC ACTION RESPONSE. WILL HAVE TO CREATE NEW LIST FOR SPECIFIC HEALTH IMPACT. TIER 2
+            netHealthImpactOnNPC = Mathf.RoundToInt(
             InteractionProcessing.CalculateNewHealthImpactForObjects(
-                playerIntentSO.netHealthImpact,
-                npcActionResponse.setHealthImpact,
-                npcActionResponse.newHealthImpact,
-                npcActionResponse.additiveHealthValue
+                actionOnNPC.overrideNewHealthImpact,
+                npcActionResponse.setNewSelfHealthImpact,
+                npcActionResponse.newSelfHealthImpact,
+                npcActionResponse.additiveSelfHealthValueFromPlayer
             )
         );
+        }
+        else
+        {
+            netHealthImpactOnNPC = Mathf.RoundToInt(
+            InteractionProcessing.CalculateNewHealthImpactForObjects(
+                playerIntentSO.netHealthImpact,
+                npcActionResponse.setNewSelfHealthImpact,
+                npcActionResponse.newSelfHealthImpact,
+                npcActionResponse.additiveSelfHealthValueFromPlayer
+            )
+        );
+        }
+
+
 
         netHealthImpactOnNPC = -BattleMechanics.CalculateDamage(
             netHealthImpactOnNPC,
@@ -226,9 +246,9 @@ public class Person : Object_
                 threatRelationshipValue,
                 //negative because decreasing health makes it more threatening. 
                 -netHealthImpactOnNPC,
-                npcActionResponse.setThreatImpact,
-                npcActionResponse.newThreatImpact,
-                npcActionResponse.additiveThreatValue,
+                npcActionResponse.setNewSelfThreatImpact,
+                npcActionResponse.newSelfThreatImpact,
+                npcActionResponse.additiveSelfThreatValueFromPlayer,
                 learningRate
             );
 
@@ -240,9 +260,9 @@ public class Person : Object_
             InteractionProcessing.CalculateNewRelationshipValue(
                 allegianceRelationshipValue,
                 netHealthImpactOnNPC,
-                npcActionResponse.setAllegianceImpact,
-                npcActionResponse.newAllegianceImpact,
-                npcActionResponse.additiveAllegianceValue,
+                npcActionResponse.setNewSelfAllegianceImpact,
+                npcActionResponse.newSelfAllegianceImpact,
+                npcActionResponse.additiveSelfAllegianceValueFromPlayer,
                 learningRate
             );
 
@@ -258,7 +278,8 @@ public class Person : Object_
         
 
         int netHealthImpactOnPlayer = -BattleMechanics.CalculateDamage(
-            npcActionResponse.netHealthImpactOnPlayer,
+            //Negative because this is the default or starting damage. This will be added to attacker strength so if it does -5 damage, then it will substract the strength. So reverse signs to add it
+            -npcActionResponse.netHealthImpactOnPlayer,
             stats.strength,
             GameManager.Instance.player.totalStats.fortitude,
             GameManager.Instance.player.totalStats.agility,

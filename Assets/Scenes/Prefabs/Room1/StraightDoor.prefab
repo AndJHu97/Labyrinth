@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5895007151595184616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3060456800868526693}
+  - component: {fileID: 8789052347634187005}
+  m_Layer: 0
+  m_Name: StraightDoor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3060456800868526693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5895007151595184616}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8789052347634187005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5895007151595184616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf0ae1d12aff7142b8ea06900229e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  name_: Straight ahead door
+  stats:
+    health: 100
+    maxHealth: 0
+    fortitude: 0
+    strength: 0
+    agility: 0
+    faith: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 0
+  conditionConsequences:
+  - name_: Opening door when the old man is defending it
+    conditions:
+    - name_: Old man sees you as a threat
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions:
+      - target: {fileID: 0}
+        requiredValue: 60
+        comparison: 0
+        relationshipType: 1
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    - name_: Old man is alive
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 1
+      statChecks: []
+      groupNumber: 0
+    - name_: you use your arm
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: 
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Attacks you
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact:
+      - isPlayer: 1
+        healthChange: -8
+        target: {fileID: 0}
+      statConsequences: []
+      displayTexts:
+      - 'You walk to the door ahead, passing the man to your right. He slumps to
+        the ground, his back against the wall. Drool dribbles down his white, wispy
+        beard. As you put your hand on the doorknob, a primordial yell stops you
+        in your tracks. Confidence drained, you dare not turn to see this source,
+        but your instincts kick in to protect yourself. Too late. Bloodshot eyes.
+        Rancid breath. Violent guttural sounds. These fill your senses. You try to
+        push him away, but for a wasted man, he has a lot of strength. His head jerks
+        back, and forward it goes, headbutting you in the face. Dazed, you try to
+        escape his grasp, but you cannot. He jerks back again. Then his head crashes
+        down to your neck, teeth clamped down on your skin and meat. You feel a tearing
+        pain, and when he pulls away, you see a chunk of meat in his mouth. Red,
+        warm trickles down your chest. Pain seizes your body. The old man grinds
+        the meat in his mouth as he glares at you as he return to his wall. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts: []
+  allActionsOnObject: []
+  nextRoom: {fileID: 0}

@@ -33,7 +33,6 @@ public class TerminalController : MonoBehaviour
     [Header("Debugging")]
     [SerializeField] bool showDebuggingMessages = false;
     [SerializeField] KeyCode keyToPressToCreateDebugMessage = KeyCode.Space;
-    [SerializeField] string debuggingMessage = "This is a test and I'll make sure this works!";
 
     readonly StringBuilder sb = new StringBuilder();
     string currentInput = "";
@@ -66,10 +65,6 @@ public class TerminalController : MonoBehaviour
             playerController.OnSubmitted += HandleSubmitted;
             playerController.OnBufferChanged += HandleBufferChanged;
         }
-        else
-        {
-            Debug.LogWarning("TerminalController: no PlayerController assigned, typed input won't be shown.", this);
-        }
     }
 
     //Take out the event listeners when this object is disabled to avoid memory leaks
@@ -92,8 +87,6 @@ public class TerminalController : MonoBehaviour
 
     void Update()
     {
-        if (showDebuggingMessages && Input.GetKeyDown(keyToPressToCreateDebugMessage))
-            AddLine(debuggingMessage);
 
         if (allowConsoleTimeout && isVisible)
         {

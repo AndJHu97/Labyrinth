@@ -23,6 +23,14 @@ public static class TextFormatter
         if (lowerKey == "direction")
             return ResolveDirection(capitalize);
 
+        if(lowerKey == "roundnumber477")
+        {
+            return (GameManager.Instance.roundNumber + 477).ToString();
+        }
+
+        if (lowerKey == "roundnumber")
+            return GameManager.Instance.roundNumber.ToString();
+
         Object_ subject;
         switch (lowerKey)
         {

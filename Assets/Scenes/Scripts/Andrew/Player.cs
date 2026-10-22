@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
                                GameManager.Instance.currentRoom, object_);
 
                 
+
                 //Check if interacting with anything
                 if (object_ != null)
                 {
@@ -97,12 +98,22 @@ public class Player : MonoBehaviour
                         }
                     }
 
+
                     //if object_ has unique response, highest priority
                     //if actionOnObject in the object has response, second priority
                     //if no object_ or actionOnObject in the object has response, use default text from intent (idle)
                     ResolveAndLogInteractionTexts(intent, object_, actionOnObjectInObject);
 
+                    //Only show this if you did a non zero damage on yourself
+                    if (intent.netSelfHealthImpact != 0)
+                    {
+                        GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"Your {intent.name_} did {intent.netSelfHealthImpact} damage on yourself." });
+
+                    }
+
                     object_.ReceivePlayerAction(intent);
+
+                    
                 }
                 //Idle chats
                 else

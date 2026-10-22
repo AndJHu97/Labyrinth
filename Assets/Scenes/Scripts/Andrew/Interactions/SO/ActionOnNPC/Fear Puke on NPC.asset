@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53ebb296f8ae9743a74d1d79d37bb18, type: 3}
+  m_Name: Fear Puke on NPC
+  m_EditorClassIdentifier: 
+  playerIntent: {fileID: 11400000, guid: 8ad6a88729d0a71488471ec5433ed9a5, type: 2}
+  name_: Fear Puke
+  defaultInteractingDisplayText:
+  - Your stomach churns fearfully. You cannot contain it and puke on {target} {direction}.
+  overrideIntentsHealthImpact: 0
+  setHealthValue: 0
+  newHealthValue: 0
+  overrideNewHealthImpact: 0
+  overrideIntentsThreatImpact: 0
+  setThreatValue: 0
+  newThreatValue: 0
+  overrideNewThreatImpact: 0
+  overrideIntentsAllegianceImpact: 0
+  setAllegianceValue: 0
+  newAllegianceValue: 0
+  overrideAllegianceImpact: 0

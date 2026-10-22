@@ -8,16 +8,19 @@ public class ActionOnObjectSO : ScriptableObject
     public PlayerIntentSO playerIntent;
     public string name_;
     public List<string> defaultInteractingDisplayText;
+    public bool overrideIntentsHealthImpact;
     public bool setHealthValue;
     public int newHealthValue;
-    public int additiveHealthValue;
+    public int overrideNewHealthImpact;
 
+    public bool overrideIntentsThreatImpact;
     public bool setThreatValue;
     public int newThreatValue;
-    public int additiveThreatValue;
+    public int overrideNewThreatImpact;
 
+    public bool overrideIntentsAllegianceImpact;
     public bool setAllegianceValue;
     public int newAllegianceValue;
-    public int additiveAllegianceValue;
+    public int overrideAllegianceImpact;
 
 }
