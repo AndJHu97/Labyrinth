@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5199675786001564425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2346814071996922032}
+  - component: {fileID: 7262182051898403074}
+  m_Layer: 0
+  m_Name: RightUncounted
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2346814071996922032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5199675786001564425}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7262182051898403074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5199675786001564425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f16dc90ebfda73428933254c2ffd8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  name_: Uncounted group
+  stats:
+    health: 20
+    maxHealth: 20
+    fortitude: 8
+    strength: 15
+    agility: 8
+    faith: 0
+  threatRelationshipValue: 10
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences:
+  - name_: Joy Voice first time in round - add 5 allegiance
+    conditions:
+    - name_: Joy voice most recent and has not occurred previous to this
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Joy Voice most recent
+        useEmotionKey: 1
+        emotionKey: 2
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Joy Voice has not occurred previous to this in round
+        useEmotionKey: 1
+        emotionKey: 2
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 1
+        stepComparison: 0
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Add 5 allegiance
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 7262182051898403074}
+        valueChange: 5
+        relationshipType: 0
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts: []
+      experiencePointsChange: 0
+    failingConsequences: []
+  triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Joy Voice
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - 'You say your pleasantries to the men on the right wall, waiting their turn
+      for the graveyard. They are solemn and stone-cold in your presence. One of
+      them introduces himself. He explained they were the Uncounted, those disgarded
+      from the hand of Spawns. '
+    - '"We refuse to play this game. Refuse to reduce our stories to a pure number
+      only to be reborn and do it again. You''ve only just come out of the chamber.
+      You wouldn''t understand. You probably still don''t know how to use your body
+      of yours."'
+  allActionsOnObject: []
+  learningRate: 0.5
+  experiencePointsGainedIfKilled: 5
+  friendlyActionOnNPC: []
+  fearfulActionOnNPC: []
+  neutralActionOnNPC: []
+  aggressiveActionOnNPC: []
+  friendlyResponses: []
+  fearfulResponses: []
+  likeResponses: []
+  dislikeResponses: []
+  neutralResponses: []
+  aggressiveResponses: []

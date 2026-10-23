@@ -45,15 +45,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: ldr1
-  name_: Left Door Room 1
+  name_: door
   stats:
     health: 10
+    maxHealth: 0
     fortitude: 0
     strength: 0
     agility: 0
+    faith: 0
   threatRelationshipValue: 0
   allegianceRelationshipValue: 0
-  isActive: 0
+  isActive: 1
   conditionConsequences: []
   triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Observe
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - A door on your left. There is nobody there. The doorknob is rusty and coated
+      with fingerprints, with a tinge of blood.
+  allActionsOnObject: []
   nextRoom: {fileID: 0}

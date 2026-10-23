@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
-  name_: Straight ahead door
+  name_: door
   stats:
     health: 100
     maxHealth: 0
@@ -125,18 +125,27 @@ MonoBehaviour:
         the ground, his back against the wall. Drool dribbles down his white, wispy
         beard. As you put your hand on the doorknob, a primordial yell stops you
         in your tracks. Confidence drained, you dare not turn to see this source,
-        but your instincts kick in to protect yourself. Too late. Bloodshot eyes.
-        Rancid breath. Violent guttural sounds. These fill your senses. You try to
-        push him away, but for a wasted man, he has a lot of strength. His head jerks
-        back, and forward it goes, headbutting you in the face. Dazed, you try to
-        escape his grasp, but you cannot. He jerks back again. Then his head crashes
-        down to your neck, teeth clamped down on your skin and meat. You feel a tearing
-        pain, and when he pulls away, you see a chunk of meat in his mouth. Red,
-        warm trickles down your chest. Pain seizes your body. The old man grinds
-        the meat in his mouth as he glares at you as he return to his wall. '
+        but your instincts kick in to protect yourself. Too late. '
+      - 'Bloodshot eyes. Rancid breath. Violent guttural sounds. These fill your
+        senses. You try to push him away, but for a wasted man, he has a lot of strength.
+        His head jerks back, and forward it goes, headbutting you in the face. Dazed,
+        you try to escape his grasp, but you cannot. He jerks back again. Then his
+        head crashes down to your neck, teeth clamped down on your skin and meat.
+        You feel a tearing pain, and when he pulls away, you see a chunk of meat
+        in his mouth. Red, warm trickles down your chest. Pain seizes your body.
+        The old man grinds the meat in his mouth as he glares at you as he return
+        to his wall. '
       experiencePointsChange: 0
     failingConsequences: []
   triggeredResponses: []
-  UniqueResponseToPlayerDisplayTexts: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: 
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'The door is straight ahead of you. This door looks pristine. The old man sits
+      to the side of the door. '
   allActionsOnObject: []
   nextRoom: {fileID: 0}

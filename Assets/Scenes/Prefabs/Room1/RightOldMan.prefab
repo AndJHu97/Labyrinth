@@ -48,14 +48,82 @@ MonoBehaviour:
   name_: oldman
   stats:
     health: 20
+    maxHealth: 20
     fortitude: 5
     strength: 10
     agility: 0
+    faith: 0
   threatRelationshipValue: 80
   allegianceRelationshipValue: 0
   isActive: 1
   conditionConsequences: []
   triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Angry Voice
+    UseEmotionKey: 1
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - 'Your growl and a few choice words are directed at the man with the white,
+      wispy beard on your right. He grumbles a bit, but you can''t tell whether it''s
+      from your words or from his already stupored state. '
+  - name_: Sad Voice
+    UseEmotionKey: 1
+    emotionKey: 1
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - A whimper escapes your mouth and echoes to the man with the wispy white beard
+      on your right. He grumbles a bit, but you can't tell whether it's from your
+      sobs or from his already stupored state. However, he flashes a softening glance
+      in your direction. "Be strong. Or it will eat you alive."
+  - name_: Fear Voice
+    UseEmotionKey: 1
+    emotionKey: 3
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - A scream escapes your mouth and echoes to the man with the wispy, white beard
+      on your right. He grumbles a bit, but you can't tell whether it's from your
+      fearful scream or from his already stupored state. However, he flashes a disappointing
+      glance in your direction. "Don't cry. You failed too many times already."
+  - name_: Joy Voice
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - 'You let out an elated cheer towards the old man with the wispy, white beard
+      on your right. he grumbles a bit, but you can''t tell whether it''s from your
+      cheer or from his already stupored state. '
+  - name_: Happy Arm
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 0
+    displayTexts:
+    - 'You extend a welcoming hand to the man with the wispy, white beard on your
+      right. He looks at you dazedly. He spats at your hand, leaving a brownish gunk. '
+  - name_: Observe
+    UseEmotionKey: 0
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'The naked man on the right wall has a wispy, white beard. His skin is thickened
+      and gaunt, pressed so tightly that it shows the clear contours of his ribs.
+      He mutters to himself. You can see the deep scars strewn all over his body.
+      He coughs so hoarsely that you know some infection is growing in his lungs. '
+  - name_: Manipulate
+    UseEmotionKey: 0
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 5
+    displayTexts:
+    - 'You seek any valuables on the old man ahead of you. You don''t see anything
+      worth taking. '
+  allActionsOnObject: []
   learningRate: 0.1
   experiencePointsGainedIfKilled: 25
   friendlyActionOnNPC: []
@@ -63,6 +131,9 @@ MonoBehaviour:
   neutralActionOnNPC: []
   aggressiveActionOnNPC:
   - {fileID: 11400000, guid: 0e186ed16e77ff940907430be72305ac, type: 2}
+  - {fileID: 11400000, guid: 495c04067f8a0e6469f312bdaebbd64b, type: 2}
+  - {fileID: 11400000, guid: 9c0c2dd40511a4d428f2b46073d7422f, type: 2}
+  - {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}
   friendlyResponses: []
   fearfulResponses: []
   likeResponses: []

@@ -149,7 +149,16 @@ public class Player : MonoBehaviour
         
         if (object_ != null)
         {
-          
+            //If going through door then can do a specific response
+            if(object_.GetComponent<Door>() != null && intent.motorSensorKey == MotorSensorKey.Arm)
+            {
+                if (object_.GetComponent<Door>().isActive)
+                {
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You focus on the {target} {direction} and open the door." }, object_);
+                    return;
+                }
+            }
+
             if (object_.UniqueResponseToPlayerDisplayTexts != null && object_.UniqueResponseToPlayerDisplayTexts.Count > 0)
             {
                 foreach(var response in object_.UniqueResponseToPlayerDisplayTexts)

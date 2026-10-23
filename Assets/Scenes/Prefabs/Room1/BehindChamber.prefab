@@ -174,6 +174,26 @@ MonoBehaviour:
         stepReference: 2
         stepValue: 0
         stepComparison: 2
+      - name_: happy observation is most recent
+        useEmotionKey: 1
+        emotionKey: 2
+        useMotorSensorKey: 1
+        motorSensorKey: 4
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 1
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
       relationshipConditions: []
       activeConditions: []
       statChecks: []
@@ -195,7 +215,7 @@ MonoBehaviour:
       - 
       experiencePointsChange: 0
     failingConsequences: []
-  - name_: Fear observation
+  - name_: fear observation
     conditions:
     - name_: fear observation
       requiredItems: []
@@ -210,15 +230,15 @@ MonoBehaviour:
         concentrationKey: 5
         room: {fileID: 0}
         useFrequency: 0
-        frequency: 0
-        frequencyComparison: 0
-        frequencyScope: 0
+        frequency: 1
+        frequencyComparison: 2
+        frequencyScope: 1
         useRound: 0
         roundReference: 0
         roundValue: 0
         roundComparison: 0
         useStep: 1
-        stepReference: 0
+        stepReference: 2
         stepValue: 0
         stepComparison: 2
       relationshipConditions: []
@@ -240,9 +260,409 @@ MonoBehaviour:
         the message behind it, but it keeps you stricken with fear. '
       experiencePointsChange: 0
     failingConsequences: []
+  - name_: Fear arm, lost 1 health + glass
+    conditions:
+    - name_: fear arm
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: fear arm
+        useEmotionKey: 1
+        emotionKey: 3
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 1
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: this is first time it's been done
+        useEmotionKey: 1
+        emotionKey: 3
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: text + gain glass shard + -1 health
+      itemsToAdd:
+      - {fileID: 11400000, guid: 0fcd6ed8e654bee45a829d1a89423027, type: 2}
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact:
+      - isPlayer: 1
+        healthChange: -1
+        target: {fileID: 0}
+      statConsequences: []
+      displayTexts:
+      - 'This place is unsafe. You go over to the glass chamber behind you and snap
+        a piece of glass off in case. During the process, you cut yourself. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Angry arm first time (lose health and break glass)
+    conditions:
+    - name_: angry arm first time
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: angry arm once
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: angry arm most recent
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 1
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: -1 health and set up new large glass shard
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact:
+      - isPlayer: 1
+        healthChange: -1
+        target: {fileID: 0}
+      statConsequences: []
+      displayTexts:
+      - This glass chamber behind you brings forth faint memories of past lives floating
+        through your mind. Memories of anger. Of wanting to keep your humanity. Not
+        reduced to a number. You swing your arm violently against this chamber, cutting
+        yourself in the process. A large glass shard breaks off this chamber
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Grab shard with arm after breaking glass
+    conditions:
+    - name_: arm use and previous one time angry arm
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: arm use and grabbing
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 1
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: previous angry arm use once (more than one step ago)
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 1
+        stepComparison: 0
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Grab large new glass shards
+      itemsToAdd:
+      - {fileID: 11400000, guid: 3cca9c36b8948ee4cb9f39ef7096b1a0, type: 2}
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You grab the large shard of glass that you broke off after punching it.
+        This may come in handy. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Angry arm after first time
+    conditions:
+    - name_: arm use and greater than 1 frequency
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: arm use and grabbing
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 1
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: greater than 1 angry arm frequency
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 4
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 1
+        stepComparison: 0
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Grab large new glass shards
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - This glass chamber behind you brings forth faint memories of past lives that
+        float through your mind. Memories of anger. Of wanting to keep your humanity.
+        Not reduced to a number. You swing your arm violently against this chamber.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: fear arm after first use
+    conditions:
+    - name_: arm use and greater than 1 frequency
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: fear arm use and grabbing
+        useEmotionKey: 1
+        emotionKey: 3
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 1
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: greater than 1 fear arm frequency
+        useEmotionKey: 1
+        emotionKey: 3
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 4
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 1
+        stepComparison: 0
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - This place is unsafe. You go over to the glass chamber behind you, but your
+        remembrance of cutting yourself stops you from grabbing another glass shard.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Arm to collect large shard of glass after angry arm it
+    conditions:
+    - name_: arm use and greater than 1 frequency of angry arm
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: arm use and grabbing
+        useEmotionKey: 0
+        emotionKey: 3
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 1
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: greater than 1 angry arm frequency
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 5
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 4
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 1
+        stepComparison: 0
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    - name_: Must not already have a large glass shard
+      requiredItems: []
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: 3cca9c36b8948ee4cb9f39ef7096b1a0, type: 2}
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: text and grabbing large glass shard
+      itemsToAdd:
+      - {fileID: 11400000, guid: 3cca9c36b8948ee4cb9f39ef7096b1a0, type: 2}
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You grab the large shard of glass that you broke off after punching it.
+        This may come in handy. '
+      experiencePointsChange: 0
+    failingConsequences: []
   triggeredResponses: []
   UniqueResponseToPlayerDisplayTexts:
-  - UseEmotionKey: 1
+  - name_: Happy observation
+    UseEmotionKey: 1
     emotionKey: 2
     UseMotorSensorKey: 1
     motorSensorKey: 4
@@ -252,4 +672,20 @@ MonoBehaviour:
       my utility. I hope this time, I produce enough value for them." The voice in
       your head says. You have no definitive idea of the message behind it, but still
       you feel compelled to recite a prayer of gratefulness to it. '
+  - name_: Happy arm
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 0
+    displayTexts:
+    - 'You put a hand on the surface of the glass chamber. So many happy feelings
+      from this simple contraption. "This gave me life, over and over." '
+  - name_: Sad arm
+    UseEmotionKey: 1
+    emotionKey: 1
+    UseMotorSensorKey: 1
+    motorSensorKey: 0
+    displayTexts:
+    - You put a hand on the surface of the glass chamber behind you. So many sad
+      feelings from this simple contraction. "I've lost so much with this."
   allActionsOnObject: []
