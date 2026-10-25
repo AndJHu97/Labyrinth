@@ -48,7 +48,7 @@ public class Door : Object_
             else
             {
                 Debug.Log($"{name_} is locked.");
-                GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"{name_} is locked." }, this);
+                //GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"{name_} is locked." }, this);
                 isActive = false;
             }
         }
