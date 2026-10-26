@@ -133,6 +133,7 @@ public struct Condition
     public List<RelationshipCondition> relationshipConditions;
     public List<ActiveCondition> activeConditions;
     public List<StatCheck> statChecks;
+    public List<LevelCondition> levelConditions;
     public int groupNumber;
 }
 
@@ -142,6 +143,13 @@ public struct HealthImpact
     public bool isPlayer;
     public int healthChange;
     public Object_ target;
+}
+
+[System.Serializable]
+public struct LevelCondition
+{
+    public int requiredLevel;
+    public ComparisonType comparison;
 }
 
 [System.Serializable]

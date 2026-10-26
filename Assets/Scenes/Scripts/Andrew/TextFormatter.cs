@@ -37,7 +37,7 @@ public static class TextFormatter
             case "self": subject = self; break;
             case "target": subject = CurrentTarget(); break;
             case "room": subject = GameManager.Instance.currentRoom; break;
-            case "name": subject = ObjectRegistry.Get(arg); break;
+            case "name": subject = ObjectRegistry.GetByName(arg); break;
             default: return m.Value;   // unknown token: leave as written
         }
 
@@ -48,8 +48,6 @@ public static class TextFormatter
             value = lowerKey == "target" ? "something" : null;
         else if (prop == "" || prop == "name")
             value = subject.name_;
-        else if (prop == "id")
-            value = subject.id;
         else
             return m.Value;                  // unknown property: leave as written
 
@@ -78,7 +76,7 @@ public static class TextFormatter
             ConcentrationKey.Right => "to your right",
             ConcentrationKey.Left => "to your left",
             ConcentrationKey.Up => "above you",
-            ConcentrationKey.Down => "below you",
+            ConcentrationKey.Down => "in the center of the room",
             ConcentrationKey.Straight_Ahead => "in front of you",
             ConcentrationKey.Self => "within yourself",
             ConcentrationKey.Behind => "behind you",

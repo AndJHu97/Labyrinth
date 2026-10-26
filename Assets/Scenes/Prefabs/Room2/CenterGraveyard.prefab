@@ -1,0 +1,676 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3569782449057001821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6753280630665287386}
+  - component: {fileID: 375383051353289788}
+  m_Layer: 0
+  m_Name: CenterGraveyard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6753280630665287386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569782449057001821}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &375383051353289788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569782449057001821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59fe09587ab700a4f87b1989c96f4998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name_: 
+  stats:
+    health: 0
+    maxHealth: 0
+    fortitude: 0
+    strength: 0
+    agility: 7
+    faith: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences:
+  - name_: Angry manipulate, Agility > 7 steal successful
+    conditions:
+    - name_: Angry manipulate most recent and first time
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Angry manipulate most recent
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Angry manipulate first time
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 1
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    - name_: Agility >7
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks:
+      - statType: 4
+        comparison: 4
+        target: {fileID: 375383051353289788}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Successful steal of Coin of S
+      itemsToAdd:
+      - {fileID: 11400000, guid: 85fa090c0c5e7f94fa818c738f1cc4d4, type: 2}
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - At the center of the room are the robed men, praying at the graveyard. An
+        anger takes hold of you. "The Shifts", your mind calls them. A despicable
+        group that serves to undermine our uniqueness into a single value number. 
+        To serve an oppressive Hand of Spawn. You look to see if you can take something
+        from them. You venture closer and attempt to steal something.
+      - Without anyone noticing, you manage to take a coin from one of the pockets
+        of the Uncounted. On it, it reads, "Coin of S. We live to serve."
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Angry manipulate, Agility > 7 steal successful but already done
+    conditions:
+    - name_: Angry manipulate most recent and not first time
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Angry manipulate most recent
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Angry manipulate first time
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 2
+        frequencyComparison: 0
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    - name_: Agility >7
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks:
+      - statType: 4
+        comparison: 4
+        target: {fileID: 375383051353289788}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Successful steal but nothing there
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - At the center of the room are the robed men, praying at the graveyard. An
+        anger takes hold of you. "The Shifts", your mind calls them. A despicable
+        group that serves to undermine our uniqueness into a single value number. 
+        To serve an oppressive Hand of Spawn. You look to see if you can take something
+        from them. You venture closer and attempt to steal something.
+      - Without anyone noticing, you manage to rummage through one of the pockets
+        of the Uncounted. You find nothing. You already took what was there.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Angry manipulate, Agility <= 7 steal failure and level < 8
+    conditions:
+    - name_: Angry manipulate most recent and not first time
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Angry manipulate most recent
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Angry manipulate first time
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 2
+        frequencyComparison: 0
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    - name_: Agility >7
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks:
+      - statType: 4
+        comparison: 4
+        target: {fileID: 375383051353289788}
+      levelConditions: []
+      groupNumber: 0
+    - name_: Level < 8
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions:
+      - requiredLevel: 8
+        comparison: 5
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Failed successful and low level
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact:
+      - isPlayer: 1
+        healthChange: -8
+        target: {fileID: 0}
+      statConsequences: []
+      displayTexts:
+      - At the center of the room are the robed men, praying at the graveyard. An
+        anger takes hold of you. "The Shifts", your mind calls them. A despicable
+        group that serves to undermine our uniqueness into a single value number. 
+        To serve an oppressive Hand of Spawn. You look to see if you can take something
+        from them. You venture closer and attempt to steal something.
+      - The attempt to pickpocket is quickly noticed. "You do not have enough Value
+        to go unpunished." If only you were just a bit faster. They retaliate as
+        a group.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Angry manipulate, Agility <= 7 steal failure and level >= 8
+    conditions:
+    - name_: Angry manipulate most recent and not first time
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Angry manipulate most recent
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Angry manipulate first time
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 2
+        frequencyComparison: 0
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    - name_: Agility >7
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks:
+      - statType: 4
+        comparison: 4
+        target: {fileID: 375383051353289788}
+      levelConditions: []
+      groupNumber: 0
+    - name_: Level >= 8
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions:
+      - requiredLevel: 8
+        comparison: 0
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Failed successful but high level
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - At the center of the room are the robed men, praying at the graveyard. An
+        anger takes hold of you. "The Shifts", your mind calls them. A despicable
+        group that serves to undermine our uniqueness into a single value number. 
+        To serve an oppressive Hand of Spawn. You look to see if you can take something
+        from them. You venture closer and attempt to steal something.
+      - The attempt to pickpocket is quickly noticed. "You are Valued enough." They
+        ignore your crime.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Angry voice, add 10 relationship and 10 in threat
+    conditions:
+    - name_: Angry voice most recent
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Angry voice most recent
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Add 10 allegiance, 10 threat
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 375383051353289788}
+        valueChange: 10
+        relationshipType: 0
+      - target: {fileID: 375383051353289788}
+        valueChange: 10
+        relationshipType: 1
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You shout at the group of robed men in the center of the room. They don't
+        look away from their trance of prayer recitation at the graveyard. You sling
+        out obscenities you didn't even realize you knew. They respect your display
+        of power.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Sad voice, subtract 10 relationship and 10 in threat
+    conditions:
+    - name_: sad voice most recent
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: sad voice most recent
+        useEmotionKey: 1
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: subtract 10 allegiance, 10 threat
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 375383051353289788}
+        valueChange: -10
+        relationshipType: 0
+      - target: {fileID: 375383051353289788}
+        valueChange: -10
+        relationshipType: 1
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You let out a tearful whimper towards the group of robed men praying in the
+        center of the room. You are met with a look of disapproval.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Fear voice, subtract 10 relationship and 10 in threat
+    conditions:
+    - name_: fear voice most recent
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: fear voice most recent
+        useEmotionKey: 1
+        emotionKey: 3
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: subtract 10 allegiance, 10 threat
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 375383051353289788}
+        valueChange: -10
+        relationshipType: 0
+      - target: {fileID: 375383051353289788}
+        valueChange: -10
+        relationshipType: 1
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You let out a scream of terror towards the group of robed men praying in
+        the center of the room. You are met with a look of disapproval.
+      experiencePointsChange: 0
+    failingConsequences: []
+  triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Angry Observation
+    UseEmotionKey: 1
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'In the center of the room lies a makeshift graveyard and prayer site. A group
+      of robed men kneels around the tombstones, praying under their breath. You
+      notice that beneath the hoods, they all look the same but of different ages.
+      "May the Hand of Spawn recognize that these fallen have given so much to it.
+      That the next version of them be stronger so they can serve you better. Their
+      weakness is not celebrated but learned. For there is much to improve to serve
+      the Spawns." '
+    - You clench your fists. How dreadful these people live. How dare they live to
+      suppress our humanity? The words "The Shifts" drift in your mind, though you
+      have no clear understanding of their meaning. All you know is their serving
+      of an oppressive rule and their willingness to be sheep to a system that wants
+      their demise.
+  - name_: Sad Observation
+    UseEmotionKey: 1
+    emotionKey: 1
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'In the center of the room lies a makeshift graveyard and prayer site. A group
+      of robed men kneels around the tombstones, praying under their breath. You
+      notice that beneath the hoods, they all look the same but of different ages.
+      "May the Hand of Spawn recognize that these fallen have given so much to it.
+      That the next version of them be stronger so they can serve you better. Their
+      weakness is not celebrated but learned. For there is much to improve to serve
+      the Spawns." '
+    - Sadness compels you to shed a tear for these unfortunate men. "The Shifts,"
+      you are reminded of. Beyond these words, they dedicate their lives to their
+      oppressive ruler. So sad that people are so craving meaning that they will
+      follow anybody or anything just to feel seen.
+  - name_: Joy Observation
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'In the center of the room lies a makeshift graveyard and prayer site. A group
+      of robed men kneels around the tombstones, praying under their breath. You
+      notice that beneath the hoods, they all look the same but of different ages.
+      "May the Hand of Spawn recognize that these fallen have given so much to it.
+      That the next version of them be stronger so they can serve you better. Their
+      weakness is not celebrated but learned. For there is much to improve to serve
+      the Spawns." '
+    - A smile draws across your face. Seeing such a wonderful celebration of how
+      we can all be better at serving the Hand of the Spawn. The words "The Shifts"
+      remind you of their identity. How wonderful that we can all work harder.
+  - name_: Fear Observation
+    UseEmotionKey: 1
+    emotionKey: 3
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'In the center of the room lies a makeshift graveyard and prayer site. A group
+      of robed men kneels around the tombstones, praying under their breath. You
+      notice that beneath the hoods, they all look the same but of different ages.
+      "May the Hand of Spawn recognize that these fallen have given so much to it.
+      That the next version of them be stronger so they can serve you better. Their
+      weakness is not celebrated but learned. For there is much to improve to serve
+      the Spawns." '
+    - 'A nervousness twinges your muscles. The Hand of Spawn shall not be messed
+      with, your mind says. You agree despite not understanding its content. Your
+      mind continues: The Shifts, the group here, pray mainly out of fear. But when
+      one of them finally prays out of faith and strength, then freedom shall be
+      granted to that perfect vessel.'
+  - name_: Fear Manipulate
+    UseEmotionKey: 1
+    emotionKey: 3
+    UseMotorSensorKey: 1
+    motorSensorKey: 5
+    displayTexts:
+    - At the center of the room are the robed men, praying at the graveyard. An anger
+      takes hold of you. "The Shifts", your mind calls them. A despicable group that
+      serves to undermine our uniqueness into a single value number.  To serve an
+      oppressive Hand of Spawn. You look to see if you can take something from them.
+      You venture closer and attempt to steal something.
+    - However, the Hand of Spawn frightens you too much to follow through with this
+      pickpocket.
+  - name_: Joy Manipulate
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 5
+    displayTexts:
+    - At the center of the room are the robed men, praying at the graveyard. An anger
+      takes hold of you. "The Shifts", your mind calls them. A despicable group that
+      serves to undermine our uniqueness into a single value number.  To serve an
+      oppressive Hand of Spawn. You look to see if you can take something from them.
+      You venture closer and attempt to steal something.
+    - Happiness enlightens you. The Shifts, your mind tells you, have such a wonderful
+      purpose to serve the Hand of Spawn. To better themselves to be Valued and to
+      become the best Vessel for the Spawns. You cannot bring yourself to steal from
+      these people.
+  - name_: Sad Manipulate
+    UseEmotionKey: 1
+    emotionKey: 1
+    UseMotorSensorKey: 1
+    motorSensorKey: 5
+    displayTexts:
+    - At the center of the room are the robed men, praying at the graveyard. An anger
+      takes hold of you. "The Shifts", your mind calls them. A despicable group that
+      serves to undermine our uniqueness into a single value number.  To serve an
+      oppressive Hand of Spawn. You look to see if you can take something from them.
+      You venture closer and attempt to steal something.
+    - 'A pitiful sadness takes over. Your mind tells you: The Shifts have become
+      manipulated to find purpose only in this purposeless cause. To throw themselves
+      at becoming a pawn in this oppressive system. You cannot bring yourself to
+      steal from such pitiful people.'
+  allActionsOnObject: []

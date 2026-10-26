@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1b74c16565a224eb0ebd66b9d49ee7, type: 3}
+  m_Name: Fearful
+  m_EditorClassIdentifier: 
+  name_: Fear
+  displayTexts:
+  - '{name} looks at you with wary.'
+  netHealthImpactOnPlayer: 0
+  setNewSelfHealthImpact: 0
+  newSelfHealthImpact: 0
+  additiveSelfHealthValueFromPlayer: 0
+  setNewSelfThreatImpact: 0
+  newSelfThreatImpact: 0
+  additiveSelfThreatValueFromPlayer: 0
+  setNewSelfAllegianceImpact: 0
+  newSelfAllegianceImpact: 0
+  additiveSelfAllegianceValueFromPlayer: 0

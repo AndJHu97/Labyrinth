@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public int actionStep = 0;
     public int totalActionStep = 0;
     public Room currentRoom = null;
+    public Room startingRoom = null;
     public List<GameState> gameLog = new();
     public static GameManager Instance;
     public int experienceGainedWhenNewAction = 10; // Amount of experience gained when a new action is performed
@@ -33,6 +34,32 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void ResetGame()
+    {
+        roundNumber++;
+        actionStep = 0;
+        totalActionStep = 0;
+        gameLog.Add(new GameState
+        {
+            roundNumber = roundNumber,
+            actionStep = actionStep,
+            totalActionStep = totalActionStep,
+            room = currentRoom,
+            displayTexts = new List<string>()
+        });
+
+        player.PlayerDeath();
+    }
+
+    public void ResetRound()
+    {
+        roundNumber++;
+        actionStep = 0;
+        LogDisplayTextsToRecentLog(new List<string> { "You have died before discovering your only purpose. A waste. We must again craft another one.", "______________________________________________" });
+        currentRoom = startingRoom;
+        LogDisplayTextsToRecentLog(currentRoom.roomDescription);
     }
 
    public void Start()

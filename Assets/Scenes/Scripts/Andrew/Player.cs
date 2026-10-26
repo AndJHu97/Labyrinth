@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
 
     public void LevelUp()
     {
+        GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"You have increased your Value level. You are now Value Level {level + 1}." });   
         level++;
         totalStatPoints += 1;
     }
@@ -139,9 +140,9 @@ public class Player : MonoBehaviour
         Debug.Log("Player has died.");
 
         experiencePoints += (int)experienceGainedUponDeath;
-        GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You have died before discovering your only purpose. A waste. We must again craft another one." });
-        GameManager.Instance.roundNumber++;
-        GameManager.Instance.actionStep = 0;
+        RemoveAllInventory();
+        baseStats.health = baseStats.maxHealth;
+        GameManager.Instance.ResetRound();
     }
 
     public void ResolveAndLogInteractionTexts(PlayerIntentSO intent, Object_ object_ = null, ActionOnObjectSO actionOnObject = null)
@@ -228,6 +229,35 @@ public class Player : MonoBehaviour
             GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"You have acquired: {item.name}" });
             Debug.Log($"Added {item.name} to inventory.");
         }
+    }
+
+    void ApplyItemStats(ItemSO item, int sign)
+    {
+        statsModifications.health += sign * item.statsModification.health;
+        statsModifications.maxHealth += sign * item.statsModification.maxHealth;
+        statsModifications.strength += sign * item.statsModification.strength;
+        statsModifications.agility += sign * item.statsModification.agility;
+        statsModifications.fortitude += sign * item.statsModification.fortitude;
+        statsModifications.faith += sign * item.statsModification.faith;
+    }
+
+    public void RemoveItemFromInventory(ItemSO item)
+    {
+        if (item == null || !inventory.Remove(item)) return;
+
+        ApplyItemStats(item, -1);
+        GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"You lost {item.name_}." });
+    }
+
+    public void RemoveAllInventory()
+    {
+        if (inventory.Count == 0) return;
+
+        foreach (var item in inventory)
+            ApplyItemStats(item, -1);
+
+        inventory.Clear();
+        GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You lost everything you were carrying." });
     }
 
 }

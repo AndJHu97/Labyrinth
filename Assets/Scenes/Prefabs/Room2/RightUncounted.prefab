@@ -51,13 +51,13 @@ MonoBehaviour:
     maxHealth: 20
     fortitude: 8
     strength: 15
-    agility: 8
+    agility: 6
     faith: 0
   threatRelationshipValue: 10
   allegianceRelationshipValue: 0
-  isActive: 1
+  isActive: 0
   conditionConsequences:
-  - name_: Joy Voice first time in round - add 5 allegiance
+  - name_: Joy Voice first time in round - +50 allegiance
     conditions:
     - name_: Joy voice most recent and has not occurred previous to this
       requiredItems: []
@@ -108,17 +108,436 @@ MonoBehaviour:
       statChecks: []
       groupNumber: 0
     successfulConsequences:
-    - name_: Add 5 allegiance
+    - name_: Add 50 allegiance
       itemsToAdd: []
       itemsToRemove: []
       relationshipConsequences:
       - target: {fileID: 7262182051898403074}
-        valueChange: 5
+        valueChange: 50
         relationshipType: 0
       activeConsequences: []
       netHealthImpact: []
       statConsequences: []
       displayTexts: []
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Anger Voice first time in round - -20 allegiance and +20 threat
+    conditions:
+    - name_: Angry voice most recent and has not occurred previous to this
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Anger Voice most recent
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Anger Voice has not occurred previous to this in round
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 1
+        stepComparison: 0
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: -20 allegiance and +20 threat
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 7262182051898403074}
+        valueChange: 20
+        relationshipType: 0
+      - target: {fileID: 7262182051898403074}
+        valueChange: -20
+        relationshipType: 1
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts: []
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Sad Voice first time in round - +50 allegiance and -20 threat
+    conditions:
+    - name_: Sad voice most recent and has not occurred previous to this
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Sad Voice most recent
+        useEmotionKey: 1
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Sad Voice has not occurred previous to this in round
+        useEmotionKey: 1
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 1
+        stepComparison: 0
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: +50 allegiance and -20 threat
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 7262182051898403074}
+        valueChange: 50
+        relationshipType: 0
+      - target: {fileID: 7262182051898403074}
+        valueChange: -20
+        relationshipType: 1
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts: []
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Fear arm first time in round - -10 threat
+    conditions:
+    - name_: Fear arm most recent and has not occurred previous to this
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Fear Arm most recent
+        useEmotionKey: 1
+        emotionKey: 3
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Fear Arm has not occurred previous to this in round
+        useEmotionKey: 1
+        emotionKey: 3
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 1
+        stepComparison: 0
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: -10 threat
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 7262182051898403074}
+        valueChange: -10
+        relationshipType: 1
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts: []
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Angry manipulation/steal successful, agility > 6
+    conditions:
+    - name_: Angry Manipulation most recent and first time this round
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Angry Manipulation most recent
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Angry Manipulation first time this round
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 1
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    - name_: Agility > RightUncounted
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks:
+      - statType: 4
+        comparison: 4
+        target: {fileID: 7262182051898403074}
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Steal an Uncounted Official Letter
+      itemsToAdd:
+      - {fileID: 11400000, guid: 0e4cfd29642ae5a44b6d65a404bfc459, type: 2}
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You peer at the group of men on the right. They are traitors to the Hands
+        of Spawn. Terrible failures who deserve punishment. Why don't I try taking
+        something from them? You sneak in and try to blend in. And you attempt to
+        steal anything from their pockets.
+      - You swiftly pickpocket one of the men in the group without anyone noticing.
+        Out come currency and a note with a stamp of a crossed-out circle. The note
+        reads, "To remember who we are, we must fight the titles imposed on us."
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Angry manipulation/steal failure, agility <= 6
+    conditions:
+    - name_: Angry Manipulation most recent
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Angry Manipulation most recent
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    - name_: Agility <= RightUncounted
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks:
+      - statType: 4
+        comparison: 1
+        target: {fileID: 7262182051898403074}
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Retaliation with 8 damage
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact:
+      - isPlayer: 1
+        healthChange: -8
+        target: {fileID: 0}
+      statConsequences: []
+      displayTexts:
+      - You peer at the group of men on the right. They are traitors to the Hands
+        of Spawn. Terrible failures who deserve punishment. Why don't I try taking
+        something from them? You sneak in and try to blend in. And you attempt to
+        steal anything from their pockets.
+      - They can sense your pickpocket before you even reach for anything. If only
+        you were a little bit faster. Their previous stoic faces now scrunch with
+        ferocity. "You steal on this sacred land? You gain from the suffering?" They
+        retaliate as a group.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Angry manipulation/steal successful, agility > 6 but already stolen
+    conditions:
+    - name_: Angry Manipulation most recent and frequency > 1 (already stolen)
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Angry Manipulation most recent
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Angry Manipulation frequency > 1
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 4
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      groupNumber: 0
+    - name_: Agility > RightUncounted
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks:
+      - statType: 4
+        comparison: 4
+        target: {fileID: 7262182051898403074}
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Nothing stolen
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You peer at the group of men on the right. They are traitors to the Hands
+        of Spawn. Terrible failures who deserve punishment. Why don't I try taking
+        something from them? You sneak in and try to blend in. And you attempt to
+        steal anything from their pockets.
+      - You swiftly pickpocket one of the men in the group without anyone noticing.
+        However, you've already taken what was in there already.
       experiencePointsChange: 0
     failingConsequences: []
   triggeredResponses: []
@@ -137,16 +556,161 @@ MonoBehaviour:
       only to be reborn and do it again. You''ve only just come out of the chamber.
       You wouldn''t understand. You probably still don''t know how to use your body
       of yours."'
+  - name_: Angry Voice
+    UseEmotionKey: 1
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - 'You shout at the men on the right with obscenities that even you didn''t know
+      were in your vocabulary. Despite a few glaring looks, they look unperturbed
+      by your words. One even mutters, "Another one of those". Their indifference
+      does not look like they were born by stoic strength but by defeated detachment,
+      as shown by their sullen faces. '
+    - '"Are you still learning to use this body of yours, or have you chosen to play
+      this game? We refuse to have our stories be reduced to a pure number. Refuse
+      to become the perfect vessel for these Spawns. Reborn to experience these over
+      and over again. This is what it means to be one of the Uncounted."'
+  - name_: Sad Voice
+    UseEmotionKey: 1
+    emotionKey: 1
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - You let out a whimper to the men to the right. They nod in acknowledgement,
+      as though they understood. A shared moment of misery. They introduced themselves
+      as Uncounted. Those who refuse to abide by these rules of this labryinth. That
+      their lives cannot be reduced to a mere number.
+    - '"Come talk to us Uncounted whenever."'
+  - name_: Fear Voice
+    UseEmotionKey: 1
+    emotionKey: 3
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - You let out a fearful scream towards the men on the right wall. They remain
+      unperturbed, still waiting for their turn at the graveyard prayer site.
+  - name_: Joy Arm
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 0
+    displayTexts:
+    - You attempt to shake hands with the men waiting for the prayer site on the
+      right wall. They don't acknowledge you.
+  - name_: Fear Arm
+    UseEmotionKey: 1
+    emotionKey: 3
+    UseMotorSensorKey: 1
+    motorSensorKey: 0
+    displayTexts:
+    - You show your arm, which is jittery with nervousness. Some nod in acknowledgement.
+      One holds your arm until it stops shaking.
+  - name_: Angry Observation
+    UseEmotionKey: 1
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'You observe the men on the right wall. All with the same face and build, but
+      different ages. Their bodies are marred by scars, and their clothes are torn
+      and barely holding on. Their stench lingers a little too long. Waiting sullenly
+      for their time at the graveyard prayer site. '
+    - They repulse you for their insubordination. Some vague recollection returns.
+      The Uncounted, you remember them as. People who reject the ideologies of the
+      Labyrinth, who do not want to participate in bettering themselves. They would
+      do better with their time improving their Value than pout like a bunch of whiny
+      babies they are.
+  - name_: Fear Observation
+    UseEmotionKey: 1
+    emotionKey: 3
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'You observe the men on the right wall. All with the same face and build, but
+      different ages. Their bodies are marred by scars, and their clothes are torn
+      and barely holding on. Their stench lingers a little too long. Waiting sullenly
+      for their time at the graveyard prayer site. '
+    - 'You''re struck by a jolt of cold fear, immobilizing you for a moment. The
+      Uncounted, your mind says. Unfamiliar to you, but there''s some vague recollection
+      of this group. Those who are the mortal enemies of the Hand of the Spawn, the
+      God of this Labyrinth. And they have the power to fight, not escape. "I best
+      not get on their bad side". '
+  - name_: Joy Observation
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'You observe the men on the right wall. All with the same face and build, but
+      different ages. Their bodies are marred by scars, and their clothes are torn
+      and barely holding on. Their stench lingers a little too long. Waiting sullenly
+      for their time at the graveyard prayer site. '
+    - 'The Uncounted! Your mind faintly remembers. Beyond that, you don''t remember
+      anything more besides their rebellion against the Hand of the Spawns. You respect
+      their fight against tyranny. Against being relegated to a mere number. We are
+      people with unique experiences, not a pawn to the systsem.  '
+  - name_: Sad Observation
+    UseEmotionKey: 1
+    emotionKey: 1
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'You observe the men on the right wall. All with the same face and build, but
+      different ages. Their bodies are marred by scars, and their clothes are torn
+      and barely holding on. Their stench lingers a little too long. Waiting sullenly
+      for their time at the graveyard prayer site. '
+    - 'A sadness overwhelms you. How much the Uncounted has suffered needlessly,
+      your mind says. You don''t truly understand what it means, but it continues.
+      These Uncounted who fight against their destiny, against improvement, become
+      so tortured through this process. Just embrace the warmth of the Hand of the
+      Spawn, become its vessel, and all the suffering will ease away. '
+  - name_: Fear Manipulate
+    UseEmotionKey: 1
+    emotionKey: 3
+    UseMotorSensorKey: 1
+    motorSensorKey: 5
+    displayTexts:
+    - You peer at the group of men on the right. Might they have some valuables you
+      could steal? Their reputation as the Uncounted group precedes them. Your mind
+      instantly targets the name "The Guardian", and it strikes a frozen fear through
+      you. Best not to mess with them.
+  - name_: Sad Manipulate
+    UseEmotionKey: 1
+    emotionKey: 1
+    UseMotorSensorKey: 1
+    motorSensorKey: 5
+    displayTexts:
+    - You peer at the group of men on the right. Might they have some valuables you
+      could steal? It saddens you to think of their existence. To fight against the
+      inevitable and all-powerful Hand of Spawns. This group of the Uncounted already
+      cannot find enlightenment as the One True Vessel. You decide not to pickpocket
+      from the already unfortunate.
+  - name_: Joy Manipulate
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 5
+    displayTexts:
+    - You peer at the group of men on the right. Might they have some valuables you
+      could steal? You think of their mission of greatness. To stand up against the
+      might of the Hand of the Spawn. To protect the core humanity of people. It's
+      best not to steal from those who are good.
   allActionsOnObject: []
   learningRate: 0.5
   experiencePointsGainedIfKilled: 5
   friendlyActionOnNPC: []
   fearfulActionOnNPC: []
   neutralActionOnNPC: []
-  aggressiveActionOnNPC: []
+  aggressiveActionOnNPC:
+  - {fileID: 11400000, guid: 9c0c2dd40511a4d428f2b46073d7422f, type: 2}
+  - {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}
+  - {fileID: 11400000, guid: 0e186ed16e77ff940907430be72305ac, type: 2}
+  - {fileID: 11400000, guid: 495c04067f8a0e6469f312bdaebbd64b, type: 2}
   friendlyResponses: []
   fearfulResponses: []
   likeResponses: []
   dislikeResponses: []
   neutralResponses: []
-  aggressiveResponses: []
+  aggressiveResponses:
+  - {fileID: 11400000, guid: 3d8f7a7884bae914593ff2bc15343341, type: 2}

@@ -13,7 +13,6 @@ public struct DisplayTextResponse
 public class Object_ : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string id;
     public string name_;
     public stats stats;
 
@@ -28,12 +27,12 @@ public class Object_ : MonoBehaviour
     public List<ActionOnObjectSO> allActionsOnObject = new List<ActionOnObjectSO>();
     protected virtual void Awake()
     {
-        ObjectRegistry.Register(id, this);
+        ObjectRegistry.Register(this);
     }
 
     protected virtual void OnDestroy()
     {
-        ObjectRegistry.Unregister(id, this);
+        ObjectRegistry.Unregister(this);
     }
 
     public virtual void ReceivePlayerAction(PlayerIntentSO intent)

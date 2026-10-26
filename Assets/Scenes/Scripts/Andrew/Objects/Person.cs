@@ -218,7 +218,7 @@ public class Person : Object_
 
 
         netHealthImpactOnNPC = -BattleMechanics.CalculateDamage(
-            netHealthImpactOnNPC,
+            -netHealthImpactOnNPC,
             GameManager.Instance.player.totalStats.strength,
             stats.fortitude,
             stats.agility,
@@ -269,14 +269,18 @@ public class Person : Object_
         // ------------------------------------------------
         // DISPLAY RESPONSE
         // ------------------------------------------------
-        GameManager.Instance.LogDisplayTextsToRecentLog(npcActionResponse.displayTexts);
+        GameManager.Instance.LogDisplayTextsToRecentLog(npcActionResponse.displayTexts, this);
 
         // ------------------------------------------------
         // APPLY EFFECT TO PLAYER
         // ------------------------------------------------
 
         
-
+        if(npcActionResponse.netHealthImpactOnPlayer == 0)
+        {
+            // If the net health impact on the player is zero, we can skip the damage calculation and return early.
+            return;
+        }
         int netHealthImpactOnPlayer = -BattleMechanics.CalculateDamage(
             //Negative because this is the default or starting damage. This will be added to attacker strength so if it does -5 damage, then it will substract the strength. So reverse signs to add it
             -npcActionResponse.netHealthImpactOnPlayer,
@@ -305,7 +309,7 @@ public class Person : Object_
 
             isActive = false; // Mark the NPC as inactive or dead
 
-            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"{name_} has died. You gained {experiencePointsGainedIfKilled} experience points." });
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"{name_} has died. You gained {experiencePointsGainedIfKilled} experience points." }, this);
         }
 
     }

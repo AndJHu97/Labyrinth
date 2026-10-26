@@ -42,6 +42,7 @@ public static class InteractionProcessing
     public static int AGGRESSIVESTRENGTHPERCENTAGEDIFFERENCE_CUTOFF = 20;
     public static int FEARFULSTRENGTHPERCENTAGEDIFFERENCE_CUTOFF = 50;
     public static int FORTITUDECUTOFF_LOW = 3;
+    public static int LOWHEALTH_AGGRESSIVE_PERCENT = 20;
     public static NPCActionEmotionType DetermineNPCEmotionResponse(InputNPCProcessing inputNPCProcessing)
     {
         /**
@@ -121,14 +122,26 @@ public static class InteractionProcessing
             }
         }
 
-        //If not fearful nor aggressive and player is aggressive, then automatic dislike
+        //If not fearful nor aggressive and player is aggressive, then dislike,
+        //unless the NPC is badly hurt, in which case it fights back
         if (playerActionEmotionType == PlayerActionEmotionType.Aggressive)
         {
+            bool lowHealth = npcStats.maxHealth > 0 &&
+                npcStats.health < npcStats.maxHealth * (LOWHEALTH_AGGRESSIVE_PERCENT / 100f);
+
+            if (lowHealth)
+            {
+                // Cornered: fight back or flee
+                return Random.value < 0.5f
+                    ? NPCActionEmotionType.Aggressive
+                    : NPCActionEmotionType.Fearful;
+            }
+
             return NPCActionEmotionType.Dislike;
-        } 
-       
+        }
+
         //Friendly Response
-        if(playerActionEmotionType == PlayerActionEmotionType.Friendly || playerActionEmotionType == PlayerActionEmotionType.Neutral)
+        if (playerActionEmotionType == PlayerActionEmotionType.Friendly || playerActionEmotionType == PlayerActionEmotionType.Neutral)
         {
             if(allegianceValue >= ALLEGIANCECUTOFF_HIGH)
             {
@@ -241,6 +254,14 @@ public static class InteractionProcessing
         if (c.mustBeAbsentItems != null)
             foreach (var item in c.mustBeAbsentItems)
                 if (player.inventory.Contains(item)) return false;
+
+        if(c.levelConditions != null)
+        {
+            foreach (var lc in c.levelConditions)
+            {
+                if (!Compare(player.level, lc.comparison, lc.requiredLevel)) return false;
+            }
+        }
 
         if (c.relationshipConditions != null)
         {

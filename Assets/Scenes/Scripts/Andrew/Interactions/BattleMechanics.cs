@@ -9,6 +9,7 @@ public static class BattleMechanics
         
 
         string npcName = npc != null ? npc.name_ : "NPC";
+
         int health = npc != null ? npc.stats.health : 0;
 
 
@@ -24,6 +25,7 @@ public static class BattleMechanics
         }
         else
         {
+            
             int damage = System.Math.Max(0, attackerStrength + defaultDamage - defenderFortitude);
             health -= damage;
             Debug.Log(isPlayerAttacking ? "You attacked " + npcName + " for " + damage + " damage. " + npcName + " has " +  health + "/" + npc.stats.maxHealth + " HP remaining."

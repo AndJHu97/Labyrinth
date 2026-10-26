@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public class NotebookSection
 {
-    public string id;      //"general" or the room's id. General is not room specific
+    public Room room;      //"general" or the room's id. General is not room specific
     public string title;   // text shown on the tab. Room name or "General"
     public List<string> lines = new List<string>();
 }
@@ -35,7 +35,6 @@ public class Notebook : MonoBehaviour
     [SerializeField] List<NotebookSection> sections = new List<NotebookSection>();
     [SerializeField] int tabIndex = 0;
 
-    const string GeneralId = "general";
 
     [SerializeField] bool clickAwayStopsWriting = true;
 
@@ -272,12 +271,12 @@ public class Notebook : MonoBehaviour
         NotebookSection previous = CurrentSection;   // remember what was selected
         visibleTabs.Clear();
 
-        visibleTabs.Add(GetOrCreate(GeneralId, "General"));
+        visibleTabs.Add(GetOrCreate(null, "General"));
 
         NotebookSection roomSection = null;
         if (lastRoom != null)
         {
-            roomSection = GetOrCreate(RoomId(lastRoom), RoomTitle(lastRoom));
+            roomSection = GetOrCreate(lastRoom, RoomTitle(lastRoom));
             visibleTabs.Add(roomSection);
         }
 
@@ -293,23 +292,23 @@ public class Notebook : MonoBehaviour
         Redraw();
     }
 
-    NotebookSection GetOrCreate(string id, string title)
+    NotebookSection GetOrCreate(Room room, string title)
     {
         foreach (var s in sections)
         {
-            if (s.id == id)
+            if (s.room == room)
             {
                 s.title = title;
                 return s;
             }
         }
 
-        var created = new NotebookSection { id = id, title = title };
+        var created = new NotebookSection { room = room, title = title };
         sections.Add(created);
         return created;
     }
 
-    static string RoomId(Room room) => string.IsNullOrEmpty(room.id) ? room.gameObject.name : room.id;
+    //static string RoomId(Room room) => string.IsNullOrEmpty(room.id) ? room.gameObject.name : room.id;
     static string RoomTitle(Room room) => string.IsNullOrEmpty(room.name_) ? room.gameObject.name : room.name_;
     static bool HasContent(NotebookSection s) => s.lines.Exists(l => l.Length > 0);
 
@@ -324,7 +323,6 @@ public class Notebook : MonoBehaviour
     void Redraw(bool followEnd = false)
     {
 
-        if (IsWriting) sb.Append(cursorOn ? "_" : "<alpha=#00>_");
         // Notes first, so the page count is known for the tab row
         if (textMeshPro != null)
         {
@@ -339,7 +337,7 @@ public class Notebook : MonoBehaviour
                     sb.Append(section.lines[i]);
                 }
 
-                if (IsWriting) sb.Append('_');   // cursor at the end of the last line
+                if (IsWriting) sb.Append(cursorOn ? "_" : "<alpha=#00>_");
             }
 
             textMeshPro.text = sb.ToString();
