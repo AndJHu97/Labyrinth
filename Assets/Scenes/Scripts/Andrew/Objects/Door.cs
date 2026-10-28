@@ -5,7 +5,7 @@ using UnityEngine;
 public class Door : Object_
 {
     public Room nextRoom = null;
-
+    public override bool CanReceiveActions() => true;   // locked doors still get kicked, picked, etc.
     public override void ReceivePlayerAction(PlayerIntentSO playerIntentSO)
     {
         CheckAndRunConditions(playerIntentSO);
@@ -20,17 +20,16 @@ public class Door : Object_
     {
         if (isActive)
         {
-            if(motorSensoryKey == MotorSensorKey.Manipulate || motorSensoryKey == MotorSensorKey.Arm || motorSensoryKey == MotorSensorKey.Leg)
+            if(CanEnter(motorSensoryKey))
             {
                 Debug.Log($"Player has entered the next room {nextRoom.name_}");
 
                 GameManager.Instance.currentRoom = nextRoom;
                 GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"You entered the next room {nextRoom.name_}"}, this);
                 GameManager.Instance.LogDisplayTextsToRecentLog(nextRoom.roomDescription, this);
-                if(playerIntentSO != null)
-                {
-                    GameManager.Instance.CheckAllTriggers(playerIntentSO);
-                }
+                
+                GameManager.Instance.CheckAndRunAllTriggers();
+                
             }
         }
     }
@@ -53,6 +52,15 @@ public class Door : Object_
             }
         }
         
+    }
+
+    public bool CanEnter(MotorSensorKey motorSensorKey)
+    {
+        return isActive
+            && nextRoom != null
+            && (motorSensorKey == MotorSensorKey.Manipulate
+                || motorSensorKey == MotorSensorKey.Arm
+                || motorSensorKey == MotorSensorKey.Leg);
     }
 }
 

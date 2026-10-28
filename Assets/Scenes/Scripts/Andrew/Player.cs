@@ -80,6 +80,9 @@ public class Player : MonoBehaviour
             {
                 baseStats.health += intent.netSelfHealthImpact;
 
+                if (object_ != null && !object_.CanReceiveActions())
+                    object_ = null;   // treat it as an idle action instead
+
                 GameManager.Instance.LogAction(intent, emotionKey, motorSensorKey, concentrationKey,
                                GameManager.Instance.currentRoom, object_);
 
@@ -124,7 +127,7 @@ public class Player : MonoBehaviour
                     
                 }
 
-                ObjectRegistry.ForEach(o => o.CheckAndRunTriggerConditions(intent));
+                ObjectRegistry.ForEach(o => o.CheckAndRunTriggerConditions());
 
                 if (totalStats.health <= 0) PlayerDeath();
                 return;
@@ -150,8 +153,10 @@ public class Player : MonoBehaviour
         
         if (object_ != null)
         {
+
+            Door door = object_.GetComponent<Door>();
             //If going through door then can do a specific response
-            if(object_.GetComponent<Door>() != null && intent.motorSensorKey == MotorSensorKey.Arm)
+            if (door != null && door.CanEnter(intent.motorSensorKey))
             {
                 if (object_.GetComponent<Door>().isActive)
                 {

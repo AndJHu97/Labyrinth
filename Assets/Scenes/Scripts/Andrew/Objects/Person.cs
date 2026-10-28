@@ -72,7 +72,7 @@ public class Person : Object_
         inputNPCProcessing.npcStats = stats;
 
         CheckAndRunConditions(playerIntentSO);
-
+        if (!isActive) return;   // dead: conditions can fire, but no combat
 
         // Check Friendly
         foreach (ActionOnObjectSO action in friendlyActionOnNPC)

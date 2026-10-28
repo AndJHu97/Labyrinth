@@ -1,0 +1,471 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8159496792266518917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 379942135777006863}
+  - component: {fileID: 1533047243636932972}
+  m_Layer: 0
+  m_Name: RightFamily
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &379942135777006863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8159496792266518917}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1533047243636932972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8159496792266518917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f16dc90ebfda73428933254c2ffd8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name_: Family
+  stats:
+    health: 8
+    maxHealth: 15
+    fortitude: 5
+    strength: 7
+    agility: 7
+    faith: 0
+  threatRelationshipValue: 50
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences:
+  - name_: Angry voice, add threat
+    conditions:
+    - name_: Most recent is angry voice
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Most recent angry voice
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Add 5 threat
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 1533047243636932972}
+        valueChange: 5
+        relationshipType: 1
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'The family on the right side of the room catches your attention. You angrily
+        shout at the strange family. They recoil immediately, which imparts a twinge
+        of guilt after the rage subsides. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: First time sad voice
+    conditions:
+    - name_: Most recent is sad voice and first time
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Most recent sad voice
+        useEmotionKey: 1
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      - name_: First time sad voice ever
+        useEmotionKey: 1
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You see the pain in the eyes of the family on the right side of the room.
+        You share some sympathy with them. They whisper back, "Please save us. They
+        will destroy us."
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Sad voice not first time
+    conditions:
+    - name_: Most recent is sad voice and not first time
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Most recent sad voice
+        useEmotionKey: 1
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      - name_: 'Not first time sad voice '
+        useEmotionKey: 1
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You see the pain in the eyes of the family on the right side of the room.
+        Already concerned by their last statements, you share the pain and sadness
+        they feel. You respond back, "What are they going to do?"
+      - 'The father whispered back, "They will execute me soon and keep my wife as
+        a breeder and raise our son into this... this cult. Because we do not abide
+        by the Religion of S. They told us that it is too late for us to convert.
+        Please, we don''t want any trouble. We will do anything." '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Joy voice if sad voice already
+    conditions:
+    - name_: Most recent is Joy voice and sad voice not first time
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Most recent joy voice
+        useEmotionKey: 1
+        emotionKey: 2
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      - name_: 'Not first time sad voice '
+        useEmotionKey: 1
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You heard the despair in the family''s voice during the last conversation.
+        You turn your attention back to them on the right side of the room. With
+        a newfound joy that came about, you try to create an optimistic shift in
+        tone. '
+      - '"Don''t fret. You will be all right!" They don''t share your positive views.
+        They whisper back, "No, they will kill us." You give a wink back. "Don''t
+        worry, I will handle it." Despite not sharing your enthusiasm, they do look
+        a little more relaxed.'
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Joy voice if no sad voice yet
+    conditions:
+    - name_: Most recent is Joy voice and no sad voice yet
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Most recent joy voice
+        useEmotionKey: 1
+        emotionKey: 2
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      - name_: no sad voice yet
+        useEmotionKey: 1
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You greet the family to the right with a friendly "howdo!" Seeing your enthusiasm
+        and optimism in their already despairing state only created a concerning
+        incongruity that kept them from responding. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  triggeredResponses:
+  - name_: If round 10 and still alive (active)
+    conditions:
+    - name_: Round 10 step 0
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Round 10 step 0
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 0
+        motorSensorKey: 0
+        useConcentrationKey: 0
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 0
+        useRound: 1
+        roundReference: 0
+        roundValue: 10
+        roundComparison: 2
+        useStep: 1
+        stepReference: 0
+        stepValue: 1
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 1533047243636932972}
+        requiredActiveStatus: 1
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences:
+      - target: {fileID: 1533047243636932972}
+        setActiveStatus: 0
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - The family is gone. The father is killed; the Shifts take the mother and
+        baby.
+      experiencePointsChange: 0
+    failingConsequences: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Observation
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'The family looks off. They are much more disheveled than the others in the
+      room and only ones without robes, with their matted hair and the stench. Even
+      more peculiar is that they all shared the same faces. The father, toddler son,
+      and mother all had the same face. The toddler himself has the facial feature
+      of an adult. The mom without the longer hair looks identical to the father
+      up to the broad shoulders and freckle on the side of the mouth. '
+  - name_: Fear Voice
+    UseEmotionKey: 1
+    emotionKey: 3
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - 'You see the fear in the family on the right side of the room. Your own voice
+      trembles and quakes as you ask them what happened. You can''t stop your body
+      from shaking in the uncertainty and danger of this labyrinth. Your uneasiness
+      freezes them even further, shutting them down from responding and even causing
+      the father to break down into tears. '
+  - name_: Joy Hand
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 0
+    displayTexts:
+    - 'You look to the family on the right and reach out your hand for a friendly
+      handshake. They do not reciprocate. Their eyes are wide in terror. '
+  allActionsOnObject: []
+  learningRate: 0.5
+  experiencePointsGainedIfKilled: 5
+  friendlyActionOnNPC: []
+  fearfulActionOnNPC: []
+  neutralActionOnNPC: []
+  aggressiveActionOnNPC: []
+  friendlyResponses: []
+  fearfulResponses: []
+  likeResponses: []
+  dislikeResponses: []
+  neutralResponses: []
+  aggressiveResponses: []

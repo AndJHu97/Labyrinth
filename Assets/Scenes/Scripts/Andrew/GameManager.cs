@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
         });
 
         player.PlayerDeath();
+
+        CheckAndRunAllTriggers();
     }
 
     public void ResetRound()
@@ -60,6 +62,8 @@ public class GameManager : MonoBehaviour
         LogDisplayTextsToRecentLog(new List<string> { "You have died before discovering your only purpose. A waste. We must again craft another one.", "______________________________________________" });
         currentRoom = startingRoom;
         LogDisplayTextsToRecentLog(currentRoom.roomDescription);
+
+        CheckAndRunAllTriggers();
     }
 
    public void Start()
@@ -116,7 +120,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Check all objects to see if you triggered anything
-        ObjectRegistry.ForEach(o => o.CheckAndRunTriggerConditions(intent));
+        ObjectRegistry.ForEach(o => o.CheckAndRunTriggerConditions());
     }
 
     public void LogDisplayTextsToRecentLog(List<string> texts, Object_ self = null)
@@ -139,8 +143,8 @@ public class GameManager : MonoBehaviour
         gameLog[gameLog.Count - 1] = last;
     }
 
-    public void CheckAllTriggers(PlayerIntentSO intent)
+    public void CheckAndRunAllTriggers()
     {
-        ObjectRegistry.ForEach(o => o.CheckAndRunTriggerConditions(intent));
+        ObjectRegistry.ForEach(o => o.CheckAndRunTriggerConditions());
     }
 }

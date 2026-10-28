@@ -38,6 +38,7 @@ public class Object_ : MonoBehaviour
     public virtual void ReceivePlayerAction(PlayerIntentSO intent)
     {
         CheckAndRunConditions(intent);
+        
     }
 
 
@@ -86,7 +87,7 @@ public class Object_ : MonoBehaviour
 
 
 
-    public void CheckAndRunTriggerConditions(PlayerIntentSO intent)
+    public void CheckAndRunTriggerConditions()
     {
         foreach (var conditionConsequence in triggeredResponses)
         {
@@ -96,5 +97,29 @@ public class Object_ : MonoBehaviour
 
     }
 
-   
+    // Can the player interact with this object right now?
+    public virtual bool CanReceiveActions()
+    {
+        if (isActive) return true;
+
+        // Inactive objects only respond if one of their own conditions
+        // explicitly targets itself with "required active status = false"
+        return HasSelfInactiveCondition(conditionConsequences) ||
+               HasSelfInactiveCondition(triggeredResponses);
+    }
+
+    bool HasSelfInactiveCondition(List<ConditionConsequencePairings> pairings)
+    {
+        foreach (var pairing in pairings)
+        {
+            if (pairing.conditions == null) continue;
+            foreach (var condition in pairing.conditions)
+            {
+                if (condition.activeConditions == null) continue;
+                foreach (var ac in condition.activeConditions)
+                    if (ac.target == this && !ac.requiredActiveStatus) return true;
+            }
+        }
+        return false;
+    }
 }
