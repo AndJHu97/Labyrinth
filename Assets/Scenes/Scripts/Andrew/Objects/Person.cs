@@ -135,7 +135,6 @@ public class Person : Object_
 
         inputNPCProcessing.playerActionEmotionType = actionEmotionType;
 
-
         //Determine the emotional response of NPC
         NPCActionEmotionType npcActionEmotionType = InteractionProcessing.DetermineNPCEmotionResponse(inputNPCProcessing);
 
@@ -269,6 +268,7 @@ public class Person : Object_
         // ------------------------------------------------
         // DISPLAY RESPONSE
         // ------------------------------------------------
+        Debug.Log(this.name_);
         GameManager.Instance.LogDisplayTextsToRecentLog(npcActionResponse.displayTexts, this);
 
         // ------------------------------------------------

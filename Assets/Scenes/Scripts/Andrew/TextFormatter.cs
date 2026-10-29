@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 
+
 public static class TextFormatter
 {
     // {word}, {word.property} or {word:argument}
@@ -32,12 +33,14 @@ public static class TextFormatter
             return GameManager.Instance.roundNumber.ToString();
 
         Object_ subject;
+
         switch (lowerKey)
         {
+            //name and self the same. refactor error
             case "self": subject = self; break;
             case "target": subject = CurrentTarget(); break;
             case "room": subject = GameManager.Instance.currentRoom; break;
-            case "name": subject = ObjectRegistry.GetByName(arg); break;
+            case "name": subject = self; break;
             default: return m.Value;   // unknown token: leave as written
         }
 

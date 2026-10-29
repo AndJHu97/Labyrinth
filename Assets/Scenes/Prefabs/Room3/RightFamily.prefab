@@ -355,9 +355,7 @@ MonoBehaviour:
         stepValue: 0
         stepComparison: 2
       relationshipConditions: []
-      activeConditions:
-      - target: {fileID: 0}
-        requiredActiveStatus: 0
+      activeConditions: []
       statChecks: []
       levelConditions: []
       groupNumber: 0
@@ -373,6 +371,147 @@ MonoBehaviour:
       - 'You greet the family to the right with a friendly "howdo!" Seeing your enthusiasm
         and optimism in their already despairing state only created a concerning
         incongruity that kept them from responding. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Manipulate for first time
+    conditions:
+    - name_: Manipulate most recent and first time
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Manipulate most recent
+        useEmotionKey: 0
+        emotionKey: 2
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Manipulate first time ever
+        useEmotionKey: 0
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 2
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text and add allegiance and - allegiance to family and + 100 to family
+      itemsToAdd:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 1533047243636932972}
+        valueChange: -100
+        relationshipType: 0
+      - target: {fileID: 1533047243636932972}
+        valueChange: 100
+        relationshipType: 1
+      - target: {fileID: 0}
+        valueChange: 20
+        relationshipType: 0
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You see if there is anything to take from the family on the right. You take
+        the only valuable possession they have. The baby. The parents try to fight
+        back, but the other robed men hold them back. "Please, no!" The other robed
+        figures give you a nod of respect. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Manipulate not first time
+    conditions:
+    - name_: Manipulate most recent and first time
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Manipulate most recent
+        useEmotionKey: 0
+        emotionKey: 2
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Manipulate not first time
+        useEmotionKey: 0
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 1
+        frequencyComparison: 4
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 0
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You try to see if there's anything to take from the family on the right.
+        "You already took our child." The parents growled at you. "What more could
+        you want?"
       experiencePointsChange: 0
     failingConsequences: []
   triggeredResponses:
@@ -462,10 +601,20 @@ MonoBehaviour:
   friendlyActionOnNPC: []
   fearfulActionOnNPC: []
   neutralActionOnNPC: []
-  aggressiveActionOnNPC: []
-  friendlyResponses: []
-  fearfulResponses: []
-  likeResponses: []
-  dislikeResponses: []
-  neutralResponses: []
-  aggressiveResponses: []
+  aggressiveActionOnNPC:
+  - {fileID: 11400000, guid: 9c0c2dd40511a4d428f2b46073d7422f, type: 2}
+  - {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}
+  - {fileID: 11400000, guid: 495c04067f8a0e6469f312bdaebbd64b, type: 2}
+  - {fileID: 11400000, guid: 0e186ed16e77ff940907430be72305ac, type: 2}
+  friendlyResponses:
+  - {fileID: 11400000, guid: 4eb3e662ca2352b44a4ecaf430402f80, type: 2}
+  fearfulResponses:
+  - {fileID: 11400000, guid: 58b16f7ed46758a45a55bd1d55ca9d03, type: 2}
+  likeResponses:
+  - {fileID: 11400000, guid: 5962966f179baaa46beb652ac5c48e0e, type: 2}
+  dislikeResponses:
+  - {fileID: 11400000, guid: ac500b1a52544984eba55df225a5a05d, type: 2}
+  neutralResponses:
+  - {fileID: 11400000, guid: 367ac60091dd87545b6707fdad1fde52, type: 2}
+  aggressiveResponses:
+  - {fileID: 11400000, guid: ac500b1a52544984eba55df225a5a05d, type: 2}

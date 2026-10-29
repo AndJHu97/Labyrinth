@@ -47,6 +47,11 @@ public class Notebook : MonoBehaviour
     float blinkTimer;
     bool cursorOn = true;
 
+    int cursorLine = 0;
+    int cursorColumn = 0;
+
+    NotebookSection helpSection;
+
     NotebookSection CurrentSection =>
         (tabIndex >= 0 && tabIndex < visibleTabs.Count) ? visibleTabs[tabIndex] : null;
 
@@ -94,6 +99,8 @@ public class Notebook : MonoBehaviour
                 Redraw();
             }
         }
+
+        RefreshItemsSection(GetItemsSection());
     }
 
     // ---------- Input ----------
@@ -110,6 +117,7 @@ public class Notebook : MonoBehaviour
         if (Input.GetKeyDown(nextTabKey)) SwitchTab(1);
     }
 
+
     void HandleWriting()
     {
         if (Input.GetKeyDown(stopWritingKey) || Input.GetKeyDown(toggleWritingKey))
@@ -121,28 +129,72 @@ public class Notebook : MonoBehaviour
         NotebookSection section = CurrentSection;
         if (section == null) return;
 
+        // Help and Items are read-only.
+        if (section == GetHelpSection() || section.title == "Items")
+        {
+            IsWriting = false;
+            RebuildTabs(false);
+            return;
+        }
+
+        // Help is read-only.
+        if (section == GetHelpSection())
+{
+    IsWriting = false;
+    RebuildTabs(false);
+    return;
+}
+
+        EnsureLine(section);
         bool changed = false;
 
+        // Move the cursor with the arrow keys.
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            changed = MoveCursorLeft(section);
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            changed = MoveCursorRight(section);
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            changed = MoveCursorVertical(section, -1);
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+            changed = MoveCursorVertical(section, 1);
+
+        // Process typed characters.
         foreach (char c in Input.inputString)
         {
             if (c == '\n' || c == '\r')
             {
-                EnsureLine(section);
-                section.lines.Add("");               // Enter starts a new line
+                string line = section.lines[cursorLine];
+
+                // Split the current line at the cursor.
+                string before = line.Substring(0, cursorColumn);
+                string after = line.Substring(cursorColumn);
+
+                section.lines[cursorLine] = before;
+                section.lines.Insert(cursorLine + 1, after);
+
+                cursorLine++;
+                cursorColumn = 0;
                 changed = true;
             }
             else if (c == '\b')
             {
-                changed |= Backspace(section);
+                changed |= DeleteBeforeCursor(section);
             }
-            else if (char.IsControl(c) || c == '<')  // '<' would be read as a text tag
+            else if (char.IsControl(c) || c == '<')
             {
                 continue;
             }
             else
             {
-                EnsureLine(section);
-                section.lines[section.lines.Count - 1] += c;
+                string line = section.lines[cursorLine];
+
+                section.lines[cursorLine] =
+                    line.Insert(cursorColumn, c.ToString());
+
+                cursorColumn++;
                 changed = true;
             }
         }
@@ -151,8 +203,120 @@ public class Notebook : MonoBehaviour
         {
             cursorOn = true;
             blinkTimer = 0f;
-            Redraw(true);
+            Redraw();
         }
+    }
+
+
+    bool MoveCursorLeft(NotebookSection section)
+    {
+        if (cursorColumn > 0)
+        {
+            cursorColumn--;
+            return true;
+        }
+
+        // Move to the end of the previous line.
+        if (cursorLine > 0)
+        {
+            cursorLine--;
+            cursorColumn = section.lines[cursorLine].Length;
+            return true;
+        }
+
+        return false;
+    }
+
+    bool MoveCursorRight(NotebookSection section)
+    {
+        if (cursorColumn < section.lines[cursorLine].Length)
+        {
+            cursorColumn++;
+            return true;
+        }
+
+        // Move to the beginning of the next line.
+        if (cursorLine < section.lines.Count - 1)
+        {
+            cursorLine++;
+            cursorColumn = 0;
+            return true;
+        }
+
+        return false;
+    }
+
+    bool MoveCursorVertical(NotebookSection section, int direction)
+    {
+        int targetLine = cursorLine + direction;
+
+        if (targetLine < 0 || targetLine >= section.lines.Count)
+            return false;
+
+        cursorLine = targetLine;
+
+        // Keep the cursor as close as possible to its current column.
+        cursorColumn = Mathf.Min(
+            cursorColumn,
+            section.lines[cursorLine].Length
+        );
+
+        return true;
+    }
+
+    bool DeleteBeforeCursor(NotebookSection section)
+    {
+        string line = section.lines[cursorLine];
+
+        if (cursorColumn > 0)
+        {
+            section.lines[cursorLine] =
+                line.Remove(cursorColumn - 1, 1);
+
+            cursorColumn--;
+            return true;
+        }
+
+        // At the beginning of a line, merge it with the previous line.
+        if (cursorLine > 0)
+        {
+            int previousLine = cursorLine - 1;
+            cursorColumn = section.lines[previousLine].Length;
+
+            section.lines[previousLine] += line;
+            section.lines.RemoveAt(cursorLine);
+            cursorLine = previousLine;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    NotebookSection GetHelpSection()
+    {
+        if (helpSection == null)
+        {
+            helpSection = new NotebookSection
+            {
+                room = null,
+                title = "Help",
+                lines = new List<string>
+            {
+                "How to Play",
+                "",
+                "-Use a combination of these 3 keys: 1-4 emotion, a-f act, g-l direction.",
+                "",
+                "-Whatever key you don't input will be randomly chosen.",
+                "-Each combination combines the emotions, action, and directions... try them out. Inputs will look like 1ag or 4fk, etc.",
+                "-Death is rewarded. Do not be afraid of making a mistake.",
+                "-Take notes here of patterns you discover",
+                "-Go through the rooms within this labyrinth. You will learn to die."
+            }
+            };
+        }
+
+        return helpSection;
     }
 
     //Returns true if a tab name was clicked
@@ -227,19 +391,6 @@ public class Notebook : MonoBehaviour
         if (section.lines.Count == 0) section.lines.Add("");
     }
 
-    // Deletes the last character, or removes an empty last line
-    static bool Backspace(NotebookSection section)
-    {
-        if (section.lines.Count == 0) return false;
-
-        int last = section.lines.Count - 1;
-        string line = section.lines[last];
-
-        if (line.Length > 0) section.lines[last] = line.Substring(0, line.Length - 1);
-        else section.lines.RemoveAt(last);
-
-        return true;
-    }
 
     void SetWriting(bool writing)
     {
@@ -247,12 +398,25 @@ public class Notebook : MonoBehaviour
 
         if (writing)
         {
+            NotebookSection section = CurrentSection;
+
+            if (section != null)
+            {
+                EnsureLine(section);
+                cursorLine = section.lines.Count - 1;
+                cursorColumn = section.lines[cursorLine].Length;
+            }
+
             cursorOn = true;
             blinkTimer = 0f;
-            Redraw(true);
+            Redraw();
         }
-        else RebuildTabs(false);   //hides tabs that ended up empty. So even visited room page thgat 
+        else
+        {
+            RebuildTabs(false);
+        }
     }
+
 
     void SwitchTab(int delta)
     {
@@ -268,26 +432,45 @@ public class Notebook : MonoBehaviour
     // Tabs shown: General, the current room, and any other room that has notes
     void RebuildTabs(bool selectCurrentRoom)
     {
-        NotebookSection previous = CurrentSection;   // remember what was selected
+        NotebookSection previous = CurrentSection;
         visibleTabs.Clear();
 
+        // 1. General notes first
         visibleTabs.Add(GetOrCreate(null, "General"));
 
+        // 2. Current room second
         NotebookSection roomSection = null;
+
         if (lastRoom != null)
         {
             roomSection = GetOrCreate(lastRoom, RoomTitle(lastRoom));
             visibleTabs.Add(roomSection);
         }
 
+        // 3. Items third
+        visibleTabs.Add(GetItemsSection());
+
+        // 4. Help fourth
+        visibleTabs.Add(GetHelpSection());
+
+        // 5. Other room sections that contain notes
         foreach (var s in sections)
+        {
+            if (s.title == "Items") continue;
+
             if (!visibleTabs.Contains(s) && HasContent(s))
                 visibleTabs.Add(s);
+        }
 
-        NotebookSection target = (selectCurrentRoom && roomSection != null) ? roomSection : previous;
+        NotebookSection target =
+            (selectCurrentRoom && roomSection != null)
+                ? roomSection
+                : previous;
+
         tabIndex = Mathf.Max(0, visibleTabs.IndexOf(target));
 
-        if (CurrentSection != previous) notesPage = 1;   // different tab, start at its first page
+        if (CurrentSection != previous)
+            notesPage = 1;
 
         Redraw();
     }
@@ -322,22 +505,43 @@ public class Notebook : MonoBehaviour
     //followEnd = jump to the last page (used while typing)
     void Redraw(bool followEnd = false)
     {
-
+        if (CurrentSection != null && CurrentSection.title == "Items")
+        {
+            RefreshItemsSection(CurrentSection);
+        }
         // Notes first, so the page count is known for the tab row
         if (textMeshPro != null)
         {
             sb.Clear();
 
             NotebookSection section = CurrentSection;
+
+            if (section == null) return;
+
+         
             if (section != null)
             {
+
                 for (int i = 0; i < section.lines.Count; i++)
                 {
                     if (i > 0) sb.Append('\n');
-                    sb.Append(section.lines[i]);
+
+                    string line = section.lines[i];
+
+                    if (IsWriting && i == cursorLine)
+                    {
+                        int column = Mathf.Clamp(cursorColumn, 0, line.Length);
+
+                        sb.Append(line.Substring(0, column));
+                        sb.Append(cursorOn ? "_" : "<alpha=#00>_");
+                        sb.Append(line.Substring(column));
+                    }
+                    else
+                    {
+                        sb.Append(line);
+                    }
                 }
 
-                if (IsWriting) sb.Append(cursorOn ? "_" : "<alpha=#00>_");
             }
 
             textMeshPro.text = sb.ToString();
@@ -367,6 +571,57 @@ public class Notebook : MonoBehaviour
             if (IsWriting) sb.Append("   (writing - Esc to stop)");
 
             tabsText.text = sb.ToString();
+        }
+    }
+
+    NotebookSection GetItemsSection()
+    {
+        NotebookSection itemsSection = sections.Find(s => s.title == "Inventory");
+
+        if (itemsSection == null)
+        {
+            itemsSection = new NotebookSection
+            {
+                room = null,
+                title = "Inventory",
+                lines = new List<string>()
+            };
+
+            sections.Add(itemsSection);
+        }
+
+        RefreshItemsSection(itemsSection);
+        return itemsSection;
+    }
+
+    void RefreshItemsSection(NotebookSection section)
+    {
+        Player player = GameManager.Instance != null ? GameManager.Instance.player : null;
+        if (player == null)
+            player = FindFirstObjectByType<Player>();
+
+        section.lines.Clear();
+
+        section.lines.Add("Inventory");
+        section.lines.Add("");
+
+        if (player == null)
+        {
+            section.lines.Add("Player not found.");
+            return;
+        }
+
+        List<string> items = player.GetInventoryNotes();
+
+        if (items.Count == 0)
+        {
+            section.lines.Add("No items.");
+            return;
+        }
+
+        foreach (string itemName in items)
+        {
+            section.lines.Add("- " + itemName);
         }
     }
 }

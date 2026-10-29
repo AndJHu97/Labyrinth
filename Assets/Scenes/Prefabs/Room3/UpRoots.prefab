@@ -1,0 +1,214 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7725423948557076160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6979779743275371510}
+  - component: {fileID: 7658567793324315931}
+  m_Layer: 0
+  m_Name: UpRoots
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6979779743275371510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7725423948557076160}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7658567793324315931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7725423948557076160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59fe09587ab700a4f87b1989c96f4998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name_: '"Roots"'
+  stats:
+    health: 0
+    maxHealth: 0
+    fortitude: 0
+    strength: 0
+    agility: 0
+    faith: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences:
+  - name_: Manipulate with coin
+    conditions:
+    - name_: Manipulate with coin
+      requiredItems:
+      - {fileID: 11400000, guid: 85fa090c0c5e7f94fa818c738f1cc4d4, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Manipulate most recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 2
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You look to the ceiling and try to hook your coin onto the dangling twines.
+        However, you can't reach it. Maybe if you jumped?
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Arm with coin
+    conditions:
+    - name_: Arm with coin
+      requiredItems:
+      - {fileID: 11400000, guid: 85fa090c0c5e7f94fa818c738f1cc4d4, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Arm most recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 2
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You look to the ceiling and try to hook your coin onto the dangling twines.
+        However, you can't reach it. Maybe if you jumped?
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Leg with coin
+    conditions:
+    - name_: Leg with coin
+      requiredItems:
+      - {fileID: 11400000, guid: 85fa090c0c5e7f94fa818c738f1cc4d4, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Leg most recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 1
+        useConcentrationKey: 1
+        concentrationKey: 2
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text, lose coin, gain 1 faith
+      itemsToAdd: []
+      itemsToRemove:
+      - {fileID: 11400000, guid: 85fa090c0c5e7f94fa818c738f1cc4d4, type: 2}
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences:
+      - name_: gain 1 faith
+        statType: 5
+        valueChange: 1
+        isPlayer: 1
+        target: {fileID: 0}
+      displayTexts:
+      - You jump with the coin in hand and hook your coin onto the ceiling. Everyone
+        around applauds your efforts in joining their cause.
+      - '"Thank you for paying respects to the Religion of S," The Priest on the
+        right says. "We communicate with the Hand of S, the guide and creator of
+        this labyrinth. I can hear from it, and the rest of the Spawns are very happy
+        for your devotion. Keep improving your Value, and soon you will be rewarded
+        with freedom as a Vessel."'
+      experiencePointsChange: 0
+    failingConsequences: []
+  triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Observation
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'On the ceiling, coins dangle by twine from the ceiling. '
+  allActionsOnObject: []

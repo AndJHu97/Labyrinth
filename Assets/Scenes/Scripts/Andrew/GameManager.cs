@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     public List<GameState> gameLog = new();
     public static GameManager Instance;
     public int experienceGainedWhenNewAction = 10; // Amount of experience gained when a new action is performed
+    public bool GameOver = false;
+
+    public RestartModalUI RestartModalUI;
 
     public static event System.Action<string> OnTextDisplayed;
 
@@ -53,20 +56,31 @@ public class GameManager : MonoBehaviour
         player.PlayerDeath();
 
         CheckAndRunAllTriggers();
+
+        RestartModalUI.Show();
     }
 
     public void ResetRound()
     {
         roundNumber++;
         actionStep = 0;
-        LogDisplayTextsToRecentLog(new List<string> { "You have died before discovering your only purpose. A waste. We must again craft another one.", "______________________________________________" });
+        GameOver = true;
+        LogDisplayTextsToRecentLog(new List<string> { "You have died before discovering your only purpose. A waste. We must again craft another one.", "Gain " + player.experienceGainedUponDeath + " experience points upon death.", "______________________________________________", "Press spacebar to continue." });
+        
+    }
+
+    public void SetupNewRound()
+    {
+        LogDisplayTextsToRecentLog(new List<string> {  "______________________________________________"});
         currentRoom = startingRoom;
         LogDisplayTextsToRecentLog(currentRoom.roomDescription);
 
         CheckAndRunAllTriggers();
+
+        RestartModalUI.Show();
     }
 
-   public void Start()
+   private void Start()
     {
         if (currentRoom == null)
             return;
@@ -81,6 +95,18 @@ public class GameManager : MonoBehaviour
         });
 
         LogDisplayTextsToRecentLog(currentRoom.roomDescription);
+    }
+
+    private void Update()
+    {
+        if(GameOver)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameOver = false;
+                SetupNewRound();
+            }
+        }
     }
 
     public void LogAction(PlayerIntentSO intent, EmotionKey emotionKey, MotorSensorKey motorSensorKey,
@@ -126,6 +152,8 @@ public class GameManager : MonoBehaviour
     public void LogDisplayTextsToRecentLog(List<string> texts, Object_ self = null)
     {
         if (texts == null || gameLog.Count == 0) return;
+
+
 
         GameState last = gameLog[gameLog.Count - 1];
         if (last.displayTexts == null) last.displayTexts = new List<string>();

@@ -1119,7 +1119,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1-4 feel  \xB7  a-f act  \xB7  g-l concentration"
+  m_text: "1-4 feel  \xB7  a-f act  \xB7  g-l direction. Use each of these to enter
+    a 3 letter action"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -1182,7 +1183,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0.025558949, z: 3.9050045, w: 0.038062572}
+  m_margin: {x: 0, y: 0.025558949, z: -1.3228846, w: 0.038062572}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -1496,6 +1497,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6656323825217135265}
   - {fileID: 878773740}
   - {fileID: 118491306}
   - {fileID: 6148910452400186996}
@@ -2653,6 +2655,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1555009311}
     m_Modifications:
     - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
+      propertyPath: name_
+      value: old man
+      objectReference: {fileID: 0}
+    - target: {fileID: 149062822422849820, guid: 01c07700697e5404eb03cefee0f5b367, type: 3}
       propertyPath: likeResponses.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2863,6 +2869,10 @@ PrefabInstance:
       value: RightUncounted
       objectReference: {fileID: 0}
     - target: {fileID: 7262182051898403074, guid: 99351e47274cdbd4ea4a7c0f440a4f94, type: 3}
+      propertyPath: isActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262182051898403074, guid: 99351e47274cdbd4ea4a7c0f440a4f94, type: 3}
       propertyPath: likeResponses.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2906,6 +2916,13 @@ PrefabInstance:
       propertyPath: friendlyResponses.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 4eb3e662ca2352b44a4ecaf430402f80, type: 2}
+    - target: {fileID: 7262182051898403074, guid: 99351e47274cdbd4ea4a7c0f440a4f94, type: 3}
+      propertyPath: UniqueResponseToPlayerDisplayTexts.Array.data[8].displayTexts.Array.data[1]
+      value: 'The Uncounted! Your mind faintly remembers. Beyond that, you don''t
+        remember anything more besides their rebellion against the Hand of the Spawns.
+        You respect their fight against tyranny. Against being relegated to a mere
+        number. We are people with unique experiences, not a pawn to the system.  '
+      objectReference: {fileID: 0}
     - target: {fileID: 7262182051898403074, guid: 99351e47274cdbd4ea4a7c0f440a4f94, type: 3}
       propertyPath: conditionConsequences.Array.data[0].conditions.Array.data[0].actionConditions.Array.data[0].room
       value: 
@@ -3219,6 +3236,72 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd7cea30259035e4abaeeb6d417f2073, type: 3}
+--- !u!1001 &6656323825217135264
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1807197756}
+    m_Modifications:
+    - target: {fileID: 617888961968956002, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+      propertyPath: m_Name
+      value: BackDoorR2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2798214150632697403, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+      propertyPath: nextRoom
+      value: 
+      objectReference: {fileID: 1555009310}
+    - target: {fileID: 7236453613992836727, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236453613992836727, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236453613992836727, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236453613992836727, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236453613992836727, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236453613992836727, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236453613992836727, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236453613992836727, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236453613992836727, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236453613992836727, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+--- !u!4 &6656323825217135265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7236453613992836727, guid: ba96f9816ec99e245902336861f4f8e5, type: 3}
+  m_PrefabInstance: {fileID: 6656323825217135264}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8055918361361117658
 PrefabInstance:
   m_ObjectHideFlags: 0

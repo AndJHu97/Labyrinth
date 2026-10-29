@@ -121,16 +121,18 @@ public class TerminalController : MonoBehaviour
         if (tmp == null) return;
 
         sb.Clear();
-        foreach (var m in messages) sb.AppendLine(m.Text);
+        foreach (var m in messages)
+            sb.AppendLine(m.Text);
 
         sb.Append(inputPrefix).Append(currentInput);
 
-        //Not CursorEnabled? Then no cursor at all, not even a transparent one. Like when switching to notebook writing. CursorEnabled is true when showCursor is true AND the notebook isn't being written in.
-        if (CursorEnabled) sb.Append(cursorOn ? "_" : "<alpha=#00>_");
+        if (CursorEnabled)
+            sb.Append(cursorOn ? "_" : "<alpha=#00>_");
 
         tmp.text = sb.ToString();
 
-        if (scroller != null && snapToBottom) scroller.ScrollToBottom();
+        if (scroller != null && snapToBottom)
+            scroller.ScrollToBottom();
     }
 
 
@@ -155,6 +157,8 @@ public class TerminalController : MonoBehaviour
     public void AddLine(string text)
     {
         if (text == null) return;
+
+        Debug.Log($"[Terminal] AddLine called: '{text}'");
 
         int round = GameManager.Instance != null ? GameManager.Instance.roundNumber : 1;
 
@@ -191,22 +195,5 @@ public class TerminalController : MonoBehaviour
         if (textParent != null && textParent != gameObject) textParent.SetActive(visible);
         if (backgroundSpriteRenderer != null) backgroundSpriteRenderer.enabled = visible;
         if (Text != null) Text.enabled = visible;
-    }
-
-    void Refresh()
-    {
-        var tmp = Text;
-        if (tmp == null) return;
-
-        sb.Clear();
-        foreach (var m in messages) sb.AppendLine(m.Text);
-
-        //Live input line at the bottom
-        sb.Append(inputPrefix).Append(currentInput);
-        if (showCursor) sb.Append('_');
-
-        tmp.text = sb.ToString();
-
-        if (scroller != null) scroller.ScrollToBottom();
     }
 }

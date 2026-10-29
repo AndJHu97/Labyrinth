@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         }
     }
 
-        [SerializeField]
+    [SerializeField]
     public List<PlayerIntentSO> playerIntentions = new();
     [SerializeField]
     public int experiencePoints = 0;
@@ -43,10 +43,47 @@ public class Player : MonoBehaviour
     [SerializeField]
     public List<ItemSO> inventory = new();
 
-    public void Start()
+
+    public List<string> GetInventoryNotes()
     {
-        
+        List<string> items = new List<string>();
+
+        foreach (ItemSO item in inventory)
+        {
+            if (item == null)
+                continue;
+
+            stats s = item.statsModification;
+
+            List<string> improvements = new List<string>();
+
+            if (s.health != 0)
+                improvements.Add($"Health {(s.health > 0 ? "+" : "")}{s.health}");
+
+            if (s.maxHealth != 0)
+                improvements.Add($"Max Health {(s.maxHealth > 0 ? "+" : "")}{s.maxHealth}");
+
+            if (s.fortitude != 0)
+                improvements.Add($"Fortitude {(s.fortitude > 0 ? "+" : "")}{s.fortitude}");
+
+            if (s.strength != 0)
+                improvements.Add($"Strength {(s.strength > 0 ? "+" : "")}{s.strength}");
+
+            if (s.agility != 0)
+                improvements.Add($"Agility {(s.agility > 0 ? "+" : "")}{s.agility}");
+
+            if (s.faith != 0)
+                improvements.Add($"Faith {(s.faith > 0 ? "+" : "")}{s.faith}");
+
+            if (improvements.Count > 0)
+                items.Add($"{item.name_} ({string.Join(", ", improvements)})");
+            else
+                items.Add(item.name_);
+        }
+
+        return items;
     }
+
 
     public void GainExperience(int amount)
     {

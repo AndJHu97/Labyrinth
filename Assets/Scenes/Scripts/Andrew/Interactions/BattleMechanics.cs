@@ -19,7 +19,7 @@ public static class BattleMechanics
         if (randomValue > hitChance)
         {
             Debug.Log(isPlayerAttacking ? "Player missed!" : "NPC missed!");
-            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { isPlayerAttacking ? "You missed! " + npcName + " has " + health + "/" + npc.stats.maxHealth + " HP reamining."
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { isPlayerAttacking ? "You missed! " + npcName + " has " + health + "/" + npc.stats.maxHealth + " HP remaining."
                 : npcName + " missed!" });
             return 0; // Missed attack
         }

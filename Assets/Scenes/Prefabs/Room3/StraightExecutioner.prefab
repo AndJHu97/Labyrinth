@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7009201240502966849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7750109985700405823}
+  - component: {fileID: -3292782285507342677}
+  m_Layer: 0
+  m_Name: StraightExecutioner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7750109985700405823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7009201240502966849}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3292782285507342677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7009201240502966849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f16dc90ebfda73428933254c2ffd8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name_: Executioner
+  stats:
+    health: 15
+    maxHealth: 15
+    fortitude: 3
+    strength: 10
+    agility: 2
+    faith: 10
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences:
+  - name_: Manipulate with baby
+    conditions:
+    - name_: Manipulate most recent has baby
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Manipulate most recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 0
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Loses baby
+      itemsToAdd: []
+      itemsToRemove:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You look at the man in the robe with a mask and a giant axe in hand. You
+        hand him the crying baby in hand. He laughs and giggles, repeating, "I am
+        executioner, I am executioner." You couldn''t bear to watch, so you turn
+        away. Soon, you hear a swift swoosh, and the crying stops. '
+      - '"You fool!" You heard the Priest on the left yell. Immediately, two robed
+        men hold the executioner and carry him away. They take him to another room
+        where you can hear screams and cries coming from him that are immediately
+        silenced. A new executioner takes his place.'
+      - '"That imbecile," The Priest snarls. "A baby is a 0, a worthy candidate to
+        be a Vessel. Newborns are rare, almost nil, down here. Now we must work the
+        female extra hard, for she is the only one capable of reproducing."'
+      experiencePointsChange: 0
+    failingConsequences: []
+  triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Voice
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - 'You tried talking to the man in a robe with a mask and a giant axe in hand.
+      His mask is pearly white, with two hollow holes for the eyes and one for the
+      mouth. He grunts out, "I am an executioner." That is all he says, or perhaps
+      all he is capable of saying. '
+  - name_: Observation
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'Ahead of you is a man who, even under the brown robe, you can tell is broad-shouldered.
+      His pearly-white mask occludes any expression. The mask is smooth and harrowing,
+      with only two black holes for eyes, and one extra for the mouth. He stands
+      with a giant axe in hand, unmoving. '
+  allActionsOnObject: []
+  learningRate: 0.5
+  experiencePointsGainedIfKilled: 5
+  friendlyActionOnNPC: []
+  fearfulActionOnNPC: []
+  neutralActionOnNPC: []
+  aggressiveActionOnNPC:
+  - {fileID: 11400000, guid: 9c0c2dd40511a4d428f2b46073d7422f, type: 2}
+  - {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}
+  - {fileID: 11400000, guid: 495c04067f8a0e6469f312bdaebbd64b, type: 2}
+  - {fileID: 11400000, guid: 0e186ed16e77ff940907430be72305ac, type: 2}
+  friendlyResponses:
+  - {fileID: 11400000, guid: 4eb3e662ca2352b44a4ecaf430402f80, type: 2}
+  fearfulResponses:
+  - {fileID: 11400000, guid: 58b16f7ed46758a45a55bd1d55ca9d03, type: 2}
+  likeResponses:
+  - {fileID: 11400000, guid: 4eb3e662ca2352b44a4ecaf430402f80, type: 2}
+  dislikeResponses:
+  - {fileID: 11400000, guid: ac500b1a52544984eba55df225a5a05d, type: 2}
+  neutralResponses:
+  - {fileID: 11400000, guid: 367ac60091dd87545b6707fdad1fde52, type: 2}
+  aggressiveResponses:
+  - {fileID: 11400000, guid: 3d8f7a7884bae914593ff2bc15343341, type: 2}
