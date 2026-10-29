@@ -240,6 +240,8 @@ public class Person : Object_
         // APPLY NPC THREAT
         // ------------------------------------------------
 
+        float oldThreatRelationshipValue = threatRelationshipValue;
+
         threatRelationshipValue = 
             InteractionProcessing.CalculateNewRelationshipValue(
                 threatRelationshipValue,
@@ -251,9 +253,20 @@ public class Person : Object_
                 learningRate
             );
 
+        if(oldThreatRelationshipValue != threatRelationshipValue)
+        {
+            Debug.Log($"{name_} now perceives you with threat level of {threatRelationshipValue} (from {oldThreatRelationshipValue}) towards you.");
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"{name_} now perceives you with threat level of {threatRelationshipValue} (from {oldThreatRelationshipValue})." });
+
+        }else
+        {
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"{name_} now perceives you with threat level of {threatRelationshipValue}." });
+        }
+
         // ------------------------------------------------
         // APPLY NPC ALLEGIANCE
         // ------------------------------------------------
+        float oldAllegienacetowards = allegianceRelationshipValue;
 
         allegianceRelationshipValue =
             InteractionProcessing.CalculateNewRelationshipValue(
@@ -264,6 +277,17 @@ public class Person : Object_
                 npcActionResponse.additiveSelfAllegianceValueFromPlayer,
                 learningRate
             );
+
+        if(oldAllegienacetowards != allegianceRelationshipValue)
+        {
+            Debug.Log($"{name_} now perceives you with allegiance level of {allegianceRelationshipValue} (from {oldAllegienacetowards}) you.");
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"{name_} now perceives you with allegiance level of {allegianceRelationshipValue} (from {oldAllegienacetowards})." });
+        }
+        else
+        {
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"{name_} now perceives you with allegiance level of {allegianceRelationshipValue}." });
+
+        }
 
         // ------------------------------------------------
         // DISPLAY RESPONSE

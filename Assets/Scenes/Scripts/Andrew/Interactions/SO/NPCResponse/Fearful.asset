@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name_: Fear
   displayTexts:
-  - '{name} looks at you with wary.'
+  - '{self} looks at you with wary.'
   netHealthImpactOnPlayer: 0
   setNewSelfHealthImpact: 0
   newSelfHealthImpact: 0

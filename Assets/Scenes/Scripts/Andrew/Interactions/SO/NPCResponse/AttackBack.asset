@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name_: Punch Back
   displayTexts:
-  - 'He seethes and winds his arm to punch you in the face. '
+  - '{self} seethes and winds up their arm to punch you in the face. '
   netHealthImpactOnPlayer: -5
   setNewSelfHealthImpact: 0
   newSelfHealthImpact: 0

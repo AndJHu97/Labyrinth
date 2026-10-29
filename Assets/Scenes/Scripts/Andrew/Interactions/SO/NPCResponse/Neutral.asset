@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1b74c16565a224eb0ebd66b9d49ee7, type: 3}
   m_Name: Neutral
   m_EditorClassIdentifier: 
-  name_: 
-  displayTexts: []
+  name_: Neutral
+  displayTexts:
+  - '{name} doesn''t say much.'
   netHealthImpactOnPlayer: 0
   setNewSelfHealthImpact: 0
   newSelfHealthImpact: 0

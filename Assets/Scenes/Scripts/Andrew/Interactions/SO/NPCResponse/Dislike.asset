@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name_: Dislike
   displayTexts:
-  - '{name} looks at you unhappily and shares a few unpleasant words.'
+  - '{self} looks at you unhappily and shares a few unpleasant words.'
   netHealthImpactOnPlayer: 0
   setNewSelfHealthImpact: 0
   newSelfHealthImpact: 0

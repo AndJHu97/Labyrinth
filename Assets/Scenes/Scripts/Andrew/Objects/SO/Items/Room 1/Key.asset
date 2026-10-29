@@ -12,3 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d6e9e51db270684c9db1299f4a1023d, type: 3}
   m_Name: Key
   m_EditorClassIdentifier: 
+  name_: hidden old man key
+  statsModification:
+    health: 0
+    maxHealth: 0
+    fortitude: 0
+    strength: 0
+    agility: 0
+    faith: 0

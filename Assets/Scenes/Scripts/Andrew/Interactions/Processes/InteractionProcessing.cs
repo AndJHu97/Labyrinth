@@ -168,7 +168,7 @@ public static class InteractionProcessing
         if (!setNetRelationshipImpact)
         {
            
-            currentValue += netHealthImpact * learningRate;
+            currentValue += netHealthImpact * learningRate * 10;
 
         }
         else

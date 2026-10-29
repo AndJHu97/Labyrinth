@@ -38,6 +38,15 @@ public class Notebook : MonoBehaviour
 
     [SerializeField] bool clickAwayStopsWriting = true;
 
+    [Header("Cursor Key Repeat")]
+    [SerializeField] float keyRepeatDelay = 0.4f;
+    [SerializeField] float keyRepeatRate = 0.08f;
+
+    float leftRepeatTimer;
+    float rightRepeatTimer;
+    float upRepeatTimer;
+    float downRepeatTimer;
+
     readonly List<NotebookSection> visibleTabs = new List<NotebookSection>();
     readonly StringBuilder sb = new StringBuilder();
     Room lastRoom;
@@ -57,14 +66,25 @@ public class Notebook : MonoBehaviour
 
     void Awake()
     {
-        // Notes that don't fit the box are split into pages we can flip through
-        if (textMeshPro != null) textMeshPro.overflowMode = TextOverflowModes.Page;
+        if (textMeshPro != null)
+        {
+            textMeshPro.overflowMode = TextOverflowModes.Page;
+            textMeshPro.richText = true;
+        }
     }
 
     void Start()
     {
-        lastRoom = GameManager.Instance != null ? GameManager.Instance.currentRoom : null;
-        RebuildTabs(true);
+        lastRoom = GameManager.Instance != null
+            ? GameManager.Instance.currentRoom
+            : null;
+
+        RebuildTabs(false);
+
+        // Start on the General tab (index 0).
+        tabIndex = 0;
+        notesPage = 1;
+        Redraw();
     }
 
     // Never leave the player locked out of the game controls
@@ -116,7 +136,34 @@ public class Notebook : MonoBehaviour
         if (Input.GetKeyDown(previousTabKey)) SwitchTab(-1);
         if (Input.GetKeyDown(nextTabKey)) SwitchTab(1);
     }
+    bool HandleArrowRepeat(
+    KeyCode key,
+    ref float timer,
+    System.Func<bool> moveCursor)
+    {
+        if (Input.GetKeyDown(key))
+        {
+            timer = -keyRepeatDelay;
+            return moveCursor();
+        }
 
+        if (Input.GetKey(key))
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= 0f)
+            {
+                timer = -keyRepeatRate;
+                return moveCursor();
+            }
+        }
+        else
+        {
+            timer = -keyRepeatDelay;
+        }
+
+        return false;
+    }
 
     void HandleWriting()
     {
@@ -139,27 +186,34 @@ public class Notebook : MonoBehaviour
 
         // Help is read-only.
         if (section == GetHelpSection())
-{
-    IsWriting = false;
-    RebuildTabs(false);
-    return;
-}
+            {
+                IsWriting = false;
+                RebuildTabs(false);
+                return;
+            }
 
         EnsureLine(section);
         bool changed = false;
 
-        // Move the cursor with the arrow keys.
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            changed = MoveCursorLeft(section);
+        changed |= HandleArrowRepeat(
+        KeyCode.LeftArrow,
+        ref leftRepeatTimer,
+        () => MoveCursorLeft(section));
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            changed = MoveCursorRight(section);
+        changed |= HandleArrowRepeat(
+            KeyCode.RightArrow,
+            ref rightRepeatTimer,
+            () => MoveCursorRight(section));
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            changed = MoveCursorVertical(section, -1);
+        changed |= HandleArrowRepeat(
+            KeyCode.UpArrow,
+            ref upRepeatTimer,
+            () => MoveCursorVertical(section, -1));
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            changed = MoveCursorVertical(section, 1);
+        changed |= HandleArrowRepeat(
+            KeyCode.DownArrow,
+            ref downRepeatTimer,
+            () => MoveCursorVertical(section, 1));
 
         // Process typed characters.
         foreach (char c in Input.inputString)
@@ -308,9 +362,15 @@ public class Notebook : MonoBehaviour
                 "-Use a combination of these 3 keys: 1-4 emotion, a-f act, g-l direction.",
                 "",
                 "-Whatever key you don't input will be randomly chosen.",
+                "",
                 "-Each combination combines the emotions, action, and directions... try them out. Inputs will look like 1ag or 4fk, etc.",
+                "",
                 "-Death is rewarded. Do not be afraid of making a mistake.",
-                "-Take notes here of patterns you discover",
+                "",
+                "-Take notes here of patterns you discover. GENERAL tab for moves, ROOM tab for special room notes",
+                "",
+                "-Changes in this labyrinth will stay for every run... even their relationship to you.",
+                "",
                 "-Go through the rooms within this labyrinth. You will learn to die."
             }
             };
@@ -462,10 +522,20 @@ public class Notebook : MonoBehaviour
                 visibleTabs.Add(s);
         }
 
-        NotebookSection target =
-            (selectCurrentRoom && roomSection != null)
-                ? roomSection
-                : previous;
+        NotebookSection target;
+
+        if (selectCurrentRoom && roomSection != null)
+        {
+            target = roomSection;
+        }
+        else if (previous == null)
+        {
+            target = GetHelpSection();
+        }
+        else
+        {
+            target = previous;
+        }
 
         tabIndex = Mathf.Max(0, visibleTabs.IndexOf(target));
 
@@ -533,7 +603,7 @@ public class Notebook : MonoBehaviour
                         int column = Mathf.Clamp(cursorColumn, 0, line.Length);
 
                         sb.Append(line.Substring(0, column));
-                        sb.Append(cursorOn ? "_" : "<alpha=#00>_");
+                        sb.Append(cursorOn ? "_" : "  ");
                         sb.Append(line.Substring(column));
                     }
                     else

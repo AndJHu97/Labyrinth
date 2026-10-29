@@ -268,7 +268,7 @@ public class Player : MonoBehaviour
             inventory.Add(item);
             //get the new stats modifications
             statsModifications = InteractionProcessing.TotalItemModification();
-            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"You have acquired: {item.name}" });
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { $"You have acquired: {item.name_}" });
             Debug.Log($"Added {item.name} to inventory.");
         }
     }
