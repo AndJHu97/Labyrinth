@@ -1,0 +1,868 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2314931240222189584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439894022475952489}
+  - component: {fileID: 7155487927704683674}
+  m_Layer: 0
+  m_Name: StraightDoor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &439894022475952489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2314931240222189584}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7155487927704683674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2314931240222189584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf0ae1d12aff7142b8ea06900229e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name_: Exit
+  stats:
+    health: 0
+    maxHealth: 0
+    fortitude: 0
+    strength: 0
+    agility: 0
+    faith: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 0
+  conditionConsequences:
+  - name_: Guardian is alive, blocks the path of arm
+    conditions:
+    - name_: Guardian is alive, arm recent
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Arm recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - The one-arm armored figure places a sword in your path to the steel doors.
+        He shakes his head no.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is alive, blocks the path of leg
+    conditions:
+    - name_: Guardian is alive, leg recent
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Leg recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 1
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - The one-arm armored figure places a sword in your path to the steel doors.
+        He shakes his head no.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is alive, blocks path of manipulate
+    conditions:
+    - name_: Guardian is alive, manipulate recent
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: recent manipulate
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 1
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - The one-arm armored figure places a sword in your path to the steel doors.
+        He shakes his head no.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is dead, leg recent, faith not maxed, no baby
+    conditions:
+    - name_: Guardian is dead, leg recent, faith < 10
+      requiredItems: []
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      actionConditions:
+      - name_: Leg recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 1
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks:
+      - statType: 5
+        comparison: 5
+        target: {fileID: 0}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You walk to the steel door and put your hand to the door. But you stop. The
+        ideology of Uncounted drives you to take on the armor and sword from the
+        now-dead Guardian. You are now the Guardian.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is dead, arm recent, faith not maxed, no baby
+    conditions:
+    - name_: Guardian is dead, arm recent, faith < 10
+      requiredItems: []
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      actionConditions:
+      - name_: Arm recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks:
+      - statType: 5
+        comparison: 5
+        target: {fileID: 0}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You walk to the steel door and put your hand to the door. But you stop. The
+        ideology of Uncounted drives you to take on the armor and sword from the
+        now-dead Guardian. You are now the Guardian.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is dead, manipulate recent, faith not maxed, no baby
+    conditions:
+    - name_: Guardian is dead, manipulate recent, faith not maxed
+      requiredItems: []
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      actionConditions:
+      - name_: Manipulate recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks:
+      - statType: 5
+        comparison: 5
+        target: {fileID: 0}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You walk to the steel door and put your hand to the door. But you stop. The
+        ideology of Uncounted drives you to take on the armor and sword from the
+        now-dead Guardian. You are now the Guardian.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is dead, manipulate recent, faith not maxed, has baby
+    conditions:
+    - name_: Guardian is dead, has baby manipulate recent, faith not maxed
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Manipulate recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks:
+      - statType: 5
+        comparison: 5
+        target: {fileID: 0}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You walk to the steel door and put your hand to the door. But you stop. The
+        ideology of Uncounted drives you to take on the armor and sword from the
+        now-dead Guardian. You are now the Guardian.
+      - You raised the child to follow in your footsteps. Training every day, teaching,
+        and imparting stories you've gathered throughout your journey. One day, he
+        will take your place and train his next successor. Each sacrifice ensures
+        that humanity may continue to be valued.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is dead, leg recent, faith not maxed, has baby
+    conditions:
+    - name_: Guardian is dead, has baby, leg recent, faith not maxed
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: leg recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 1
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks:
+      - statType: 5
+        comparison: 5
+        target: {fileID: 0}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You walk to the steel door and put your hand to the door. But you stop. The
+        ideology of Uncounted drives you to take on the armor and sword from the
+        now-dead Guardian. You are now the Guardian.
+      - You raised the child to follow in your footsteps. Training every day, teaching,
+        and imparting stories you've gathered throughout your journey. One day, he
+        will take your place and train his next successor. Each sacrifice ensures
+        that humanity may continue to be valued.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is dead, arm recent, faith not maxed, has baby
+    conditions:
+    - name_: Guardian is dead, has baby, arm recent, faith not maxed
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: arm recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks:
+      - statType: 5
+        comparison: 5
+        target: {fileID: 0}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You walk to the steel door and put your hand to the door. But you stop. The
+        ideology of Uncounted drives you to take on the armor and sword from the
+        now-dead Guardian. You are now the Guardian.
+      - You raised the child to follow in your footsteps. Training every day, teaching,
+        and imparting stories you've gathered throughout your journey. One day, he
+        will take your place and train his next successor. Each sacrifice ensures
+        that humanity may continue to be valued.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is dead, arm recent, faith maxed, has baby
+    conditions:
+    - name_: Guardian is dead, has baby, arm recent, faith maxed
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: arm recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks:
+      - statType: 5
+        comparison: 0
+        target: {fileID: 0}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You carry the baby to the steel door with the love of Spawns in your heart.
+        You open the steel doors, and light fills the room. You have become the Vessel. '
+      - 'On the surface, you have devoted yourself to being used indefinitely by
+        the Spawns and imparting all your lessons to the child. Soon, the child grows
+        strong in both mind and body. The Spawns approve of your training, and soon,
+        the child is placed back into the labyrinth to experiment with a new and
+        better candidate as the Vessel.  '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is dead, leg recent, faith maxed, has baby
+    conditions:
+    - name_: Guardian is dead, has baby, leg recent, faith maxed
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: leg recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 1
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks:
+      - statType: 5
+        comparison: 0
+        target: {fileID: 0}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You carry the baby to the steel door with the love of Spawns in your heart.
+        You open the steel doors, and light fills the room. You have become the Vessel. '
+      - 'On the surface, you have devoted yourself to being used indefinitely by
+        the Spawns and imparting all your lessons to the child. Soon, the child grows
+        strong in both mind and body. The Spawns approve of your training, and soon,
+        the child is placed back into the labyrinth to experiment with a new and
+        better candidate as the Vessel.  '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is dead, manipulate recent, faith maxed, has baby
+    conditions:
+    - name_: Guardian is dead, has baby, manipulate recent, faith maxed
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: manipulate recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks:
+      - statType: 5
+        comparison: 0
+        target: {fileID: 0}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You carry the baby to the steel door with the love of Spawns in your heart.
+        You open the steel doors, and light fills the room. You have become the Vessel. '
+      - 'On the surface, you have devoted yourself to being used indefinitely by
+        the Spawns and imparting all your lessons to the child. Soon, the child grows
+        strong in both mind and body. The Spawns approve of your training, and soon,
+        the child is placed back into the labyrinth to experiment with a new and
+        better candidate as the Vessel.  '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is dead, manipulate recent, faith maxed, no baby
+    conditions:
+    - name_: Guardian is dead, no baby, manipulate recent, faith maxed
+      requiredItems: []
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      actionConditions:
+      - name_: manipulate recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks:
+      - statType: 5
+        comparison: 0
+        target: {fileID: 0}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You walk to the steel door with the love of Spawns in your heart. You open
+        the steel doors, and light fills the room. You have become the Vessel. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is dead, leg recent, faith maxed, no baby
+    conditions:
+    - name_: Guardian is dead, no baby, leg recent, faith maxed
+      requiredItems: []
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      actionConditions:
+      - name_: leg recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 1
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks:
+      - statType: 5
+        comparison: 0
+        target: {fileID: 0}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You walk to the steel door with the love of Spawns in your heart. You open
+        the steel doors, and light fills the room. You have become the Vessel. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Guardian is dead, arm recent, faith maxed, no baby
+    conditions:
+    - name_: Guardian is dead, no baby, arm recent, faith maxed
+      requiredItems: []
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      actionConditions:
+      - name_: arm recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 4
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks:
+      - statType: 5
+        comparison: 0
+        target: {fileID: 0}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You walk to the steel door with the love of Spawns in your heart. You open
+        the steel doors, and light fills the room. You have become the Vessel. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  triggeredResponses:
+  - name_: Guardian is dead, then this door works
+    conditions:
+    - name_: Guardian is dead
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Unlock the door
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences:
+      - target: {fileID: 0}
+        setActiveStatus: 1
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts: []
+      experiencePointsChange: 0
+    failingConsequences: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Observation
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - A large steel two-doored frame towers overs you. There are no handles. To the
+      right of this door, you see an armored individual with sword in hand.
+  allActionsOnObject: []
+  nextRoom: {fileID: 0}
+  isFinalDoor: 0

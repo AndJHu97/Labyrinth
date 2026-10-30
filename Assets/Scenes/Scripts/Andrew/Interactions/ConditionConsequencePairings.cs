@@ -54,6 +54,7 @@ public struct StatConsequence
 {
     public string name_;
     public StatType statType;
+    public bool isRandom;
     public int valueChange;
     public bool isPlayer;
     public Object_ target;

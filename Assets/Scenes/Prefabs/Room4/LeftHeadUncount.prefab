@@ -1,0 +1,189 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5664418343605216003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2550599067121297032}
+  - component: {fileID: 3383354750130416222}
+  m_Layer: 0
+  m_Name: LeftHeadUncount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2550599067121297032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5664418343605216003}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3383354750130416222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5664418343605216003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f16dc90ebfda73428933254c2ffd8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name_: Head Uncount
+  stats:
+    health: 50
+    maxHealth: 50
+    fortitude: 30
+    strength: 30
+    agility: 10
+    faith: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences:
+  - name_: Voice if high allegiance
+    conditions:
+    - name_: Voice and High allegiance
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Voice
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 1
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions:
+      - target: {fileID: 3383354750130416222}
+        requiredValue: 80
+        comparison: 4
+        relationshipType: 0
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - He collects himself and thinks deeply before continuing, "You have proven
+        your allegiance to us. Let me share you our history. Through the collection
+        of documents from previous inhabitants, this labyrinth is generations old
+        and is some sort of trial to see if anyone can escape and become the Vessel
+        for the spawn. However, by doing so, this has led to infighting to maximize
+        these artificial values that the Hand of S gives us. Everyone became a slave
+        to the system, all empathy replaced by a goal to inflate their Value."
+      - He points to the men around. "We had joined forces to fight against this
+        oppression. To remind ourselves of our humanity. That demeaning a life into
+        a number can bring about control, corruption, and needless bloodshed. Here,
+        we cherish the stories we all tell."
+      experiencePointsChange: 0
+    failingConsequences: []
+  triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Observation
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - There is a man standing on the left who does not seem dissimilar to anyone
+      else. In simple garb, just as torn as others. His face is similar to those
+      of all you have met so far. Nevertheless, there is some confidence that exudes
+      from him. A form of extreme resilience and power.
+  - name_: Joy Voice
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - You greet the man on the left kindly, and he waves back. "Welcome to the humble
+      camp of the Uncounted. We fight against the Hand of S and the Uncounted. No
+      matter which side you choose or where destiny takes you, know that you and
+      all of us here are more than the Value this labyrinth tells us. Our stories,
+      our personalities, our relationships must never be forgotten."
+  - name_: Angry Voice
+    UseEmotionKey: 1
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - You yell angrily at the man to the left. He smiles and waves back. "We do not
+      abide by the ideology that the strongest rules them all. So let go of that
+      mask of toughness. Instead, we here cherish all stories. Our lives cannot be
+      reduced to a mere number. We are all unique in our own ways, and just because
+      we cannot measure humanity by a number does not mean those with a number supersede
+      it. I've lost many loved ones who dedicated their lives to suffer, only to
+      realize at the end, it was all for nothing. The relationships we build on each
+      other means much more than anything someone can try to represent us with. "
+  - name_: Fear Voice
+    UseEmotionKey: 1
+    emotionKey: 3
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - You let out a scream of terror towards the man on the left. He puts a comforting
+      hand on your back. "Let that emotion free. No one is measuring your strength,
+      your fortitude, or anything here. That fear comes from a story that is immeasurable.
+      So please, do share us that story. And I will do the same."
+  - name_: Sad Voice
+    UseEmotionKey: 1
+    emotionKey: 1
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - You collapse onto the ground and let out a sob in front of the man on the left.
+      He leans down to your level and cries with you. "Do not fret. I feel your story.
+      Do not think that your story has no value because it has no number. You have
+      value with us."
+  allActionsOnObject: []
+  learningRate: 0.5
+  experiencePointsGainedIfKilled: 100
+  friendlyActionOnNPC: []
+  fearfulActionOnNPC: []
+  neutralActionOnNPC: []
+  aggressiveActionOnNPC:
+  - {fileID: 11400000, guid: 9c0c2dd40511a4d428f2b46073d7422f, type: 2}
+  - {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}
+  - {fileID: 11400000, guid: 495c04067f8a0e6469f312bdaebbd64b, type: 2}
+  - {fileID: 11400000, guid: 0e186ed16e77ff940907430be72305ac, type: 2}
+  friendlyResponses: []
+  fearfulResponses: []
+  likeResponses: []
+  dislikeResponses: []
+  neutralResponses: []
+  aggressiveResponses: []

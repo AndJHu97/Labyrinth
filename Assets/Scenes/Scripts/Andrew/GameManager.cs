@@ -69,6 +69,15 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void WonGame()
+    {
+        roundNumber++;
+        actionStep = 0;
+        GameOver = true;
+        LogDisplayTextsToRecentLog(new List<string> { "You have completed the labyrinth", "Gain " + player.experienceGainedUponDeath + " experience points upon re-born.", "______________________________________________", "Press spacebar to continue." });
+
+    }
+
     public void SetupNewRound()
     {
         LogDisplayTextsToRecentLog(new List<string> {  "______________________________________________"});

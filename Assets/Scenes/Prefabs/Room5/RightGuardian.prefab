@@ -1,0 +1,423 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &769553511293001380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4572441260620918501}
+  - component: {fileID: 4428206659737467978}
+  m_Layer: 0
+  m_Name: RightGuardian
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4572441260620918501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769553511293001380}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4428206659737467978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769553511293001380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f16dc90ebfda73428933254c2ffd8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name_: Guardian
+  stats:
+    health: 100
+    maxHealth: 100
+    fortitude: 25
+    strength: 20
+    agility: 20
+    faith: 10
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences:
+  - name_: Not Angry Voice
+    conditions:
+    - name_: Not Angry Voice
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Not Angry
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 0
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Voice recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You talk to the armored figure to the right. He responds, "I am the Guardian.
+        The last line of defense for the Uncounted to prevent anyone from leaving."
+        You ask why, "We must not fulfill the game that the Spawns has us playing.
+        To help them develop the perfect Vessel is a failure of the Uncounted. Instead,
+        it is better we all die here than to lose our humanity."
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Angry Voice, faith not 10, no baby
+    conditions:
+    - name_: Angry Voice, faith < 10, no baby
+      requiredItems: []
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      actionConditions:
+      - name_: Angry voice recent
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks:
+      - statType: 5
+        comparison: 5
+        target: {fileID: 4428206659737467978}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You angrily confront the figure on the right. He responds, "I am the Guardian.
+        The last line of defense for the Uncounted. If you wish to challenge my position
+        and take over, I encourage you to try."
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Not angry voice with child
+    conditions:
+    - name_: Angry Voice, faith < 10, with child
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Anger not recent
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 0
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 1
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      - name_: Voice Recent
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks:
+      - statType: 5
+        comparison: 5
+        target: {fileID: 4428206659737467978}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - The Guardian looks at the baby in your arms. "I see you have a foundling
+        in your hands. To raise him right, you must hold yourself to a higher standard.
+        Follow the right path."
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Faith < 10, angry voice, no baby
+    conditions:
+    - name_: Angry Voice, faith < 10, with child
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Recent Anger Voice
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks:
+      - statType: 5
+        comparison: 5
+        target: {fileID: 4428206659737467978}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You angrily confront the figure on the right. He responds, "I am the Guardian.
+        The last line of defense for the Uncounted. If you wish to challenge my position
+        and take over, I encourage you to try."
+      - He glances at the baby at your side. "If you were to best me, though, please
+        take care of that child for the next line of Guardians"
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Faith >= 10, angry voice, (non baby requirements)
+    conditions:
+    - name_: Angry Voice, faith < 10
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Recent Anger Voice
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks:
+      - statType: 5
+        comparison: 0
+        target: {fileID: 4428206659737467978}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You angrily confront the figure on the right. He responds, "I am the Guardian.
+        The last line of defense for the Uncounted. I see your faith in the Religion
+        of S. If you wish to leave to become a vessel, you must kill me first."
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Faith >= 10, angry voice, (non baby requirements)
+    conditions:
+    - name_: Angry Voice, faith < 10, baby
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Recent Anger Voice
+        useEmotionKey: 1
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 3
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 2
+        frequencyScope: 1
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks:
+      - statType: 5
+        comparison: 0
+        target: {fileID: 4428206659737467978}
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - '"I see the child. Careful you do not make him follow the same road you did."'
+      experiencePointsChange: 0
+    failingConsequences: []
+  triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Observation
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'A figure that is completely armored in black stands to the right. He has only
+      one arm, with a sword in hand. He is so steady that you almost mistake him
+      for a statue. '
+  allActionsOnObject: []
+  learningRate: 0.5
+  experiencePointsGainedIfKilled: 5
+  friendlyActionOnNPC: []
+  fearfulActionOnNPC: []
+  neutralActionOnNPC: []
+  aggressiveActionOnNPC:
+  - {fileID: 11400000, guid: 9c0c2dd40511a4d428f2b46073d7422f, type: 2}
+  - {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}
+  - {fileID: 11400000, guid: 495c04067f8a0e6469f312bdaebbd64b, type: 2}
+  - {fileID: 11400000, guid: 0e186ed16e77ff940907430be72305ac, type: 2}
+  friendlyResponses:
+  - {fileID: 11400000, guid: 4eb3e662ca2352b44a4ecaf430402f80, type: 2}
+  fearfulResponses:
+  - {fileID: 11400000, guid: 58b16f7ed46758a45a55bd1d55ca9d03, type: 2}
+  likeResponses:
+  - {fileID: 11400000, guid: 5962966f179baaa46beb652ac5c48e0e, type: 2}
+  dislikeResponses:
+  - {fileID: 11400000, guid: 3d8f7a7884bae914593ff2bc15343341, type: 2}
+  neutralResponses:
+  - {fileID: 11400000, guid: 367ac60091dd87545b6707fdad1fde52, type: 2}
+  aggressiveResponses:
+  - {fileID: 11400000, guid: 3d8f7a7884bae914593ff2bc15343341, type: 2}

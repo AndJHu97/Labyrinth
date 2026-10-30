@@ -1,0 +1,243 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3548164813960450769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2270240370579096305}
+  - component: {fileID: 7392330990836998727}
+  m_Layer: 0
+  m_Name: RightCrowd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2270240370579096305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548164813960450769}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7392330990836998727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548164813960450769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f16dc90ebfda73428933254c2ffd8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name_: Crowd and children
+  stats:
+    health: 20
+    maxHealth: 20
+    fortitude: 5
+    strength: 8
+    agility: 5
+    faith: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences:
+  - name_: Gut, -1 random stat, +10 allegiance
+    conditions:
+    - name_: Gut
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Gut
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 2
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Random -1, +10 allegiance
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 7392330990836998727}
+        valueChange: 10
+        relationshipType: 0
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences:
+      - name_: Random stat -1
+        statType: 0
+        isRandom: 1
+        valueChange: -1
+        isPlayer: 1
+        target: {fileID: 0}
+      displayTexts:
+      - Your instinct directs you to the gathering on the right. One of them notices
+        and comments, "Yes, follow your gut. Reject your Value." You decide now is
+        the time to give up this rat race. You decide to give up one of your hard-earned
+        Value that amounted to nothing to you now.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Manipulate with Coin of S, to gain wooden toy
+    conditions:
+    - name_: Manipulate with Coin of S
+      requiredItems:
+      - {fileID: 11400000, guid: 85fa090c0c5e7f94fa818c738f1cc4d4, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Manipualte
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Lose coin of S, gain a wooden toy
+      itemsToAdd:
+      - {fileID: 11400000, guid: abdb4c15f7c34794eb117b43966bfff2, type: 2}
+      itemsToRemove:
+      - {fileID: 11400000, guid: 85fa090c0c5e7f94fa818c738f1cc4d4, type: 2}
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You see the kids on the right playing around with this strange wooden toy.
+        You crouch down and play with them for a bit. The wooden toy, however, keeps
+        your attention. It is a crudely carved figurine of a woman that seems so
+        familiar to you. It brings you a sense of happiness and yet also a lingering
+        sadness. You can't bring yourself to steal from these kids, but perhaps there
+        is something you can trade?
+      - 'You brought out the coin from your pocket and offered a trade. The kids
+        immediately snatched it from your hand, leaving you with the wooden toy in
+        favor of this shiny new item. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Observation
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - The gathering on the right was all conversing. You can see a small group of
+      children playing around with a weird-looking wooden toy. You overhear, "They
+      took one of the family here too." "Really? Even the..." "Yes, even the only
+      female anomaly in this labyrinth."
+  - name_: Joy Voice
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - 'You warmly greet the gathering on the right. They greet you back and ask,
+      "Do you seek to find meaning beyond the numbers? If so, welcome to the Uncounted."
+      With a heart of joy, you ask to learn more. '
+    - They explain, "We can often be manipulated to follow those that are counted.
+      Strength, Fortitude, and many more. The Head Uncounted has taught us that these
+      endeavors lead to temporary bliss as we hit the milestones. However, what truly
+      motivates these is the chance to be loved once we hit the numbers that are
+      bestowed upon us. And this pursuit only leads to loneliness and more cravings
+      for love. We can instead look past the numbers and into our relationships that
+      are not measurable but innate to us. You should talk to the Head Uncounted
+      if you wish to learn more too."
+  - name_: Angry Voice
+    UseEmotionKey: 1
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - You shout obscenities at the gathering on the right. They look at you with
+      disgust. "Are you looking down at us because we do not play this game that
+      the labyrinth has us strung along for? Give up on this game and put your efforts
+      on the immeasurables. Be a good person, not a slave to the system."
+  - name_: Fear Voice
+    UseEmotionKey: 1
+    emotionKey: 3
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - You confided shakily in your experiences with the terrors of the labyrinth
+      to the gathering on the right. They comfort you. "This labyrinth can consume
+      you. The dangers and expectations make you believe you aren't enough. Break
+      free of this and join us. Reject the statistics that are imparted to you. Give
+      up one of your Value to prove to yourself that you have freed yourself from
+      these shackles. Use your gut, your instinct, to go beyond."
+  - name_: Sad Voice
+    UseEmotionKey: 1
+    emotionKey: 1
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - You sob to the gathering on the right. They comfort you. "Let yourself feel.
+      This labyrinth is already consuming enough; do not let it consume your expressions.
+      Do not compare yourself to others. Do not compare yourself to the numbers bestowed
+      upon you. The Uncounted rejects all those and the pursuit of lies. True meaning
+      comes from the expressions and the relationships that form from it. Do not
+      forget that. Allow yourself to express."
+  allActionsOnObject: []
+  learningRate: 0.5
+  experiencePointsGainedIfKilled: 5
+  friendlyActionOnNPC: []
+  fearfulActionOnNPC: []
+  neutralActionOnNPC: []
+  aggressiveActionOnNPC: []
+  friendlyResponses: []
+  fearfulResponses: []
+  likeResponses: []
+  dislikeResponses: []
+  neutralResponses: []
+  aggressiveResponses: []

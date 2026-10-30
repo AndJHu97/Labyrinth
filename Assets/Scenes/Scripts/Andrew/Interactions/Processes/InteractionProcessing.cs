@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
@@ -132,7 +133,7 @@ public static class InteractionProcessing
             if (lowHealth)
             {
                 // Cornered: fight back or flee
-                return Random.value < 0.5f
+                return UnityEngine.Random.value < 0.5f
                     ? NPCActionEmotionType.Aggressive
                     : NPCActionEmotionType.Fearful;
             }
@@ -460,70 +461,92 @@ public static class InteractionProcessing
                 }
 
         if (c.statConsequences != null)
+        {
+            foreach (var sc in c.statConsequences)
+            {
+                if (sc.isPlayer)
                 {
-                    foreach (var sc in c.statConsequences)
+                    StatType statType = sc.statType;
+
+                    if (sc.isRandom)
                     {
-                        if (sc.isPlayer)
-                        {
-                            switch (sc.statType)
-                            {
-                                case StatType.Health:
-                                    player.statsModifications.health += sc.valueChange;
-                                    break;
-                                case StatType.MaxHealth:
-                                    player.statsModifications.maxHealth += sc.valueChange;
-                                    break;
-                                case StatType.Fortitude:
-                                    player.statsModifications.fortitude += sc.valueChange;
-                                    break;
-                                case StatType.Strength:
-                                    player.statsModifications.strength += sc.valueChange;
-                                    break;
-                                case StatType.Agility:
-                                    player.statsModifications.agility += sc.valueChange;
-                                    break;
-                                case StatType.Faith:
-                                    player.statsModifications.faith += sc.valueChange;
-                                    break;
-                            }
+                        StatType[] values = (StatType[])Enum.GetValues(typeof(StatType));
 
-                            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You gained " + sc.valueChange + " in " + GetStatDisplayName(sc.statType) + "." });
-                        }
-                        else
-                        {
-                            Object_ target = sc.target;
-                            if (target == null)
-                            {
-                                Debug.LogWarning($"Consequence: no Object with id '{sc.target.name_}' for stat change.");
-                                continue;
-                            }
-                            switch (sc.statType)
-                            {
-                                case StatType.Health:
-                                    target.stats.health += sc.valueChange;
-                                    break;
-                                case StatType.MaxHealth:
-                                    target.stats.maxHealth += sc.valueChange;
-                                    break;
-                                case StatType.Fortitude:
-                                    target.stats.fortitude += sc.valueChange;
-                                    break;
-                                case StatType.Strength:
-                                    target.stats.strength += sc.valueChange;
-                                    break;
-                                case StatType.Agility:
-                                    target.stats.agility += sc.valueChange;
-                                    break;
-                                case StatType.Faith:
-                                    target.stats.faith += sc.valueChange;
-                                    break;
-                            }
+                        int randomIndex = UnityEngine.Random.Range(0, values.Length);
 
-                            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { target.name_ + " gained " + sc.valueChange + " in " + GetStatDisplayName(sc.statType) + "." });
-                        }
-
+                        statType = values[randomIndex];
                     }
+                    switch (statType)
+                    {
+                        case StatType.Health:
+                            player.statsModifications.health += sc.valueChange;
+                            break;
+                        case StatType.MaxHealth:
+                            player.statsModifications.maxHealth += sc.valueChange;
+                            break;
+                        case StatType.Fortitude:
+                            player.statsModifications.fortitude += sc.valueChange;
+                            break;
+                        case StatType.Strength:
+                            player.statsModifications.strength += sc.valueChange;
+                            break;
+                        case StatType.Agility:
+                            player.statsModifications.agility += sc.valueChange;
+                            break;
+                        case StatType.Faith:
+                            player.statsModifications.faith += sc.valueChange;
+                            break;
+                    }
+
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You gained " + sc.valueChange + " in " + GetStatDisplayName(sc.statType) + "." });
                 }
+                else
+                {
+                    Object_ target = sc.target;
+                    if (target == null)
+                    {
+                        Debug.LogWarning($"Consequence: no Object with id '{sc.target.name_}' for stat change.");
+                        continue;
+                    }
+
+                    StatType statType = sc.statType;
+
+                    if (sc.isRandom)
+                    {
+                        StatType[] values = (StatType[])Enum.GetValues(typeof(StatType));
+
+                        int randomIndex = UnityEngine.Random.Range(0, values.Length);
+
+                        statType = values[randomIndex];
+                    }
+
+                    switch (statType)
+                    {
+                        case StatType.Health:
+                            target.stats.health += sc.valueChange;
+                            break;
+                        case StatType.MaxHealth:
+                            target.stats.maxHealth += sc.valueChange;
+                            break;
+                        case StatType.Fortitude:
+                            target.stats.fortitude += sc.valueChange;
+                            break;
+                        case StatType.Strength:
+                            target.stats.strength += sc.valueChange;
+                            break;
+                        case StatType.Agility:
+                            target.stats.agility += sc.valueChange;
+                            break;
+                        case StatType.Faith:
+                            target.stats.faith += sc.valueChange;
+                            break;
+                    }
+
+                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { target.name_ + " gained " + sc.valueChange + " in " + GetStatDisplayName(sc.statType) + "." });
+                }
+
+            }
+        }
 
         // Relationships (clamped 0-100, same as CalculateNewRelationshipValue)
         if (c.relationshipConsequences != null)
