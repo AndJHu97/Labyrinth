@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59fe09587ab700a4f87b1989c96f4998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name_: 
+  name_: Shifts at gravesite
   stats:
     health: 0
     maxHealth: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
         useEmotionKey: 1
         emotionKey: 0
         useMotorSensorKey: 1
-        motorSensorKey: 0
+        motorSensorKey: 5
         useConcentrationKey: 1
         concentrationKey: 3
         room: {fileID: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
         useEmotionKey: 1
         emotionKey: 0
         useMotorSensorKey: 1
-        motorSensorKey: 0
+        motorSensorKey: 5
         useConcentrationKey: 1
         concentrationKey: 3
         room: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
         useEmotionKey: 1
         emotionKey: 0
         useMotorSensorKey: 1
-        motorSensorKey: 0
+        motorSensorKey: 5
         useConcentrationKey: 1
         concentrationKey: 3
         room: {fileID: 0}
@@ -164,11 +164,11 @@ MonoBehaviour:
         stepReference: 2
         stepValue: 0
         stepComparison: 2
-      - name_: Angry manipulate first time
+      - name_: Angry manipulate not first time
         useEmotionKey: 1
         emotionKey: 0
         useMotorSensorKey: 1
-        motorSensorKey: 0
+        motorSensorKey: 5
         useConcentrationKey: 1
         concentrationKey: 3
         room: {fileID: 0}
@@ -221,7 +221,7 @@ MonoBehaviour:
     failingConsequences: []
   - name_: Angry manipulate, Agility <= 7 steal failure and level < 8
     conditions:
-    - name_: Angry manipulate most recent and not first time
+    - name_: Angry manipulate most recent
       requiredItems: []
       mustBeAbsentItems: []
       actionConditions:
@@ -229,7 +229,7 @@ MonoBehaviour:
         useEmotionKey: 1
         emotionKey: 0
         useMotorSensorKey: 1
-        motorSensorKey: 0
+        motorSensorKey: 5
         useConcentrationKey: 1
         concentrationKey: 3
         room: {fileID: 0}
@@ -245,32 +245,12 @@ MonoBehaviour:
         stepReference: 2
         stepValue: 0
         stepComparison: 2
-      - name_: Angry manipulate first time
-        useEmotionKey: 1
-        emotionKey: 0
-        useMotorSensorKey: 1
-        motorSensorKey: 0
-        useConcentrationKey: 1
-        concentrationKey: 3
-        room: {fileID: 0}
-        useFrequency: 1
-        frequency: 2
-        frequencyComparison: 0
-        frequencyScope: 1
-        useRound: 0
-        roundReference: 0
-        roundValue: 0
-        roundComparison: 0
-        useStep: 0
-        stepReference: 2
-        stepValue: 0
-        stepComparison: 2
       relationshipConditions: []
       activeConditions: []
       statChecks: []
       levelConditions: []
       groupNumber: 0
-    - name_: Agility >7
+    - name_: Agility <=7
       requiredItems: []
       mustBeAbsentItems: []
       actionConditions: []
@@ -278,7 +258,7 @@ MonoBehaviour:
       activeConditions: []
       statChecks:
       - statType: 4
-        comparison: 4
+        comparison: 1
         target: {fileID: 375383051353289788}
       levelConditions: []
       groupNumber: 0
@@ -317,7 +297,7 @@ MonoBehaviour:
     failingConsequences: []
   - name_: Angry manipulate, Agility <= 7 steal failure and level >= 8
     conditions:
-    - name_: Angry manipulate most recent and not first time
+    - name_: Angry manipulate most recent
       requiredItems: []
       mustBeAbsentItems: []
       actionConditions:
@@ -325,7 +305,7 @@ MonoBehaviour:
         useEmotionKey: 1
         emotionKey: 0
         useMotorSensorKey: 1
-        motorSensorKey: 0
+        motorSensorKey: 5
         useConcentrationKey: 1
         concentrationKey: 3
         room: {fileID: 0}
@@ -341,32 +321,12 @@ MonoBehaviour:
         stepReference: 2
         stepValue: 0
         stepComparison: 2
-      - name_: Angry manipulate first time
-        useEmotionKey: 1
-        emotionKey: 0
-        useMotorSensorKey: 1
-        motorSensorKey: 0
-        useConcentrationKey: 1
-        concentrationKey: 3
-        room: {fileID: 0}
-        useFrequency: 1
-        frequency: 2
-        frequencyComparison: 0
-        frequencyScope: 1
-        useRound: 0
-        roundReference: 0
-        roundValue: 0
-        roundComparison: 0
-        useStep: 0
-        stepReference: 2
-        stepValue: 0
-        stepComparison: 2
       relationshipConditions: []
       activeConditions: []
       statChecks: []
       levelConditions: []
       groupNumber: 0
-    - name_: Agility >7
+    - name_: Agility <=7
       requiredItems: []
       mustBeAbsentItems: []
       actionConditions: []
@@ -374,7 +334,7 @@ MonoBehaviour:
       activeConditions: []
       statChecks:
       - statType: 4
-        comparison: 4
+        comparison: 1
         target: {fileID: 375383051353289788}
       levelConditions: []
       groupNumber: 0
@@ -557,6 +517,178 @@ MonoBehaviour:
       displayTexts:
       - You let out a scream of terror towards the group of robed men praying in
         the center of the room. You are met with a look of disapproval.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Joy gut, respect but attack
+    conditions:
+    - name_: Joy gut most recent
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: joy gut most recent
+        useEmotionKey: 1
+        emotionKey: 2
+        useMotorSensorKey: 1
+        motorSensorKey: 2
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Add 10 allegiance, 10 threat
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 375383051353289788}
+        valueChange: 10
+        relationshipType: 0
+      - target: {fileID: 375383051353289788}
+        valueChange: 10
+        relationshipType: 1
+      - target: {fileID: 0}
+        valueChange: 10
+        relationshipType: 1
+      - target: {fileID: 0}
+        valueChange: -10
+        relationshipType: 0
+      activeConsequences: []
+      netHealthImpact:
+      - isPlayer: 1
+        healthChange: -8
+        target: {fileID: 0}
+      statConsequences: []
+      displayTexts:
+      - Your gut feels good. It wants to join in on the fun. You look to the crowd
+        of robed men praying in the center of the room. You can't help but follow
+        the call of joy in your stomach. In a flash, you dig up the dead bodies and
+        feed yourself on the dead flesh. Both the robed men praying and the men waiting
+        on the right wall look furious. You have disgraced their fallen. They both
+        retaliate.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Sad arm, build allegiance
+    conditions:
+    - name_: sad arm most recent
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: sad arm most recent
+        useEmotionKey: 1
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Add 10 allegiance, 10 threat
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 375383051353289788}
+        valueChange: 10
+        relationshipType: 0
+      - target: {fileID: 0}
+        valueChange: 10
+        relationshipType: 0
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You check the prayer site at the center of the room and feel compelled to
+        also empathize with the fallen by bringing your arms in prayer. You recite
+        a prayer that flows out of your mouth on instinct rather than conscious awareness:
+        "May those who have passed never be forgotten and shall be learned from."
+        Both the robed men and the men on the right wall shine a sign of approval
+        with their nods and acknowledgement. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: fear arm, get tombstone
+    conditions:
+    - name_: fear arm most recent
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: fear arm most recent
+        useEmotionKey: 1
+        emotionKey: 3
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Substract 10 allegiance, 10 threat, get tombstone, and they attack
+      itemsToAdd:
+      - {fileID: 11400000, guid: aaaa5be6da9d1214b836fb1cc2c94976, type: 2}
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 375383051353289788}
+        valueChange: -10
+        relationshipType: 0
+      - target: {fileID: 0}
+        valueChange: -10
+        relationshipType: 0
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'Fearful of the prayer site at the center of the room, you used your hands
+        to attempt to rip out one of the tombstones. Your body screamed to rid the
+        room of this deadly presence, even if it was illogical. To your horror, you
+        successfully unearthed one of the tombstones. Both the robed men praying
+        and the other group of men on the right scowl at you. They retaliate because
+        you had enacted violence on their sacred sanctuary. '
       experiencePointsChange: 0
     failingConsequences: []
   triggeredResponses: []

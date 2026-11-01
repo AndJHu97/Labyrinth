@@ -104,41 +104,38 @@ public static class InteractionProcessing
         //Fearful response (not capable)
         else if (npcStats.strength <= playerStats.strength * (1f - FEARFULSTRENGTHPERCENTAGEDIFFERENCE_CUTOFF / 100f) || npcStats.fortitude < FORTITUDECUTOFF_LOW)
         {
-            //No matter the action, if threatening then fearful response
+            //No matter the action, if threatening then fearful or aggressive
             if (threatValue >= THREATCUTOFF_HIGH)
             {
-                return NPCActionEmotionType.Fearful;
-            }
-
-            //Threat level medium + neutral or aggressive, then fearful response
-            if (threatValue >= THREATCUTOFF_MEDIUM && (playerActionEmotionType == PlayerActionEmotionType.Neutral || playerActionEmotionType == PlayerActionEmotionType.Aggressive))
-            {
-                return NPCActionEmotionType.Fearful;
-            }
-
-            //Threat level low and allegiance not high + aggression, then fearful response
-            if (threatValue < THREATCUTOFF_MEDIUM && allegianceValue < ALLEGIANCECUTOFF_HIGH && playerActionEmotionType == PlayerActionEmotionType.Aggressive)
-            {
-                return NPCActionEmotionType.Fearful;
-            }
-        }
-
-        //If not fearful nor aggressive and player is aggressive, then dislike,
-        //unless the NPC is badly hurt, in which case it fights back
-        if (playerActionEmotionType == PlayerActionEmotionType.Aggressive)
-        {
-            bool lowHealth = npcStats.maxHealth > 0 &&
-                npcStats.health < npcStats.maxHealth * (LOWHEALTH_AGGRESSIVE_PERCENT / 100f);
-
-            if (lowHealth)
-            {
-                // Cornered: fight back or flee
                 return UnityEngine.Random.value < 0.5f
                     ? NPCActionEmotionType.Aggressive
                     : NPCActionEmotionType.Fearful;
             }
 
-            return NPCActionEmotionType.Dislike;
+            //Threat level medium + neutral or aggressive, then fearful response
+            if (threatValue >= THREATCUTOFF_MEDIUM && (playerActionEmotionType == PlayerActionEmotionType.Neutral || playerActionEmotionType == PlayerActionEmotionType.Aggressive))
+            {
+                return UnityEngine.Random.value < 0.5f
+                   ? NPCActionEmotionType.Aggressive
+                   : NPCActionEmotionType.Fearful;
+            }
+
+            //Threat level low and allegiance not high + aggression, then fearful response
+            if (threatValue < THREATCUTOFF_MEDIUM && allegianceValue < ALLEGIANCECUTOFF_HIGH && playerActionEmotionType == PlayerActionEmotionType.Aggressive)
+            {
+                return UnityEngine.Random.value < 0.5f
+                   ? NPCActionEmotionType.Aggressive
+                   : NPCActionEmotionType.Fearful;
+            }
+        }
+
+        //If not fearful nor aggressive and player is aggressive, then 50/50 dislike or aggressive
+        if (playerActionEmotionType == PlayerActionEmotionType.Aggressive)
+        {
+
+            return UnityEngine.Random.value < 0.5f
+                    ? NPCActionEmotionType.Aggressive
+                    : NPCActionEmotionType.Dislike;
         }
 
         //Friendly Response
@@ -655,16 +652,20 @@ public static class InteractionProcessing
 
         return anySatisfied;
     }
-    public static bool CheckAllTriggersAndConditions()
+    public static bool CheckAllTriggersAndConditions(Object_ object_)
     {
         bool anySatisfied = false;
 
         ObjectRegistry.ForEach(o =>
         {
             if (CheckSatisfiedPairings(o.triggeredResponses)) anySatisfied = true;
-            if (CheckSatisfiedPairings(o.conditionConsequences)) anySatisfied = true;
+            
         });
-
+        if(object_ != null)
+        {
+            if (CheckSatisfiedPairings(object_.conditionConsequences)) anySatisfied = true;
+        }
+        
         return anySatisfied;
     }
 

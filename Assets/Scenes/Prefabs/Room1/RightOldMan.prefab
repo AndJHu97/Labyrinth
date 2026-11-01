@@ -44,19 +44,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f16dc90ebfda73428933254c2ffd8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: r1oldman
-  name_: oldman
+  name_: old man
   stats:
-    health: 20
-    maxHealth: 20
-    fortitude: 5
+    health: 30
+    maxHealth: 30
+    fortitude: 15
     strength: 10
-    agility: 0
+    agility: 2
     faith: 0
   threatRelationshipValue: 80
   allegianceRelationshipValue: 0
   isActive: 1
-  conditionConsequences: []
+  conditionConsequences:
+  - name_: Manipulate with toy, good relationship
+    conditions:
+    - name_: Manipulate recently, have toy
+      requiredItems:
+      - {fileID: 11400000, guid: abdb4c15f7c34794eb117b43966bfff2, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Manipulate
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Lose toy, gain 80 a, lose 80t
+      itemsToAdd: []
+      itemsToRemove:
+      - {fileID: 11400000, guid: abdb4c15f7c34794eb117b43966bfff2, type: 2}
+      relationshipConsequences:
+      - target: {fileID: 149062822422849820}
+        valueChange: 80
+        relationshipType: 0
+      - target: {fileID: 149062822422849820}
+        valueChange: -80
+        relationshipType: 1
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'The old man uses the right wall to lift himself up. He peers at the toy
+        in your hand. A warm light glimmers in his typically cold, beady eyes. '
+      - '"Let me see that... please." He turns the wooden toy in his hand. It''s
+        a crude figurine of a woman and a man. "Thank you... I remember this. My
+        wife. I mustn''t forget. Please, you''re welcome to my room anytime straight
+        ahead... friend." '
+      experiencePointsChange: 0
+    failingConsequences: []
   triggeredResponses: []
   UniqueResponseToPlayerDisplayTexts:
   - name_: Angry Voice
@@ -126,18 +181,26 @@ MonoBehaviour:
   allActionsOnObject: []
   learningRate: 0.1
   experiencePointsGainedIfKilled: 25
-  friendlyActionOnNPC: []
+  friendlyActionOnNPC:
+  - {fileID: 11400000, guid: a3f32e11663d3344faaa5aee0231f9a2, type: 2}
   fearfulActionOnNPC: []
-  neutralActionOnNPC: []
+  neutralActionOnNPC:
+  - {fileID: 11400000, guid: d07e11bb16ffac146ad8cddc64cec198, type: 2}
   aggressiveActionOnNPC:
   - {fileID: 11400000, guid: 0e186ed16e77ff940907430be72305ac, type: 2}
   - {fileID: 11400000, guid: 495c04067f8a0e6469f312bdaebbd64b, type: 2}
   - {fileID: 11400000, guid: 9c0c2dd40511a4d428f2b46073d7422f, type: 2}
   - {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}
-  friendlyResponses: []
-  fearfulResponses: []
-  likeResponses: []
-  dislikeResponses: []
+  friendlyResponses:
+  - {fileID: 11400000, guid: 94ecf7afcaf446b41b379bc64ebd562f, type: 2}
+  - {fileID: 11400000, guid: 4eb3e662ca2352b44a4ecaf430402f80, type: 2}
+  - {fileID: 11400000, guid: 4eb3e662ca2352b44a4ecaf430402f80, type: 2}
+  fearfulResponses:
+  - {fileID: 11400000, guid: 58b16f7ed46758a45a55bd1d55ca9d03, type: 2}
+  likeResponses:
+  - {fileID: 11400000, guid: 5962966f179baaa46beb652ac5c48e0e, type: 2}
+  dislikeResponses:
+  - {fileID: 11400000, guid: ac500b1a52544984eba55df225a5a05d, type: 2}
   neutralResponses: []
   aggressiveResponses:
   - {fileID: 11400000, guid: 3d8f7a7884bae914593ff2bc15343341, type: 2}

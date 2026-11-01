@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name_: Exit
   stats:
-    health: 0
+    health: 500000
     maxHealth: 0
     fortitude: 0
     strength: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
       relationshipConditions: []
       activeConditions:
       - target: {fileID: 0}
-        requiredActiveStatus: 0
+        requiredActiveStatus: 1
       statChecks: []
       levelConditions: []
       groupNumber: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
       relationshipConditions: []
       activeConditions:
       - target: {fileID: 0}
-        requiredActiveStatus: 0
+        requiredActiveStatus: 1
       statChecks: []
       levelConditions: []
       groupNumber: 0
@@ -838,6 +838,8 @@ MonoBehaviour:
       activeConditions:
       - target: {fileID: 0}
         requiredActiveStatus: 0
+      - target: {fileID: 7155487927704683674}
+        requiredActiveStatus: 0
       statChecks: []
       levelConditions: []
       groupNumber: 0
@@ -847,7 +849,7 @@ MonoBehaviour:
       itemsToRemove: []
       relationshipConsequences: []
       activeConsequences:
-      - target: {fileID: 0}
+      - target: {fileID: 7155487927704683674}
         setActiveStatus: 1
       netHealthImpact: []
       statConsequences: []
@@ -865,4 +867,4 @@ MonoBehaviour:
       right of this door, you see an armored individual with sword in hand.
   allActionsOnObject: []
   nextRoom: {fileID: 0}
-  isFinalDoor: 0
+  isFinalDoor: 1

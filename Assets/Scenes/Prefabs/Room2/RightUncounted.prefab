@@ -44,18 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f16dc90ebfda73428933254c2ffd8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
   name_: Uncounted group
   stats:
-    health: 20
-    maxHealth: 20
+    health: 25
+    maxHealth: 25
     fortitude: 8
     strength: 15
     agility: 6
     faith: 0
   threatRelationshipValue: 10
   allegianceRelationshipValue: 0
-  isActive: 0
+  isActive: 1
   conditionConsequences:
   - name_: Joy Voice first time in round - +50 allegiance
     conditions:
@@ -106,6 +105,7 @@ MonoBehaviour:
       relationshipConditions: []
       activeConditions: []
       statChecks: []
+      levelConditions: []
       groupNumber: 0
     successfulConsequences:
     - name_: Add 50 allegiance
@@ -170,6 +170,7 @@ MonoBehaviour:
       relationshipConditions: []
       activeConditions: []
       statChecks: []
+      levelConditions: []
       groupNumber: 0
     successfulConsequences:
     - name_: -20 allegiance and +20 threat
@@ -237,6 +238,7 @@ MonoBehaviour:
       relationshipConditions: []
       activeConditions: []
       statChecks: []
+      levelConditions: []
       groupNumber: 0
     successfulConsequences:
     - name_: +50 allegiance and -20 threat
@@ -304,6 +306,7 @@ MonoBehaviour:
       relationshipConditions: []
       activeConditions: []
       statChecks: []
+      levelConditions: []
       groupNumber: 0
     successfulConsequences:
     - name_: -10 threat
@@ -368,6 +371,7 @@ MonoBehaviour:
       relationshipConditions: []
       activeConditions: []
       statChecks: []
+      levelConditions: []
       groupNumber: 0
     - name_: Agility > RightUncounted
       requiredItems: []
@@ -379,6 +383,7 @@ MonoBehaviour:
       - statType: 4
         comparison: 4
         target: {fileID: 7262182051898403074}
+      levelConditions: []
       groupNumber: 0
     successfulConsequences:
     - name_: Steal an Uncounted Official Letter
@@ -428,6 +433,7 @@ MonoBehaviour:
       relationshipConditions: []
       activeConditions: []
       statChecks: []
+      levelConditions: []
       groupNumber: 0
     - name_: Agility <= RightUncounted
       requiredItems: []
@@ -439,6 +445,7 @@ MonoBehaviour:
       - statType: 4
         comparison: 1
         target: {fileID: 7262182051898403074}
+      levelConditions: []
       groupNumber: 0
     successfulConsequences:
     - name_: Retaliation with 8 damage
@@ -511,6 +518,7 @@ MonoBehaviour:
       relationshipConditions: []
       activeConditions: []
       statChecks: []
+      levelConditions: []
       groupNumber: 0
     - name_: Agility > RightUncounted
       requiredItems: []
@@ -522,6 +530,7 @@ MonoBehaviour:
       - statType: 4
         comparison: 4
         target: {fileID: 7262182051898403074}
+      levelConditions: []
       groupNumber: 0
     successfulConsequences:
     - name_: Nothing stolen
@@ -649,7 +658,7 @@ MonoBehaviour:
     - 'The Uncounted! Your mind faintly remembers. Beyond that, you don''t remember
       anything more besides their rebellion against the Hand of the Spawns. You respect
       their fight against tyranny. Against being relegated to a mere number. We are
-      people with unique experiences, not a pawn to the systsem.  '
+      people with unique experiences, not a pawn to the system.  '
   - name_: Sad Observation
     UseEmotionKey: 1
     emotionKey: 1
@@ -699,7 +708,9 @@ MonoBehaviour:
   allActionsOnObject: []
   learningRate: 0.5
   experiencePointsGainedIfKilled: 5
-  friendlyActionOnNPC: []
+  friendlyActionOnNPC:
+  - {fileID: 11400000, guid: a3f32e11663d3344faaa5aee0231f9a2, type: 2}
+  - {fileID: 11400000, guid: d07e11bb16ffac146ad8cddc64cec198, type: 2}
   fearfulActionOnNPC: []
   neutralActionOnNPC: []
   aggressiveActionOnNPC:
@@ -707,10 +718,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}
   - {fileID: 11400000, guid: 0e186ed16e77ff940907430be72305ac, type: 2}
   - {fileID: 11400000, guid: 495c04067f8a0e6469f312bdaebbd64b, type: 2}
-  friendlyResponses: []
-  fearfulResponses: []
-  likeResponses: []
-  dislikeResponses: []
+  friendlyResponses:
+  - {fileID: 11400000, guid: 94ecf7afcaf446b41b379bc64ebd562f, type: 2}
+  - {fileID: 11400000, guid: 4eb3e662ca2352b44a4ecaf430402f80, type: 2}
+  - {fileID: 11400000, guid: 4eb3e662ca2352b44a4ecaf430402f80, type: 2}
+  fearfulResponses:
+  - {fileID: 11400000, guid: 58b16f7ed46758a45a55bd1d55ca9d03, type: 2}
+  likeResponses:
+  - {fileID: 11400000, guid: 5962966f179baaa46beb652ac5c48e0e, type: 2}
+  dislikeResponses:
+  - {fileID: 11400000, guid: ac500b1a52544984eba55df225a5a05d, type: 2}
   neutralResponses: []
   aggressiveResponses:
   - {fileID: 11400000, guid: 3d8f7a7884bae914593ff2bc15343341, type: 2}

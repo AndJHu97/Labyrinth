@@ -598,7 +598,9 @@ MonoBehaviour:
   allActionsOnObject: []
   learningRate: 0.5
   experiencePointsGainedIfKilled: 5
-  friendlyActionOnNPC: []
+  friendlyActionOnNPC:
+  - {fileID: 11400000, guid: a3f32e11663d3344faaa5aee0231f9a2, type: 2}
+  - {fileID: 11400000, guid: d07e11bb16ffac146ad8cddc64cec198, type: 2}
   fearfulActionOnNPC: []
   neutralActionOnNPC: []
   aggressiveActionOnNPC:

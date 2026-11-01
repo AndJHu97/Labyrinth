@@ -10,7 +10,7 @@ public class Door : Object_
     public bool isFinalDoor = false; // If true, this door leads to the ending
     public override void ReceivePlayerAction(PlayerIntentSO playerIntentSO)
     {
-        CheckAndRunConditions(playerIntentSO);
+        //CheckAndRunConditions(playerIntentSO);
 
         stats.health += playerIntentSO.netHealthImpact;
 
@@ -67,11 +67,17 @@ public class Door : Object_
 
     public bool CanEnter(MotorSensorKey motorSensorKey)
     {
+
         return isActive
             && nextRoom != null
-            && (motorSensorKey == MotorSensorKey.Manipulate
-                || motorSensorKey == MotorSensorKey.Arm
-                || motorSensorKey == MotorSensorKey.Leg);
+            && AllowedActionsToOpenDoor(motorSensorKey);
+    }
+
+    public bool AllowedActionsToOpenDoor(MotorSensorKey motorSensorKey)
+    {
+        return motorSensorKey == MotorSensorKey.Manipulate
+            || motorSensorKey == MotorSensorKey.Arm
+            || motorSensorKey == MotorSensorKey.Leg;
     }
 }
 

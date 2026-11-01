@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public int totalActionStep = 0;
     public Room currentRoom = null;
     public Room startingRoom = null;
+    public List<string> StartingText = new();
     public List<GameState> gameLog = new();
     public static GameManager Instance;
     public int experienceGainedWhenNewAction = 10; // Amount of experience gained when a new action is performed
@@ -65,8 +66,11 @@ public class GameManager : MonoBehaviour
         roundNumber++;
         actionStep = 0;
         GameOver = true;
-        LogDisplayTextsToRecentLog(new List<string> { "You have died before discovering your only purpose. A waste. We must again craft another one.", "Gain " + player.experienceGainedUponDeath + " experience points upon death.", "______________________________________________", "Press spacebar to continue." });
+        LogDisplayTextsToRecentLog(new List<string> { "You have died before discovering your only purpose. A waste. We must again craft another one.", "Gain " + player.experienceGainedUponDeath + " experience points upon death."});
         
+        player.GainExperience(player.experienceGainedUponDeath);
+
+        LogDisplayTextsToRecentLog(new List<string> { "______________________________________________", "Press spacebar to continue."  });
     }
 
     public void WonGame()
@@ -74,7 +78,7 @@ public class GameManager : MonoBehaviour
         roundNumber++;
         actionStep = 0;
         GameOver = true;
-        LogDisplayTextsToRecentLog(new List<string> { "You have completed the labyrinth", "Gain " + player.experienceGainedUponDeath + " experience points upon re-born.", "______________________________________________", "Press spacebar to continue." });
+        LogDisplayTextsToRecentLog(new List<string> { "You have completed the labyrinth", "______________________________________________", "Press spacebar to continue." });
 
     }
 
@@ -82,6 +86,7 @@ public class GameManager : MonoBehaviour
     {
         LogDisplayTextsToRecentLog(new List<string> {  "______________________________________________"});
         currentRoom = startingRoom;
+        LogDisplayTextsToRecentLog(StartingText);
         LogDisplayTextsToRecentLog(currentRoom.roomDescription);
 
         CheckAndRunAllTriggers();
@@ -102,7 +107,7 @@ public class GameManager : MonoBehaviour
             room = currentRoom,
             displayTexts = new List<string>()
         });
-
+        LogDisplayTextsToRecentLog(StartingText);
         LogDisplayTextsToRecentLog(currentRoom.roomDescription);
     }
 
@@ -154,8 +159,6 @@ public class GameManager : MonoBehaviour
             LogDisplayTextsToRecentLog(new List<string> { $"Yes, keep trying... Gain {experienceGainedWhenNewAction} experience for discovering a new action." });
         }
 
-        //Check all objects to see if you triggered anything
-        ObjectRegistry.ForEach(o => o.CheckAndRunTriggerConditions());
     }
 
     public void LogDisplayTextsToRecentLog(List<string> texts, Object_ self = null)

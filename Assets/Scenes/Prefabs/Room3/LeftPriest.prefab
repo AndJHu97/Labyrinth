@@ -44,30 +44,375 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f16dc90ebfda73428933254c2ffd8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name_: 
+  name_: Shift Priest
   stats:
-    health: 0
-    maxHealth: 0
-    fortitude: 0
-    strength: 0
-    agility: 0
-    faith: 0
+    health: 50
+    maxHealth: 50
+    fortitude: 25
+    strength: 12
+    agility: 3
+    faith: 10
   threatRelationshipValue: 0
   allegianceRelationshipValue: 0
   isActive: 1
-  conditionConsequences: []
+  conditionConsequences:
+  - name_: Joy Manipulate with baby
+    conditions:
+    - name_: Joy manipulate with baby
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Joy manipulate most recent
+        useEmotionKey: 1
+        emotionKey: 2
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 1
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Lose baby and gain 50 allegiance with priest, +1 faith
+      itemsToAdd: []
+      itemsToRemove:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      relationshipConsequences:
+      - target: {fileID: 4954689198944353182}
+        valueChange: 50
+        relationshipType: 0
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences:
+      - name_: Add faith
+        statType: 5
+        isRandom: 0
+        valueChange: 1
+        isPlayer: 1
+        target: {fileID: 0}
+      displayTexts:
+      - 'The baby cries in your hands. You look to the Priest on the left side and
+        with a heart full of love, you gently hand the baby to him. The priest smiles
+        and gives you an approving nod. "Thank you, kind one. We will treat this
+        sapling with our best care and bring him closer to the Hand of S. Perhaps
+        he will become the chosen Vessel." He looks at you with warm eyes. '
+      - He continues, "Sometimes it is the young who are the closest to the Faith.
+        Religion of S often speaks of the 0. Representing emptiness, the only method
+        by which openness can be born. Not letting ego or preconceived judgment rule
+        over. Instead, allowing the flow of the true self to take form, growing alongside
+        the Faith bestowed by the Hand of S."
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Fear Manipulate with baby
+    conditions:
+    - name_: Fear Manipulate with baby
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Fear manipulate most recent
+        useEmotionKey: 1
+        emotionKey: 3
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 1
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You look to the Priest on the left and the crying baby in your hands. A sudden,
+        instinctual fear seizes you from handing over the baby. "Not now." Your mind
+        says.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Angry Manipulate with baby
+    conditions:
+    - name_: Fear Manipulate with baby
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Fear manipulate most recent
+        useEmotionKey: 1
+        emotionKey: 3
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 1
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You look to the Priest on the left and the crying baby in your hands. A sudden
+        rage stops you from handing over the baby. I will not let this oppressive
+        Religion of S dictate this baby's future.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Sad Manipulate with baby
+    conditions:
+    - name_: Sad Manipulate with baby
+      requiredItems:
+      - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Sad manipulate most recent
+        useEmotionKey: 1
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 1
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - 'You look to the Priest on the left and crying baby in your hands. A tear
+        drops from your face. I cannot impart myself with this baby just yet, you
+        tell yourself. Let me spend a few more moments with him. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Manipulate with Coin of S without already religious text of S
+    conditions:
+    - name_: Manipulate with Coin of S, w/o RTOS
+      requiredItems:
+      - {fileID: 11400000, guid: 85fa090c0c5e7f94fa818c738f1cc4d4, type: 2}
+      mustBeAbsentItems:
+      - {fileID: 11400000, guid: e744846c825aaca469c09e429ba5037e, type: 2}
+      actionConditions:
+      - name_: manipulate most recent
+        useEmotionKey: 0
+        emotionKey: 1
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 1
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text and earn relationship with priest
+      itemsToAdd:
+      - {fileID: 11400000, guid: e744846c825aaca469c09e429ba5037e, type: 2}
+      itemsToRemove: []
+      relationshipConsequences:
+      - target: {fileID: 4954689198944353182}
+        valueChange: 10
+        relationshipType: 0
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You look to the Priest on the left and show him your Coin of S. He smiles
+        warmly. "Ah, a recent Follower of S," he says. "I always enjoy meeting a
+        new follower, and hopefully we can take good care of you, and you, in return,
+        take care of yourself and grow your faith with S."
+      - He hands you a thin book. "Please take this Religious Text of S., and when
+        you are ready, you may hang your coin on the Roots on the ceiling of this
+        room. But please come visit me whenever."
+      experiencePointsChange: 0
+    failingConsequences: []
   triggeredResponses: []
-  UniqueResponseToPlayerDisplayTexts: []
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Angry observe
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - On the left side is a man with a red, luscious robe and a crown with a gold
+      "0" icon on it. Your mind does not produce any sort of innate understanding
+      of this person. However, the crown does remind you a little of its immense
+      importance in the Religion of S. A symbol of closeness with the Hand of Spawn.
+  - name_: Joy voice
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - You happily greet the Priest on the left. He smiles back. It is friendly and
+      kind, a departure from the atmosphere you have experienced in this place. "Thank
+      you for visiting us, young one. May I share an excerpt from our Religious Text
+      of S with you?"
+    - You nod enthusiastically. He opens his book and recites, "0 is not null. It
+      is not none. It is empty to be full. A container cannot fill without allowing
+      itself to be empty. We must learn to be 0, for it is harder to be 0 than infinity.
+      Once we can accept ourselves as a vessel capable of more, then do we begin
+      learning." He closes the book. "I hope you welcome our teachings as a 0. For
+      we are all 0's here, eager to learn. For we are yours, Spawns"
+  - name_: Angry voice
+    UseEmotionKey: 1
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - You growled angrily at the Priest on the left. Not even an intelligible word
+      could be heard. Regardless, the Priest smiled warmly towards you. "I understand.
+      This place can be difficult for many. These trials are just developing us to
+      be better. Every version of you re-born is given another chance to improve.
+      And eventually, you will satisfy the Hand of S to be freed."
+  - name_: Fear voice
+    UseEmotionKey: 1
+    emotionKey: 3
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - 'Your mind can''t handle the pressures and stress of the labyrinth, and you
+      let out a scream of terror towards the Priest on the left. Without a word,
+      he embraces you in a hug. "Now, now, my son. Do not show weakness here. Be
+      stronger. Hand of S will not be happy to see one of his creation become a failure.
+      Endure, my child. Endure and grow." '
+  - name_: Sad voice
+    UseEmotionKey: 1
+    emotionKey: 1
+    UseMotorSensorKey: 1
+    motorSensorKey: 3
+    displayTexts:
+    - A tear is shed, and a sob is let out towards the Priest on the left. The Priest
+      puts a hand on your shoulder, giving you space to cry it out. He mutters a
+      prayer, "Hand of S, please overlook this moment of weakness. I know in this
+      young man, there is a potential to become a use for you. I can tell he is much
+      stronger than his last one. Please do not kill this man. Let him prove himself.
+      For we are yours, Spawns."
+  - name_: Joy Gut
+    UseEmotionKey: 1
+    emotionKey: 2
+    UseMotorSensorKey: 1
+    motorSensorKey: 2
+    displayTexts:
+    - Your gut tells you that the Priest on the left is a gentle and wonderful soul.
+      However, your gut also tells you that not all good intentions come from good
+      sources.
+  - name_: Sad Gut
+    UseEmotionKey: 1
+    emotionKey: 1
+    UseMotorSensorKey: 1
+    motorSensorKey: 2
+    displayTexts:
+    - Your gut tells you that the Priest on the left is here to cure our sadness.
+      To interpret the Religion of S for us. To communicate to the Hand of S for
+      us. All to provide a reasoning for our suffering.
   allActionsOnObject: []
   learningRate: 0.5
-  experiencePointsGainedIfKilled: 5
-  friendlyActionOnNPC: []
+  experiencePointsGainedIfKilled: 100
+  friendlyActionOnNPC:
+  - {fileID: 11400000, guid: a3f32e11663d3344faaa5aee0231f9a2, type: 2}
+  - {fileID: 11400000, guid: d07e11bb16ffac146ad8cddc64cec198, type: 2}
   fearfulActionOnNPC: []
   neutralActionOnNPC: []
-  aggressiveActionOnNPC: []
-  friendlyResponses: []
-  fearfulResponses: []
-  likeResponses: []
-  dislikeResponses: []
+  aggressiveActionOnNPC:
+  - {fileID: 11400000, guid: 9c0c2dd40511a4d428f2b46073d7422f, type: 2}
+  - {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}
+  - {fileID: 11400000, guid: 495c04067f8a0e6469f312bdaebbd64b, type: 2}
+  - {fileID: 11400000, guid: 0e186ed16e77ff940907430be72305ac, type: 2}
+  friendlyResponses:
+  - {fileID: 11400000, guid: 94ecf7afcaf446b41b379bc64ebd562f, type: 2}
+  fearfulResponses:
+  - {fileID: 11400000, guid: 58b16f7ed46758a45a55bd1d55ca9d03, type: 2}
+  likeResponses:
+  - {fileID: 11400000, guid: 5962966f179baaa46beb652ac5c48e0e, type: 2}
+  dislikeResponses:
+  - {fileID: 11400000, guid: ac500b1a52544984eba55df225a5a05d, type: 2}
   neutralResponses: []
-  aggressiveResponses: []
+  aggressiveResponses:
+  - {fileID: 11400000, guid: 3d8f7a7884bae914593ff2bc15343341, type: 2}

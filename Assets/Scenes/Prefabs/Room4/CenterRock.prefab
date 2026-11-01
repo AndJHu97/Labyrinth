@@ -319,6 +319,12 @@ MonoBehaviour:
       - target: {fileID: 3383354750130416222, guid: 77e3a8eff7be6da42b2be2d9ac847a5e, type: 3}
         valueChange: 40
         relationshipType: 0
+      - target: {fileID: 0}
+        valueChange: 40
+        relationshipType: 0
+      - target: {fileID: 0}
+        valueChange: -40
+        relationshipType: 1
       activeConsequences:
       - target: {fileID: 6555381463044740657}
         setActiveStatus: 0
@@ -399,6 +405,12 @@ MonoBehaviour:
       - target: {fileID: 3383354750130416222, guid: 77e3a8eff7be6da42b2be2d9ac847a5e, type: 3}
         valueChange: 40
         relationshipType: 0
+      - target: {fileID: 0}
+        valueChange: 40
+        relationshipType: 0
+      - target: {fileID: 0}
+        valueChange: -40
+        relationshipType: 1
       activeConsequences:
       - target: {fileID: 6555381463044740657}
         setActiveStatus: 0

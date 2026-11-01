@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -72,6 +73,9 @@ public class PlayerController : MonoBehaviour
     public KeyCategory<MotorSensorKey> motor = new();
     public KeyCategory<ConcentrationKey> concentration = new();
 
+    [Header("UI")]
+    [SerializeField] private TerminalController terminalController;
+
     public event System.Action OnBufferChanged;
     public event System.Action<string> OnSubmitted;
 
@@ -135,27 +139,49 @@ public class PlayerController : MonoBehaviour
 
     void Submit()
     {
-        // Nothing typed, nothing happens
-        if (buffer.Count == 0) return;
+        // Require exactly maxKeys characters.
+        if (buffer.Count < maxKeys)
+        {
+            terminalController?.ShowInputError(
+                "____________________________________________________"
+            );
+            terminalController?.ShowInputError(
+                $"Please enter {maxKeys} characters to confirm an action."
+            );
+            return;
+        }
 
-        // Resolve each category: most recent typed character wins, otherwise random
+        // Check whether all three categories are represented.
         bool emotionTyped = emotion.TryResolve(buffer, out EmotionKey e, out char eKey);
-        if (!emotionTyped) e = emotion.RandomValue();
-
         bool motorTyped = motor.TryResolve(buffer, out MotorSensorKey m, out char mKey);
-        if (!motorTyped) m = motor.RandomValue();
-
         bool concTyped = concentration.TryResolve(buffer, out ConcentrationKey c, out char cKey);
-        if (!concTyped) c = concentration.RandomValue();
 
-        LogSubmission(emotionTyped, e, eKey, motorTyped, m, mKey, concTyped, c, cKey);
+        if (!emotionTyped || !motorTyped || !concTyped)
+        {
+            StringBuilder warning = new StringBuilder();
+            warning.AppendLine("____________________________________________________");
+            warning.AppendLine("To submit an action, enter one key from each category:");
+            warning.AppendLine($"Emotion: {FormatBindings(emotion)}");
+            warning.AppendLine($"Body Part: {FormatBindings(motor)}");
+            warning.AppendLine($"Direction: {FormatBindings(concentration)}");
+
+            terminalController?.ShowInputError(warning.ToString());
+            return;
+        }
+
+        // All three categories are valid. Submit the action.
+        LogSubmission(
+            emotionTyped, e, eKey,
+            motorTyped, m, mKey,
+            concTyped, c, cKey
+        );
 
         string typed = string.Concat(buffer);
         buffer.Clear();
-        OnSubmitted?.Invoke(typed);        //the terminal echoes "> typed"
-        OnBufferChanged?.Invoke();         //and clears its live input line
 
-        // Self-interaction is its own method (TODO in Player)
+        OnSubmitted?.Invoke(typed);
+        OnBufferChanged?.Invoke();
+
         if (c == ConcentrationKey.Self)
         {
             GameManager.Instance.player.PerformActionOnSelf(e, m);
@@ -166,6 +192,26 @@ public class PlayerController : MonoBehaviour
         Object_ target = room != null ? room.GetPart(c) : null;
 
         GameManager.Instance.player.PerformActionObject(e, m, c, target);
+    }
+
+    string FormatBindings<T>(KeyCategory<T> category) where T : System.Enum
+    {
+        StringBuilder result = new StringBuilder();
+
+        if (category == null || category.bindings == null)
+            return "(none assigned)";
+
+        foreach (var binding in category.bindings)
+        {
+            if (binding.Char == '\0') continue;
+
+            if (result.Length > 0)
+                result.Append(", ");
+
+            result.Append(binding.Char.ToString().ToUpperInvariant());
+        }
+
+        return result.Length > 0 ? result.ToString() : "(none assigned)";
     }
 
     void LogSubmission(

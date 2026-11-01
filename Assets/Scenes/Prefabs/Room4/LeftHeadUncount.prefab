@@ -53,7 +53,7 @@ MonoBehaviour:
     agility: 10
     faith: 0
   threatRelationshipValue: 0
-  allegianceRelationshipValue: 0
+  allegianceRelationshipValue: 40
   isActive: 1
   conditionConsequences:
   - name_: Voice if high allegiance
@@ -173,7 +173,9 @@ MonoBehaviour:
   allActionsOnObject: []
   learningRate: 0.5
   experiencePointsGainedIfKilled: 100
-  friendlyActionOnNPC: []
+  friendlyActionOnNPC:
+  - {fileID: 11400000, guid: a3f32e11663d3344faaa5aee0231f9a2, type: 2}
+  - {fileID: 11400000, guid: d07e11bb16ffac146ad8cddc64cec198, type: 2}
   fearfulActionOnNPC: []
   neutralActionOnNPC: []
   aggressiveActionOnNPC:
@@ -181,9 +183,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}
   - {fileID: 11400000, guid: 495c04067f8a0e6469f312bdaebbd64b, type: 2}
   - {fileID: 11400000, guid: 0e186ed16e77ff940907430be72305ac, type: 2}
-  friendlyResponses: []
-  fearfulResponses: []
-  likeResponses: []
-  dislikeResponses: []
-  neutralResponses: []
-  aggressiveResponses: []
+  friendlyResponses:
+  - {fileID: 11400000, guid: 94ecf7afcaf446b41b379bc64ebd562f, type: 2}
+  - {fileID: 11400000, guid: 4eb3e662ca2352b44a4ecaf430402f80, type: 2}
+  fearfulResponses:
+  - {fileID: 11400000, guid: 58b16f7ed46758a45a55bd1d55ca9d03, type: 2}
+  likeResponses:
+  - {fileID: 11400000, guid: 5962966f179baaa46beb652ac5c48e0e, type: 2}
+  dislikeResponses:
+  - {fileID: 11400000, guid: ac500b1a52544984eba55df225a5a05d, type: 2}
+  neutralResponses:
+  - {fileID: 11400000, guid: 367ac60091dd87545b6707fdad1fde52, type: 2}
+  aggressiveResponses:
+  - {fileID: 11400000, guid: 3d8f7a7884bae914593ff2bc15343341, type: 2}

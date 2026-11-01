@@ -30,9 +30,14 @@ public static class BattleMechanics
             health -= damage;
             Debug.Log(isPlayerAttacking ? "You attacked " + npcName + " for " + damage + " damage. " + npcName + " has " +  health + "/" + npc.stats.maxHealth + " HP remaining."
                 : npcName + " attacked you for " + damage);
-            
-            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { isPlayerAttacking ? "You attacked " + npcName + " for " + damage + " damage. " + npcName + " has " +  health + "/" + npc.stats.maxHealth + " HP remaining."
+
+            //This means you are actually attacking. If you aren't, then you aren't doing any damage and so no need to say so. 
+            if(defaultDamage > 0)
+            {
+                GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { isPlayerAttacking ? "You attacked " + npcName + " for " + damage + " damage. " + npcName + " has " +  health + "/" + npc.stats.maxHealth + " HP remaining."
                 : npcName + " attacked you for " + damage });
+            }
+            
 
 
             return damage;

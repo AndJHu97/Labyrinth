@@ -2217,6 +2217,72 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &597813335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 597813337}
+  - component: {fileID: 597813336}
+  m_Layer: 0
+  m_Name: R6HiddenRoom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &597813336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597813335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b10b51fd814504db4fc5aa5975b42b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name_: Old Man's Hidden Room
+  stats:
+    health: 0
+    maxHealth: 0
+    fortitude: 0
+    strength: 0
+    agility: 0
+    faith: 0
+  threatRelationshipValue: 0
+  allegianceRelationshipValue: 0
+  isActive: 1
+  conditionConsequences: []
+  triggeredResponses: []
+  UniqueResponseToPlayerDisplayTexts: []
+  allActionsOnObject: []
+  rightObject: {fileID: 0}
+  leftObject: {fileID: 0}
+  upObject: {fileID: 0}
+  downObject: {fileID: 0}
+  straightAheadObject: {fileID: 0}
+  behindObject: {fileID: 0}
+  roomDescription: []
+--- !u!4 &597813337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597813335}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5971723, y: -0.03459978, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &654454519 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 983256255905631602, guid: 2ebecff9d0509a54495f6301b88959ba, type: 3}
@@ -8079,7 +8145,7 @@ MonoBehaviour:
   roundNumber: 1
   actionStep: 0
   totalActionStep: 0
-  currentRoom: {fileID: 857693389}
+  currentRoom: {fileID: 1555009310}
   startingRoom: {fileID: 1555009310}
   gameLog: []
   experienceGainedWhenNewAction: 10
@@ -12333,6 +12399,7 @@ SceneRoots:
   - {fileID: 1476058907}
   - {fileID: 857693390}
   - {fileID: 978135478}
+  - {fileID: 597813337}
   - {fileID: 450573046}
   - {fileID: 1414441555}
   - {fileID: 1910763993}

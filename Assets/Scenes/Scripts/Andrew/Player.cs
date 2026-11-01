@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
@@ -163,7 +164,7 @@ public class Player : MonoBehaviour
                     ResolveAndLogInteractionTexts(intent);
                     
                 }
-
+                //Check all objects to see if you triggered anything
                 ObjectRegistry.ForEach(o => o.CheckAndRunTriggerConditions());
 
                 if (totalStats.health <= 0) PlayerDeath();
@@ -178,8 +179,7 @@ public class Player : MonoBehaviour
     public void PlayerDeath()
     {
         Debug.Log("Player has died.");
-
-        experiencePoints += (int)experienceGainedUponDeath;
+        
         RemoveAllInventory();
         baseStats.health = baseStats.maxHealth;
         GameManager.Instance.ResetRound();
@@ -187,19 +187,29 @@ public class Player : MonoBehaviour
 
     public void ResolveAndLogInteractionTexts(PlayerIntentSO intent, Object_ object_ = null, ActionOnObjectSO actionOnObject = null)
     {
-        
+
         if (object_ != null)
         {
 
             Door door = object_.GetComponent<Door>();
             //If going through door then can do a specific response
-            if (door != null && door.CanEnter(intent.motorSensorKey))
+            if (door != null)
             {
-                if (object_.GetComponent<Door>().isActive)
+                if (door.AllowedActionsToOpenDoor(intent.motorSensorKey))
                 {
-                    GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You focus on the {target} {direction} and open the door." }, object_);
-                    return;
+                    if (object_.GetComponent<Door>().isActive)
+                    {
+                        GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You focus on the {target} {direction} and open the door." }, object_);
+                        return;
+                    }
+                    //if locked
+                    else
+                    {
+                        GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You focus on the {target} {direction} and try to open the door, but it is locked." }, object_);
+                        return;
+                    }
                 }
+                
             }
 
             if (object_.UniqueResponseToPlayerDisplayTexts != null && object_.UniqueResponseToPlayerDisplayTexts.Count > 0)
@@ -226,7 +236,7 @@ public class Player : MonoBehaviour
 
             //this means there are no direct texts to display for the object or action, so we will use the default text from the intent
             //Only if no other conditions are met, we will display the default text from the intent
-            if (!InteractionProcessing.CheckAllTriggersAndConditions())
+            if (!InteractionProcessing.CheckAllTriggersAndConditions(object_))
             {
                 GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You focus on the {target} {direction}, but your action does nothing to it. Instead, you react to yourself." }, object_);
                 GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { intent.defaultNoninteractableText }, object_);
@@ -234,10 +244,9 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (!InteractionProcessing.CheckAllTriggersAndConditions())
+        if (!InteractionProcessing.CheckAllTriggersAndConditions(object_))
         {
-            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "There was nothing to interact with {direction}." });
-            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { intent.defaultNoninteractableText });
+            GameManager.Instance.LogDisplayTextsToRecentLog(new List<string> { "You focus {direction}. There is nothing there. So, you react to nothing.", intent.defaultNoninteractableText });
             return;
         }
         
@@ -275,6 +284,7 @@ public class Player : MonoBehaviour
 
     void ApplyItemStats(ItemSO item, int sign)
     {
+        if (item == null) return;
         statsModifications.health += sign * item.statsModification.health;
         statsModifications.maxHealth += sign * item.statsModification.maxHealth;
         statsModifications.strength += sign * item.statsModification.strength;

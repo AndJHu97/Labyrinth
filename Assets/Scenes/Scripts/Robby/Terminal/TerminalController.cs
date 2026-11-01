@@ -171,6 +171,11 @@ public class TerminalController : MonoBehaviour
         Refresh();
     }
 
+    public void ShowInputError(string message)
+    {
+        AddLine(message);
+    }
+
     public void Clear()
     {
         messages.Clear();

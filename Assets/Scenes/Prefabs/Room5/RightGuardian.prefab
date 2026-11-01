@@ -52,7 +52,7 @@ MonoBehaviour:
     strength: 20
     agility: 20
     faith: 10
-  threatRelationshipValue: 0
+  threatRelationshipValue: 80
   allegianceRelationshipValue: 0
   isActive: 1
   conditionConsequences:
@@ -172,9 +172,9 @@ MonoBehaviour:
         and take over, I encourage you to try."
       experiencePointsChange: 0
     failingConsequences: []
-  - name_: Not angry voice with child
+  - name_: No angry voice with child
     conditions:
-    - name_: Angry Voice, faith < 10, with child
+    - name_: No Angry Voice, faith < 10, with child
       requiredItems:
       - {fileID: 11400000, guid: ddc019fc6e55f7d449e1e392cf1f4cbf, type: 2}
       mustBeAbsentItems: []
@@ -241,7 +241,7 @@ MonoBehaviour:
         Follow the right path."
       experiencePointsChange: 0
     failingConsequences: []
-  - name_: Faith < 10, angry voice, no baby
+  - name_: Faith < 10, angry voice, with baby
     conditions:
     - name_: Angry Voice, faith < 10, with child
       requiredItems:
@@ -288,8 +288,8 @@ MonoBehaviour:
       - You angrily confront the figure on the right. He responds, "I am the Guardian.
         The last line of defense for the Uncounted. If you wish to challenge my position
         and take over, I encourage you to try."
-      - He glances at the baby at your side. "If you were to best me, though, please
-        take care of that child for the next line of Guardians"
+      - He glances at the baby beside you. "If you were to best me, though, please
+        take care of that child. Let him choose his own story."
       experiencePointsChange: 0
     failingConsequences: []
   - name_: Faith >= 10, angry voice, (non baby requirements)
@@ -340,7 +340,7 @@ MonoBehaviour:
         of S. If you wish to leave to become a vessel, you must kill me first."
       experiencePointsChange: 0
     failingConsequences: []
-  - name_: Faith >= 10, angry voice, (non baby requirements)
+  - name_: Faith >= 10, angry voice, with baby
     conditions:
     - name_: Angry Voice, faith < 10, baby
       requiredItems:
@@ -387,6 +387,184 @@ MonoBehaviour:
       - '"I see the child. Careful you do not make him follow the same road you did."'
       experiencePointsChange: 0
     failingConsequences: []
+  - name_: Manipulate Old Man's Text causes -2 Fortitude
+    conditions:
+    - name_: 'Manipulate Old man''s text '
+      requiredItems:
+      - {fileID: 11400000, guid: 2af4717ad1b4f1d46b202452695f8192, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Manipulate
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text and -2 fortitude
+      itemsToAdd: []
+      itemsToRemove:
+      - {fileID: 11400000, guid: 2af4717ad1b4f1d46b202452695f8192, type: 2}
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences:
+      - name_: Fortitude
+        statType: 2
+        isRandom: 0
+        valueChange: -2
+        isPlayer: 0
+        target: {fileID: 4428206659737467978}
+      displayTexts:
+      - You show him the texts found in the Old Man's Room. You can see the distraught
+        in his eyes as some of his memories return.
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Manipulate Religion Text of S causes +1 strength, -1 fortitude, -1 agility
+    conditions:
+    - name_: 'Manipulate Religion Text of S '
+      requiredItems:
+      - {fileID: 11400000, guid: e744846c825aaca469c09e429ba5037e, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Manipulate
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text and +1 strength, -1 fortitude, -1 agility
+      itemsToAdd: []
+      itemsToRemove:
+      - {fileID: 11400000, guid: e744846c825aaca469c09e429ba5037e, type: 2}
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences:
+      - name_: Fortitude
+        statType: 2
+        isRandom: 0
+        valueChange: -1
+        isPlayer: 0
+        target: {fileID: 4428206659737467978}
+      - name_: Agility
+        statType: 4
+        isRandom: 0
+        valueChange: -1
+        isPlayer: 0
+        target: {fileID: 4428206659737467978}
+      - name_: Strength
+        statType: 3
+        isRandom: 0
+        valueChange: 1
+        isPlayer: 0
+        target: {fileID: 4428206659737467978}
+      displayTexts:
+      - 'You show him the Religion Text of S and a rage takes hold of the Guardian. '
+      experiencePointsChange: 0
+    failingConsequences: []
+  - name_: Manipulate Coin of S causes +1 strength, -1 fortitude, -1 agility
+    conditions:
+    - name_: Manipulate Coin of S
+      requiredItems:
+      - {fileID: 11400000, guid: 85fa090c0c5e7f94fa818c738f1cc4d4, type: 2}
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Manipulate
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 5
+        useConcentrationKey: 1
+        concentrationKey: 0
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    successfulConsequences:
+    - name_: Text and +1 strength, -1 fortitude, -1 agility
+      itemsToAdd: []
+      itemsToRemove:
+      - {fileID: 11400000, guid: 85fa090c0c5e7f94fa818c738f1cc4d4, type: 2}
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences:
+      - name_: Fortitude
+        statType: 2
+        isRandom: 0
+        valueChange: -1
+        isPlayer: 0
+        target: {fileID: 4428206659737467978}
+      - name_: Agility
+        statType: 4
+        isRandom: 0
+        valueChange: -1
+        isPlayer: 0
+        target: {fileID: 4428206659737467978}
+      - name_: Strength
+        statType: 3
+        isRandom: 0
+        valueChange: 1
+        isPlayer: 0
+        target: {fileID: 4428206659737467978}
+      displayTexts:
+      - 'You show him the Coin of S and a rage takes hold of the Guardian. '
+      experiencePointsChange: 0
+    failingConsequences: []
   triggeredResponses: []
   UniqueResponseToPlayerDisplayTexts:
   - name_: Observation
@@ -400,10 +578,12 @@ MonoBehaviour:
       for a statue. '
   allActionsOnObject: []
   learningRate: 0.5
-  experiencePointsGainedIfKilled: 5
+  experiencePointsGainedIfKilled: 500
   friendlyActionOnNPC: []
   fearfulActionOnNPC: []
-  neutralActionOnNPC: []
+  neutralActionOnNPC:
+  - {fileID: 11400000, guid: a3f32e11663d3344faaa5aee0231f9a2, type: 2}
+  - {fileID: 11400000, guid: d07e11bb16ffac146ad8cddc64cec198, type: 2}
   aggressiveActionOnNPC:
   - {fileID: 11400000, guid: 9c0c2dd40511a4d428f2b46073d7422f, type: 2}
   - {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name_: Uncounted Armor
   statsModification:
-    health: 0
+    health: 5
     maxHealth: 5
     fortitude: 1
     strength: 0

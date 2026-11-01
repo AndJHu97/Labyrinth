@@ -80,7 +80,7 @@ MonoBehaviour:
         roundValue: 0
         roundComparison: 0
         useStep: 1
-        stepReference: 0
+        stepReference: 2
         stepValue: 0
         stepComparison: 2
       relationshipConditions: []
@@ -170,7 +170,7 @@ MonoBehaviour:
         roundValue: 0
         roundComparison: 0
         useStep: 1
-        stepReference: 0
+        stepReference: 2
         stepValue: 0
         stepComparison: 2
       relationshipConditions: []
@@ -189,6 +189,7 @@ MonoBehaviour:
       statConsequences:
       - name_: gain 1 faith
         statType: 5
+        isRandom: 0
         valueChange: 1
         isPlayer: 1
         target: {fileID: 0}

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6892024325980570298}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44,17 +44,136 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59fe09587ab700a4f87b1989c96f4998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: r1Hole
   name_: Hole In Ground
   stats:
     health: 0
+    maxHealth: 0
     fortitude: 0
     strength: 0
     agility: 0
+    faith: 0
   threatRelationshipValue: 0
   allegianceRelationshipValue: 0
   isActive: 1
   conditionConsequences:
+  - name_: No key inside since already picked it up
+    conditions:
+    - name_: already has key
+      requiredItems:
+      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    - name_: Old man dead
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions:
+      - target: {fileID: 0}
+        requiredActiveStatus: 0
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    - name_: pick up key
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Arm grab
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    - name_: pick up key (2)
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: 
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 2
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 1
+    - name_: old man doesn't perceive you as a threat (2)
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions:
+      - target: {fileID: 0}
+        requiredValue: 60
+        comparison: 5
+        relationshipType: 1
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 1
+    - name_: already has key (2)
+      requiredItems:
+      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
+      mustBeAbsentItems: []
+      actionConditions: []
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
+      groupNumber: 1
+    successfulConsequences:
+    - name_: 
+      itemsToAdd: []
+      itemsToRemove: []
+      relationshipConsequences: []
+      activeConsequences: []
+      netHealthImpact: []
+      statConsequences: []
+      displayTexts:
+      - You reach your hand into the cold crack in the ground.
+      - The cool surface snaps the nerves until the pain numbs. Before losing complete
+        feelings of the fingers, you withdraw your hand. Nothing there.
+      experiencePointsChange: 1
+    failingConsequences: []
   - name_: Grabbing key
     conditions:
     - name_: Arm reaching action without key
@@ -85,6 +204,7 @@ MonoBehaviour:
       relationshipConditions: []
       activeConditions: []
       statChecks: []
+      levelConditions: []
       groupNumber: 0
     - name_: Old man doesn't perceive you as a threat
       requiredItems: []
@@ -99,6 +219,7 @@ MonoBehaviour:
       - target: {fileID: 0}
         requiredActiveStatus: 1
       statChecks: []
+      levelConditions: []
       groupNumber: 0
     - name_: Arm reaching action without key (2)
       requiredItems: []
@@ -128,6 +249,7 @@ MonoBehaviour:
       relationshipConditions: []
       activeConditions: []
       statChecks: []
+      levelConditions: []
       groupNumber: 1
     - name_: Old man dead (2)
       requiredItems: []
@@ -138,6 +260,7 @@ MonoBehaviour:
       - target: {fileID: 0}
         requiredActiveStatus: 0
       statChecks: []
+      levelConditions: []
       groupNumber: 1
     successfulConsequences:
     - name_: Grab the key
@@ -147,6 +270,7 @@ MonoBehaviour:
       relationshipConsequences: []
       activeConsequences: []
       netHealthImpact: []
+      statConsequences: []
       displayTexts:
       - You reach your hand into the cold crack in the ground.
       - The cool surface snaps the nerves until the pain numbs. Before losing complete
@@ -168,6 +292,36 @@ MonoBehaviour:
       - target: {fileID: 0}
         requiredActiveStatus: 1
       statChecks: []
+      levelConditions: []
+      groupNumber: 0
+    - name_: Using hand to reach into hole
+      requiredItems: []
+      mustBeAbsentItems: []
+      actionConditions:
+      - name_: Reaching down with hand
+        useEmotionKey: 0
+        emotionKey: 0
+        useMotorSensorKey: 1
+        motorSensorKey: 0
+        useConcentrationKey: 1
+        concentrationKey: 3
+        room: {fileID: 0}
+        useFrequency: 0
+        frequency: 0
+        frequencyComparison: 0
+        frequencyScope: 0
+        useRound: 0
+        roundReference: 0
+        roundValue: 0
+        roundComparison: 0
+        useStep: 1
+        stepReference: 1
+        stepValue: 0
+        stepComparison: 2
+      relationshipConditions: []
+      activeConditions: []
+      statChecks: []
+      levelConditions: []
       groupNumber: 0
     successfulConsequences:
     - name_: Old man attacks you
@@ -179,127 +333,31 @@ MonoBehaviour:
       - isPlayer: 1
         healthChange: -5
         target: {fileID: 0}
+      statConsequences: []
       displayTexts:
-      - Your hand reaches into the depths of the crack in the ground.
-      - The crack... now the old man looks at you. He's about to crack YOU!
-      - The old man cracks you and he smiles. "OH YEAAA!"
+      - 'You put your arm into the abyss at the center of the room. Upon seeing this,
+        the old man gets up, sensing your defenselessness. You cannot get your arm
+        out in time. He bites and tears at your flesh with his snaggle-toothed mouth.
+        You scream in pain but there''s nothing you can do. '
       experiencePointsChange: 0
     failingConsequences: []
-  - name_: No key inside since already picked it up
-    conditions:
-    - name_: already has key
-      requiredItems:
-      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
-      mustBeAbsentItems: []
-      actionConditions: []
-      relationshipConditions: []
-      activeConditions: []
-      statChecks: []
-      groupNumber: 0
-    - name_: Old man dead
-      requiredItems: []
-      mustBeAbsentItems: []
-      actionConditions: []
-      relationshipConditions: []
-      activeConditions:
-      - target: {fileID: 0}
-        requiredActiveStatus: 0
-      statChecks: []
-      groupNumber: 0
-    - name_: pick up key
-      requiredItems: []
-      mustBeAbsentItems: []
-      actionConditions:
-      - name_: 
-        useEmotionKey: 0
-        emotionKey: 0
-        useMotorSensorKey: 1
-        motorSensorKey: 0
-        useConcentrationKey: 1
-        concentrationKey: 3
-        room: {fileID: 0}
-        useFrequency: 0
-        frequency: 0
-        frequencyComparison: 0
-        frequencyScope: 0
-        useRound: 0
-        roundReference: 0
-        roundValue: 0
-        roundComparison: 0
-        useStep: 1
-        stepReference: 1
-        stepValue: 0
-        stepComparison: 0
-      relationshipConditions: []
-      activeConditions: []
-      statChecks: []
-      groupNumber: 0
-    - name_: pick up key (2)
-      requiredItems: []
-      mustBeAbsentItems: []
-      actionConditions:
-      - name_: 
-        useEmotionKey: 0
-        emotionKey: 0
-        useMotorSensorKey: 1
-        motorSensorKey: 0
-        useConcentrationKey: 1
-        concentrationKey: 3
-        room: {fileID: 0}
-        useFrequency: 0
-        frequency: 0
-        frequencyComparison: 0
-        frequencyScope: 0
-        useRound: 0
-        roundReference: 0
-        roundValue: 0
-        roundComparison: 0
-        useStep: 1
-        stepReference: 1
-        stepValue: 0
-        stepComparison: 0
-      relationshipConditions: []
-      activeConditions: []
-      statChecks: []
-      groupNumber: 1
-    - name_: old man doesn't perceive you as a threat (2)
-      requiredItems: []
-      mustBeAbsentItems: []
-      actionConditions: []
-      relationshipConditions:
-      - target: {fileID: 0}
-        requiredValue: 60
-        comparison: 5
-        relationshipType: 1
-      activeConditions: []
-      statChecks: []
-      groupNumber: 1
-    - name_: already has key (2)
-      requiredItems:
-      - {fileID: 11400000, guid: 017d4cf5dfb27e34c9efb014a0ccd22c, type: 2}
-      mustBeAbsentItems: []
-      actionConditions: []
-      relationshipConditions: []
-      activeConditions: []
-      statChecks: []
-      groupNumber: 1
-    successfulConsequences:
-    - name_: 
-      itemsToAdd: []
-      itemsToRemove: []
-      relationshipConsequences: []
-      activeConsequences: []
-      netHealthImpact: []
-      displayTexts:
-      - You reach your hand into the cold crack in the ground.
-      - The cool surface snaps the nerves until the pain numbs. Before losing complete
-        feelings of the fingers, you withdraw your hand. Nothing there.
-      experiencePointsChange: 1
-    failingConsequences: []
   triggeredResponses: []
-  displayTextResponses:
-  - displayTexts:
-    - 'You stomp with rage onto the crack. Your foot slips into the hole but quickly
-      you retract. '
+  UniqueResponseToPlayerDisplayTexts:
+  - name_: Stepping into abyss
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 1
+    displayTexts:
+    - 'You stomp with rage onto the crack. Your foot slips into the hole, but you
+      quickly retract. '
     - It's deeper than you thought...
-    playerIntent: {fileID: 11400000, guid: 1a68c0122c797f243a8dd6dd1e7e7f0a, type: 2}
+  - name_: Observing abyss
+    UseEmotionKey: 0
+    emotionKey: 0
+    UseMotorSensorKey: 1
+    motorSensorKey: 4
+    displayTexts:
+    - 'In the middle of the room, the floor, or lack of floor, resides a deep cracked
+      pit. You can''t see the bottom. '
+  allActionsOnObject: []

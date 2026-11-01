@@ -46,13 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name_: Executioner
   stats:
-    health: 15
-    maxHealth: 15
+    health: 25
+    maxHealth: 25
     fortitude: 3
-    strength: 10
+    strength: 15
     agility: 2
     faith: 10
-  threatRelationshipValue: 0
+  threatRelationshipValue: 70
   allegianceRelationshipValue: 0
   isActive: 1
   conditionConsequences:
@@ -135,10 +135,12 @@ MonoBehaviour:
       with a giant axe in hand, unmoving. '
   allActionsOnObject: []
   learningRate: 0.5
-  experiencePointsGainedIfKilled: 5
+  experiencePointsGainedIfKilled: 50
   friendlyActionOnNPC: []
   fearfulActionOnNPC: []
-  neutralActionOnNPC: []
+  neutralActionOnNPC:
+  - {fileID: 11400000, guid: a3f32e11663d3344faaa5aee0231f9a2, type: 2}
+  - {fileID: 11400000, guid: d07e11bb16ffac146ad8cddc64cec198, type: 2}
   aggressiveActionOnNPC:
   - {fileID: 11400000, guid: 9c0c2dd40511a4d428f2b46073d7422f, type: 2}
   - {fileID: 11400000, guid: 9758ac694cac1b742bf60637aae0cc20, type: 2}
