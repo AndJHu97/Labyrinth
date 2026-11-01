@@ -359,11 +359,9 @@ public class Notebook : MonoBehaviour
             {
                 "How to Play",
                 "",
-                "-Use a combination of these 3 keys: 1-4 emotion, a-f act, g-l direction.",
+                "-Use a combination of these 3 keys: 1-4 emotion, q,w,e,r,t,y body part, g,h,j,k,l,; direction.",
                 "",
-                "-Whatever key you don't input will be randomly chosen.",
-                "",
-                "-Each combination combines the emotions, action, and directions... try them out. Inputs will look like 1ag or 4fk, etc.",
+                "-Each combination combines the emotions, body, and directions... try them out. Inputs will look like 1ag or 4fk, etc.",
                 "",
                 "-Death is rewarded. Do not be afraid of making a mistake.",
                 "",
